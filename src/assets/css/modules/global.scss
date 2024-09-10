@@ -1,0 +1,95 @@
+// H settings
+h1 {
+  font-size: 46px;
+  line-height: 68px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 38px;
+  line-height: 56px;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 28px;
+  line-height: 42px;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 38px;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+// swiper slider settings
+.swiper {
+  overflow: visible !important;
+}
+
+// style for library
+.front-main-page {
+  // swiper slider
+  .swiper-wrapper {
+    align-items: center;
+  }
+  .swiper-slide {
+    max-width: 360px;
+    cursor: pointer;
+  }
+
+  .swiper-pagination {
+    bottom: -46px !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--action-focus);
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 38px;
+    border-radius: 30px;
+    background: var(--action-disabled);
+  }
+
+  // vue slider range
+  .vue-slider {
+    padding: 0 !important;
+    height: 6px !important;
+  }
+
+  .vue-slider-rail {
+    background-color: rgba(var(--primary-opacity), 16%);
+  }
+
+  .vue-slider-process {
+    background-color: var(--primary-500);
+  }
+
+  .vue-slider-dot-tooltip-inner {
+    padding: 4px 10px;
+    border-color: transparent;
+    background-color: var(--snackbar);
+  }
+
+  .vue-slider-dot {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+
