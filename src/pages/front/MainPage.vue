@@ -20,7 +20,7 @@ import UiTextarea from '@/components/UI/UiTextarea.vue';
 
 // Icons
 import LaptopChargingIcon from '@/components/UI/svg/LaptopChargingIcon.vue';
-import TranstionUpIcon from '@/components/UI/svg/TransitionUpIcon.vue';
+import TransitionUpIcon from '@/components/UI/svg/TransitionUpIcon.vue';
 import EditIcon from '@/components/UI/svg/EditIcon.vue';
 import SelectSolidIcon from '@/components/UI/svg/SelectSolidIcon.vue';
 import LifebeltIcon from '@/components/UI/svg/LifebeltIcon.vue';
@@ -86,7 +86,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
               </li>
               <li class="features__item max-w-[364px] flex flex-col items-center group text-center">
                 <div class="features__icon duration-200 bg-transparent p-[20px] border-2 border-primary-opacity/[32%] group-hover:bg-primary-opacity/[16%] rounded-[50%] text-primary-500">               
-                  <TranstionUpIcon />
+                  <TransitionUpIcon />
                 </div>
                 <h5 class="features__item-title mt-[16px]">
                   Continuous Updates
