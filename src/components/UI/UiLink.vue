@@ -8,7 +8,7 @@ const props = defineProps({
     }
   },
   href: {
-    type: String,
+    type: [String, Object],
     default() {
       return '/';
     }

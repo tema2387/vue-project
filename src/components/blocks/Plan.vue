@@ -80,6 +80,8 @@ const isHovered = ref(false);
       </div>
       <div class="plan__support-time text-13 text-primary-500 bg-primary-opacity/[16%] px-[12px] py-[2px] rounded-full">{{ supportTime }}</div>
     </div>
-    <UiButton :type="isHovered ? 'default': 'outline'">Get Started</UiButton>
+    <UiLink :type="'inside'" :href="'/order'">
+      <UiButton :type="isHovered ? 'default': 'outline'">Get Started</UiButton>
+    </UiLink>
   </div>
 </template>

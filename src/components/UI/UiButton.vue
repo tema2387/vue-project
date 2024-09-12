@@ -152,7 +152,7 @@ const colorBtn = computed(() => {
   </button>
   <button 
     v-if="type === 'outline'" 
-    class="w-full bg-paper-bg duration-200 border rounded-md disabled:opacity-[45%]"
+    class="w-full bg-transparent duration-200 border rounded-md disabled:opacity-[45%]"
     :class="[sizeBtn, colorBtn, sizeText]"
   >
     <slot></slot>
