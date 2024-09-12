@@ -273,10 +273,10 @@ import activeDarkTheme from '@/modules/changeTheme.js';
             :desc="'All plans include 40+ advanced tools and features to boost your product.'"
             :descTwo="'Choose the best plan to fit your needs.'"
           >
-            <div class="plans__range-slider">
+            <div class="plans__range-slider mt-[64px]">
               <UiInputRange />
             </div>
-            <div class="plans__list flex gap-[24px] mt-[64px]">
+            <div id="section-plans-list" class="plans__list flex gap-[24px] mt-[64px]">
               <Plan
                 :plan="'Basic Plan'"
                 :wallet="'$'"
