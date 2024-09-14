@@ -13,7 +13,7 @@ import SlideReview from '@/components/blocks/SlideReview.vue';
 import CardTeam from '@/components/blocks/CardTeam.vue';
 import UiInputRange from '@/components/UI/UiInputRange.vue';
 import Plan from '@/components/blocks/Plan.vue';
-import Accordion from '@/components/blocks/Accordion.vue';
+import UiAccordion from '@/components/UI/UiAccordion.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiButton from '@/components/UI/UiButton.vue';
 import UiTextarea from '@/components/UI/UiTextarea.vue';
@@ -35,12 +35,8 @@ import SectionCheckIcon from '@/components/UI/svg/SectionCheckIcon.vue';
 
 const activeAccordion = ref(2);
 
-function toggleAccordion(activeIndex) {
+function changeAccordion(activeIndex) {
   activeAccordion.value = activeIndex;
-}
-
-function inputModel(value) {
-  console.log(value);
 }
 
  // JS modules
@@ -355,25 +351,25 @@ import activeDarkTheme from '@/modules/changeTheme.js';
             <div class="faq__section-content flex gap-[100px] mt-[64px]">
               <img src="/public/img/Illustration-faq-section.png" alt="faq-img" class="object-contain ml-[200px]">
               <div class="faq__accordion flex flex-1 flex-col gap-[8px]"> 
-                <Accordion 
+                <UiAccordion 
                   :title="'Do you charge for each upgrade?'"
                   :text="'Regular license can be used for end products that do not charge users for access or service(access is free and there will be no monthly subscription fee). Single regular license can be used for single end product and end product can be used by you or your client. If you want to sell end product to multiple clients then you will need to purchase separate license for each client. The same rule applies if you want to use the same end product on multiple domains(unique setup). For more info on regular license you can check official description.'"
                   :status="activeAccordion === 1"
-                  @show="toggleAccordion(1)"
+                  @show="changeAccordion(1)"
                 />
-                <Accordion 
+                <UiAccordion 
                   :title="'What is regular license?'"
                   :text="'Regular license can be used for end products that do not charge users for access or service(access is free and there will be no monthly subscription fee). Single regular license can be used for single end product and end product can be used by you or your client. If you want to sell end product to multiple clients then you will need to purchase separate license for each client. The same rule applies if you want to use the same end product on multiple domains(unique setup). For more info on regular license you can check official description.'"
                   :status="activeAccordion === 2"
-                  @show="toggleAccordion(2)"
+                  @show="changeAccordion(2)"
                 />
-                <Accordion 
+                <UiAccordion 
                   :title="'What is extended license?'"
                   :text="'Regular license can be used for end products that do not charge users for access or service(access is free and there will be no monthly subscription fee). Single regular license can be used for single end product and end product can be used by you or your client. If you want to sell end product to multiple clients then you will need to purchase separate license for each client. The same rule applies if you want to use the same end product on multiple domains(unique setup). For more info on regular license you can check official description.'"
                   :status="activeAccordion === 3"
-                  @show="toggleAccordion(3)"
+                  @show="changeAccordion(3)"
                 />
-                <Accordion 
+                <UiAccordion 
                   :title="'Which license is applicable for SASS application?'"
                   :text="'Regular license can be used for end products that do not charge users for access or service(access is free and there will be no monthly subscription fee). Single regular license can be used for single end product and end product can be used by you or your client. If you want to sell end product to multiple clients then you will need to purchase separate license for each client. The same rule applies if you want to use the same end product on multiple domains(unique setup). For more info on regular license you can check official description.'"
                   :status="activeAccordion === 4"
@@ -436,7 +432,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
                       class="w-full" 
                     />
                     <UiInputText 
-                      :id="'form-addres'"
+                      :id="'form-address'"
                       :size="'md'"
                       :label="'Email address'"
                       class="w-full"  
@@ -447,7 +443,6 @@ import activeDarkTheme from '@/modules/changeTheme.js';
                     :label="'Full name'"
                     :size="'md'"
                     class="h-[186px] mt-[20px]"
-                    @inputValue="inputModel"
                   />
                   <UiButton 
                     :size="'md'" 
