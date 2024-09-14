@@ -1,7 +1,11 @@
 <script setup>
+import { ref } from 'vue';
 // components
-import FrontLayout from "@/layouts/FrontLayout.vue";
+import FrontLayout from '@/layouts/FrontLayout.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
+import UiRadioCustom from "@/components/UI/UiRadioCustom.vue";
+
+const modelRadio = ref('radio-pay-visa');
 
 </script>
 <template>
@@ -14,7 +18,22 @@ import UiInputText from '@/components/UI/UiInputText.vue';
             <p class="order-page__subtitle text-text-secondary mt-[8px]">All plans include 40+ advanced tools and features to boost your product.</p>
             <p class="order-page__subtitle text-text-secondary">Choose the best plan to fit your needs.</p>
             <div class="order-page__inputs flex gap-[20px] mt-[32px]">
-
+              <UiRadioCustom 
+                :name="'pay-checkout-plan'" 
+                :id="'radio-pay-visa'" 
+                v-model="modelRadio" 
+              >
+                <img src="/public/icon/visa-icon.svg" alt="visa-icon" class="p-[11px] bg-action-hover rounded-md" />
+                <div>Credit card</div>
+              </UiRadioCustom>
+              <UiRadioCustom 
+                :name="'pay-checkout-plan'" 
+                :id="'radio-pay-paypal'" 
+                v-model="modelRadio" 
+              >
+                <img src="/public/icon/paypal-icon.svg" alt="paypal-icon" class="py-[7px] px-[21px] bg-action-hover rounded-md" />
+                <div>Paypal</div>
+              </UiRadioCustom>
             </div>
           </div>
           <div class="order-page__details mt-[32px]">
@@ -70,7 +89,9 @@ import UiInputText from '@/components/UI/UiInputText.vue';
           <p class="order-page__subtitle text-text-secondary mt-[8px]">All plans include 40+ advanced tools and features to boost your product.</p>
           <div class="order-page__plan p-[24px] mt-[32px] bg-body-bg">
             <p class="text-text-secondary">A simple start for everyone</p>
-            <h1 class="mt-[16px]">$59.99<span class="text-15-500 text-text-secondary"> /month</span></h1>
+            <h1 class="mt-[16px]">
+              $59.99<span class="text-15-500 text-text-secondary"> /month</span>
+            </h1>
             <UiLink 
               class="mt-[16px]" 
               :type="'inside'"
