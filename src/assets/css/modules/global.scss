@@ -35,12 +35,19 @@ h6 {
   font-weight: 500;
 }
 
-// swiper slider settings
+// remove style for default select global
+select {
+  -webkit-appearance: none;    // Для Chrome и Safari
+  -moz-appearance: none;      // Для Firefox 
+  appearance: none;           // Стандартное свойство
+}
+
+// swiper slider styles global
 .swiper {
   overflow: visible !important;
 }
 
-// style for library
+// style for libraries in front-main-page
 .front-main-page {
   // swiper slider
   .swiper-wrapper {
@@ -85,11 +92,36 @@ h6 {
     padding: 4px 10px;
     border-color: transparent;
     background-color: var(--snackbar);
+    color: var(--body-bg);
   }
 
   .vue-slider-dot {
     width: 22px !important;
     height: 22px !important;
+  }
+
+  .vue-slider-dot-handle {
+    border: 4px solid;
+    border-radius: 50%;
+    border-color: var(--primary-500);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .vue-slider-dot-handle-focus {
+    position: relative;
+    &::after {
+      content: '';
+      width: 38px;
+      height: 38px;
+      top: 50%;
+      left: 50%;
+      opacity: 100;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      background-color: rgba(var(--primary-opacity), 16%);
+      border-radius: 50%;
+      z-index: -1;
+    }
   }
 }
 

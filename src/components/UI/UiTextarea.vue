@@ -1,19 +1,12 @@
 <script setup>
 import { computed } from 'vue';
 
-// type can be 'outlined', 'filled' or 'custom'
 // size can be 'lg', 'md', 'sm' 
 // labelBgColor can be 'footer', 'main'
 const props = defineProps({
   id: {
     type: [String, Number],
     required: true,
-  },
-  type: {
-    type: String,
-    default() {
-      return 'outlined';
-    }
   },
   size: {
     type: String,
@@ -48,7 +41,7 @@ const mainLabelBgColor = 'bg-paper-bg';
 defineEmits(['inputValue'])
 const model = defineModel();
 
-const sizeInput = computed(() => {
+const sizeTextarea = computed(() => {
   return props.size === 'md' ? sizeMd : props.size === 'sm' ? sizeSm : sizeLg;
 })
 
@@ -66,7 +59,7 @@ const labelBgColor = computed(() => {
       :id="id" 
       :placeholder="placeholder"
       class="peer w-full h-full resize-none text-input-text duration-200 bg-transparent outline outline-transparent outline-offset-[-2px] border border-input-border rounded-lg text-text-disabled placeholder-transparent focus:placeholder-text-disabled focus:border-primary-500 focus:outline-primary-500 focus:text-text-primary hover:border-action-active hover:text-text-primary"
-      :class="sizeInput"
+      :class="sizeTextarea"
       v-model="model"
       @input="$emit('inputValue', model)"
     />
@@ -78,7 +71,7 @@ const labelBgColor = computed(() => {
       {{ label }}
     </label>
     <div 
-      class="input-label-background text-13 duration-200 absolute h-[4px] top-[-1px] left-[14px] px-[2px] opacity-0 peer-focus:opacity-100"
+      class="textarea-label-background text-13 duration-200 absolute h-[4px] top-[-1px] left-[14px] px-[2px] opacity-0 peer-focus:opacity-100"
       :class="[{'opacity-100': model}, labelBgColor]"
     >
       <span class="invisible">

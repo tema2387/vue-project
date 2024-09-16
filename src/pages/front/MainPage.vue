@@ -274,6 +274,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
             </div>
             <div id="section-plans-list" class="plans__list flex gap-[24px] mt-[64px]">
               <Plan
+                :id="1"
                 :plan="'Basic Plan'"
                 :wallet="'$'"
                 :price="'20'"
@@ -283,6 +284,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
                 :supportTime="'AVG. Time: 24h'"
               />
               <Plan
+                :id="2"
                 :plan="'Favorit Plan'"
                 :wallet="'$'"
                 :price="'51'"
@@ -292,6 +294,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
                 :supportTime="'AVG. Time: 6h'"
               />
               <Plan
+                :id="3"
                 :plan="'Standard Plan'"
                 :wallet="'$'"
                 :price="'99'"
@@ -373,7 +376,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
                   :title="'Which license is applicable for SASS application?'"
                   :text="'Regular license can be used for end products that do not charge users for access or service(access is free and there will be no monthly subscription fee). Single regular license can be used for single end product and end product can be used by you or your client. If you want to sell end product to multiple clients then you will need to purchase separate license for each client. The same rule applies if you want to use the same end product on multiple domains(unique setup). For more info on regular license you can check official description.'"
                   :status="activeAccordion === 4"
-                  @show="toggleAccordion(4)"
+                  @show="changeAccordion(4)"
                 />
               </div>
             </div>
