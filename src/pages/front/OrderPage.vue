@@ -1,12 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 // components
-import FrontLayout from '@/layouts/FrontLayout.vue';
-import UiInputText from '@/components/UI/UiInputText.vue';
+import FrontLayout from "@/layouts/FrontLayout.vue";
+import UiInputText from "@/components/UI/UiInputText.vue";
 import UiRadioCustom from "@/components/UI/UiRadioCustom.vue";
+import UiSelect from "@/components/UI/UiSelect.vue";
+
+// store
+import { planPrice } from '@/store/plansStore.js';
 
 const modelRadio = ref('radio-pay-visa');
-
 </script>
 <template>
   <FrontLayout>
@@ -51,7 +54,20 @@ const modelRadio = ref('radio-pay-visa');
                   class="flex-1"
                 />
               </div>
-              <div class="order-page__inputs-bottom mt-[20px]"></div>
+              <div class="order-page__inputs-bottom mt-[20px] flex gap-[20px]">
+                <UiSelect 
+                  :id="'select-1'" 
+                  :label="'Billing Country'"
+                  :selects="['aboba1', 'aboba2', 'aboba3', 'aboba4']"
+                  class="flex-1"
+                />
+                <UiSelect 
+                  :id="'select-2'" 
+                  :label="'Billing Zip / Postal Code'" 
+                  :selects="['aboba1', 'aboba2', 'aboba3', 'aboba4']"
+                  class="flex-1"
+                />
+              </div>
             </div>
           </div>
           <div class="order-page__card mt-[32px]">
@@ -87,10 +103,10 @@ const modelRadio = ref('radio-pay-visa');
         <div class="order-page__summary max-w-[452px] p-[32px]">
           <h4 class="order-page__title">Order Summary</h4>
           <p class="order-page__subtitle text-text-secondary mt-[8px]">All plans include 40+ advanced tools and features to boost your product.</p>
-          <div class="order-page__plan p-[24px] mt-[32px] bg-body-bg">
+          <div class="order-page__plan rounded-md p-[24px] mt-[32px] bg-body-bg">
             <p class="text-text-secondary">A simple start for everyone</p>
             <h1 class="mt-[16px]">
-              $59.99<span class="text-15-500 text-text-secondary"> /month</span>
+              {{ planPrice }}<span class="text-15-500 text-text-secondary"> /month</span>
             </h1>
             <UiLink 
               class="mt-[16px]" 
