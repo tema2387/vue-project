@@ -44,7 +44,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
 </script>
 
 <template>
-  <FrontLayout>
+  <FrontLayout :header="'fixed'">
     <div class="front-main-page">
       <section class="start relative">
         <img src="/public/img/front-bg-image.png" class="start__background" alt="start-bg">
@@ -230,7 +230,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
             :subtitleBold="'Supported'"
             :desc="'Who is behind these great-looking interfaces?'"
           >
-            <div class="team__list flex gap-[24px] mt-[100px]">
+            <div class="team__list flex justify-between gap-[24px] mt-[100px]">
               <CardTeam 
                 :img="'/public/img/woman-1.png'" 
                 :color="'primary'" 
