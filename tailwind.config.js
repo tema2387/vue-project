@@ -230,7 +230,7 @@ export default {
         'snackbar': 'var(--snackbar)',
         'body-bg': 'var(--body-bg)',
         'paper-bg': 'rgba(var(--paper-bg), <alpha-value>)',
-        'table-header': 'var(--table-header)',
+        'table': 'var(--table)',
         'chat-bg': 'var(--chat-bg)',
         'track-bg': 'var(--track-bg)',
         'grey-light': 'var(--grey-light)',

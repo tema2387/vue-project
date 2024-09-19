@@ -42,9 +42,25 @@ select {
   appearance: none;           // Стандартное свойство
 }
 
+// remove font weight bold
+tr, th, td {
+  font-weight: inherit;
+}
+
 // swiper slider styles global
 .swiper {
   overflow: visible !important;
+}
+
+// vue toggle styles global
+.vue-toggles__dot {
+  width: 14px !important;
+  height: 14px !important;
+  margin-left: 2px !important;
+}
+
+.vue-toggles__dot-active {
+  margin-left: 14px !important;
 }
 
 // style for libraries in front-main-page

@@ -1,15 +1,35 @@
 <script setup>
+import { computed } from 'vue';
 // Icons
 import MoonClearIcon from '@/components/UI/svg/MoonClearIcon.vue';
 import ArrowDownSIcon from '@/components/UI/svg/ArrowDownSIcon.vue';
 import ShoppingCartIcon from '@/components/UI/svg/ShoppingCartIcon.vue';
+
+const props = defineProps({
+  type: {
+    type: String,
+    default() {
+      return '';
+    }
+  }
+})
+
+const typeFixed = 'fixed border border-t-0 border-paper-bg/[75%] rounded-b-md top-0 left-0 right-0 container';
+
+const setType = computed(() => {
+  return props.type === 'fixed' ? typeFixed : '';
+})
 
 // Others
 import activeDarkTheme from '@/modules/changeTheme.js';
 </script>
 
 <template>
-  <div class="header z-[100] fixed bg-paper-bg/[64%] text-text-primary text-15-500 border border-t-0 border-paper-bg/[75%] rounded-b-md top-0 left-0 right-0 container flex items-center py-[12px] px-[32px]">
+  <div 
+    class="header z-[100] bg-paper-bg/[64%] text-text-primary text-15-500 py-[12px] px-[32px]"
+    :class="setType"
+  >
+  <div class="container flex items-center">
     <router-link to="/" class="header__left flex gap-[12px] items-center mr-[32px]">
         <img 
           class="max-w-[30px]"
@@ -53,5 +73,6 @@ import activeDarkTheme from '@/modules/changeTheme.js';
         </div>
       </UiButton>
     </div>
+  </div>
   </div>
 </template>
