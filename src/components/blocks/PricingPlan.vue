@@ -1,5 +1,6 @@
 <script setup>
 import UiButton from '../UI/UiButton.vue';
+import UIImage from '../UI/UIImage.vue';
 
 const props = defineProps({
   alreadyActivePlan: {
@@ -68,7 +69,7 @@ const props = defineProps({
 <template>
   <div class="pricing-plan w-[364px] px-[24px] pt-[60px] pb-[20px] border border-devider rounded-md text-center relative">
     <div v-if="popular" class="pricing-plan__popular absolute px-[12px] py-[2px] rounded-full text-primary-500 bg-primary-opacity/[16%] right-[20px] top-[16px]">Popular</div>
-    <img :src="img" class="mx-auto" alt="pricing-plan-image" />
+    <UIImage :src="img" class="mx-auto" :alt="'pricing-plan-image'" />
     <h4 class="pricing-plan__title">{{ plan }}</h4>
     <p class="pricing-plan__subtitle text-text-secondary mt-[8px]">{{ subtitle }}</p>
     <div class="pricing-plan__price flex justify-center mt-[20px]">

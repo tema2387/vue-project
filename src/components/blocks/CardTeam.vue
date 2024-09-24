@@ -57,23 +57,25 @@ const colorBorder = computed(() => {
       class="card__bg rounded-t-md relative h-[189px]" 
       :class="colorBg"
     >
-      <img 
-        :src="img" 
+      <UiImage 
+        :src="img"
+        :width="240" 
+        :height="200"
         class="absolute bottom-0 left-[50%] translate-x-[-50%]" 
-        alt="team-photo"
-      >
+        :alt="'team-photo'"
+      />
     </div>
     <div class="card__content py-[20px] text-center">
       <h5 class="card__name">{{ name }}</h5>
       <span class="card__job text-text-secondary">{{ job }}</span>
       <div class="card__socials mt-[12px] text-text-primary flex gap-[12px] justify-center">
-        <UiLink :type="'outside'">
+        <UiLink>
           <FacebookCircleIcon class="group-hover:text-color-facebook-icon duration-200" />
         </UiLink>
-        <UiLink :type="'outside'">
+        <UiLink>
           <TwitterLineIcon class="group-hover:text-color-twitter-icon duration-200" />
         </UiLink>
-        <UiLink :type="'outside'">
+        <UiLink>
           <LinkedInBoxIcon class="group-hover:text-color-linkedin-icon duration-200" />
         </UiLink>
       </div>

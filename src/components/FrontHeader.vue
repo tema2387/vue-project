@@ -22,6 +22,7 @@ const setType = computed(() => {
 
 // Others
 import activeDarkTheme from '@/modules/changeTheme.js';
+import UiLink from './UI/UiLink.vue';
 </script>
 
 <template>
@@ -30,30 +31,30 @@ import activeDarkTheme from '@/modules/changeTheme.js';
     :class="setType"
   >
   <div class="container flex items-center">
-    <router-link to="/" class="header__left flex gap-[12px] items-center mr-[32px]">
+    <UiLink to="/" class="header__left flex gap-[12px] items-center mr-[32px]">
         <img 
           class="max-w-[30px]"
           src="/public/img/logos/materio-logo.png"
           alt="logo" 
         >
       <div div class="logo-name text-logo">MATERIO</div>
-    </router-link>
+    </UiLink>
     <nav class="menu flex-1">
       <ul class="menu__list flex items-center gap-[8px]">
         <li class="menu__item px-[10px]">
-          <UiLink :type="'inside'">Home</UiLink>
+          <UiLink>Home</UiLink>
         </li>
         <li class="menu__item px-[10px]">
-          <UiLink :type="'inside'">Features</UiLink>
+          <UiLink>Features</UiLink>
         </li>
         <li class="menu__item px-[10px]">
-          <UiLink :type="'inside'">Team</UiLink>
+          <UiLink>Team</UiLink>
         </li>
         <li class="menu__item px-[10px]">
-          <UiLink :type="'inside'">FAQ</UiLink>
+          <UiLink>FAQ</UiLink>
         </li>
         <li class="menu__item px-[10px]">
-          <UiLink :type="'inside'">Contact us</UiLink>
+          <UiLink>Contact us</UiLink>
         </li>
         <li class="menu__item px-[10px] flex items-center gap-[8px] duration-200 hover:opacity-70 cursor-pointer">
             Pages
