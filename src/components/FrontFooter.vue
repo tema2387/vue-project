@@ -126,16 +126,16 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
           © 2024, Made with <span class="text-error-main">❤️</span> by <span class="text-white/[92%] text-15">ThemeSelection</span> 
         </div>
         <div class="footer__socials text-white/[78%] flex items-center gap-[24px]">
-          <UiLink :type="'outside'">
+          <UiLink>
             <GithubIcon />
           </UiLink>
-          <UiLink :type="'outside'">
+          <UiLink>
             <FacebookIcon />
           </UiLink>
-          <UiLink :type="'outside'">
+          <UiLink>
             <TwitterIcon />
           </UiLink>
-          <UiLink :type="'outside'">
+          <UiLink>
             <GoogleIcon />
           </UiLink>
         </div>

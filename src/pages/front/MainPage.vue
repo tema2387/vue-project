@@ -47,16 +47,20 @@ import activeDarkTheme from '@/modules/changeTheme.js';
   <FrontLayout :header="'fixed'">
     <div class="front-main-page">
       <section class="start relative">
-        <img src="/public/img/front-bg-image.png" class="start__background" alt="start-bg">
-        <div class="start__content absolute translate-x-[-50%] left-[50%] top-[126px]">
-          <div class="start__top flex flex-col items-center text-center">
+        <UiImage :widthFull="true" :height="945" :src="'/public/img/front-bg-image.png'" class="start__background absolute left-0 right-0 top-0 bottom-0" :alt="'start-bg'" />
+        <div class="start__content pt-[126px] flex flex-col items-center text-center">
+          <div class="start__top">
             <h2 class="start__title text-primary-500">All in one sass application<br>for your business</h2>
             <p class="start__desc mt-[16px]">No coding required to make customizations.<br>The live customizer has everything your marketing need.</p>
-            <UiButton class="mt-[32px]">Get early access</UiButton>
+            <UiButton class="mt-[32px] m-auto max-w-max">Get early access</UiButton>
           </div>
           <div class="start__bottom">
-            <img v-if="activeDarkTheme" src="/public/img/hero-image-dark.png" alt="hero-img" />
-            <img v-else src="/public/img/hero-image-light.png" alt="hero-img" />
+            <UiImage 
+              :width="1083" 
+              :height="593" 
+              :src="activeDarkTheme ? '/public/img/hero-image-dark.png' : '/public/img/hero-image-light.png'" 
+              :alt="'hero-img'" 
+            />
           </div>
         </div>
       </section>
@@ -352,7 +356,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
             :subtitleBoldOnRight="true"
           >
             <div class="faq__section-content flex gap-[100px] mt-[64px]">
-              <img src="/public/img/Illustration-faq-section.png" alt="faq-img" class="object-contain ml-[200px]">
+              <UiImage :height="340" :width="320" :src="'/public/img/Illustration-faq-section.png'" :alt="'faq-img'" class="object-contain ml-[200px]" />
               <div class="faq__accordion flex flex-1 flex-col gap-[8px]"> 
                 <UiAccordion 
                   :title="'Do you charge for each upgrade?'"
@@ -385,7 +389,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
       </section>
       <section class="ready py-[81px]">
         <div class="ready__content container relative">
-          <img src="/public/img/section-ready-image.png" alt="ready-img" class="absolute right-0 bottom-[-115px]" />
+          <UiImage :width="595" :height="300" :src="'/public/img/section-ready-image.png'" :alt="'ready-img'" class="absolute right-0 bottom-[-115px]" />
           <div class="ready__left">
             <div class="ready__title text-primary-500 text-title-ready-bold">Ready to Get Started?</div>
             <p class="ready__subtitle text-text-secondary mt-[4px] text-15-500">Start your project with a 14-day free trial</p>

@@ -80,7 +80,7 @@ function changeAccordion(id) {
             <p class="free-trials__desc mt-[8px] text-text-secondary">You will get full access to with all the features for 14 days.</p>
             <UiButton class="mt-[44px] max-w-max">Start 14-day free trial</UiButton>
           </div>
-          <img src="/public/img/image-for-section-free-trials.png" class="absolute right-0 bottom-[-38px]" alt="free-trials-image" />
+          <UiImage :src="'/public/img/image-for-section-free-trials.png'" :alt="'free-trials-image'" class="absolute right-0 bottom-[-38px]"></UiImage>
         </div>
       </section>
       <section class="best-plan py-[100px]">
