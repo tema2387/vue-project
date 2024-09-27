@@ -11,18 +11,6 @@ const props = defineProps({
     type: String,
     required: true
   },
-  width: {
-    type: [String, Number],
-    default() {
-      return 'auto';
-    }
-  },
-  height: {
-    type: [String, Number],
-    default() {
-      return 'auto';
-    }
-  }
 })
 
 const { loaded, loading } = loadingImage();
