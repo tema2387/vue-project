@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 // Swiper slider
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from 'swiper/modules';
@@ -41,13 +41,20 @@ function changeAccordion(activeIndex) {
 
  // JS modules
 import activeDarkTheme from '@/modules/changeTheme.js';
+import loadingImage from '@/modules/loadingImage.js';
+
+const { loaded, loading }  = loadingImage();
+
+onMounted(() => {
+  // async load bg image
+  loading('/public/img/front-bg-image.png');
+})
 </script>
 
 <template>
   <FrontLayout :header="'fixed'">
     <div class="front-main-page">
-      <section class="start relative">
-        <UiImage :widthFull="true" :height="945" :src="'/public/img/front-bg-image.png'" class="start__background absolute left-0 right-0 top-0 bottom-0" :alt="'start-bg'" />
+      <section class="start relative bg-no-repeat bg-center-top bg-contain" :style="{ backgroundImage: `url(${loaded})` }">
         <div class="start__content pt-[126px] flex flex-col items-center text-center">
           <div class="start__top">
             <h2 class="start__title text-primary-500">All in one sass application<br>for your business</h2>
@@ -56,10 +63,9 @@ import activeDarkTheme from '@/modules/changeTheme.js';
           </div>
           <div class="start__bottom">
             <UiImage 
-              :width="1083" 
-              :height="593" 
-              :src="activeDarkTheme ? '/public/img/hero-image-dark.png' : '/public/img/hero-image-light.png'" 
-              :alt="'hero-img'" 
+              :src="activeDarkTheme ? '/public/img/hero-image-dark.png' : '/public/img/hero-image-light.png'"
+              :alt="'hero-img'"
+              class="w-[1083px]"
             />
           </div>
         </div>
@@ -254,7 +260,7 @@ import activeDarkTheme from '@/modules/changeTheme.js';
                 :job="'Marketing Manager'"
               />
               <CardTeam 
-                :img="'/public/img/man-2.png'" 
+                :img="'/public/img/man-2.png'"
                 :color="'info'" 
                 :name="'Paul Miles'" 
                 :job="'UI Designer'"
@@ -356,9 +362,13 @@ import activeDarkTheme from '@/modules/changeTheme.js';
             :subtitleBoldOnRight="true"
           >
             <div class="faq__section-content flex gap-[100px] mt-[64px]">
-              <UiImage :height="340" :width="320" :src="'/public/img/Illustration-faq-section.png'" :alt="'faq-img'" class="object-contain ml-[200px]" />
+              <UiImage
+                :src="'/public/img/Illustration-faq-section.png'" 
+                :alt="'faq-img'" 
+                class="ml-[200px] w-[320px] max-w-full max-h-[340px] h-full self-center" 
+              />
               <div class="faq__accordion flex flex-1 flex-col gap-[8px]"> 
-                <UiAccordion 
+                <UiAccordion
                   :title="'Do you charge for each upgrade?'"
                   :text="'Regular license can be used for end products that do not charge users for access or service(access is free and there will be no monthly subscription fee). Single regular license can be used for single end product and end product can be used by you or your client. If you want to sell end product to multiple clients then you will need to purchase separate license for each client. The same rule applies if you want to use the same end product on multiple domains(unique setup). For more info on regular license you can check official description.'"
                   :status="activeAccordion === 1"
@@ -389,7 +399,11 @@ import activeDarkTheme from '@/modules/changeTheme.js';
       </section>
       <section class="ready py-[81px]">
         <div class="ready__content container relative">
-          <UiImage :width="595" :height="300" :src="'/public/img/section-ready-image.png'" :alt="'ready-img'" class="absolute right-0 bottom-[-115px]" />
+          <UiImage 
+            :src="'/public/img/section-ready-image.png'" 
+            :alt="'ready-img'" 
+            class="absolute right-0 bottom-[-115px]" 
+          />
           <div class="ready__left">
             <div class="ready__title text-primary-500 text-title-ready-bold">Ready to Get Started?</div>
             <p class="ready__subtitle text-text-secondary mt-[4px] text-15-500">Start your project with a 14-day free trial</p>
