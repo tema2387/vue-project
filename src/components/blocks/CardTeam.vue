@@ -10,7 +10,7 @@ const props = defineProps({
   img: {
     type: String,
     default() {
-      return '/public/img/woman-1.png'
+      return '';
     }
   },
   name: {
@@ -59,9 +59,7 @@ const colorBorder = computed(() => {
     >
       <UiImage 
         :src="img"
-        :width="240" 
-        :height="200"
-        class="absolute bottom-0 left-[50%] translate-x-[-50%]" 
+        class="absolute bottom-0 h-[240px] left-[50%] translate-x-[-50%]" 
         :alt="'team-photo'"
       />
     </div>

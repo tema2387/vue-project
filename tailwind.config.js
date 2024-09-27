@@ -5,6 +5,9 @@ export default {
     './src/**/*.*',
   ],
   theme: {
+    backgroundPosition: {
+      'center-top': 'center top'
+    },
     fontFamily: {
       // Default
       'sans': ['Inter', 'sans-serif'],
@@ -131,9 +134,6 @@ export default {
       }],
     },
     extend: {
-      backgroundImage: {
-        'footer-bg-img': "url('/public/img/footer-bg.png')",
-      },
       boxShadow: {
         'sm': '0 2px 3px 0 rgba(0, 0, 0, 30%)',
         'md': '0 4px 16px 0 rgba(0, 0, 0, 45%)',

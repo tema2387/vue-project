@@ -26,7 +26,11 @@ const modelRadio = ref('radio-pay-visa');
                 :id="'radio-pay-visa'" 
                 v-model="modelRadio" 
               >
-                <UiImage :src="'/public/icon/visa-icon.svg'" :alt="'visa-icon'" class="p-[11px] bg-action-hover rounded-md" />
+                <UiImage 
+                  :src="'/public/icon/visa-icon.svg'" 
+                  :alt="'visa-icon'" 
+                  class="p-[11px] bg-action-hover rounded-md" 
+                />
                 <div>Credit card</div>
               </UiRadioCustom>
               <UiRadioCustom 

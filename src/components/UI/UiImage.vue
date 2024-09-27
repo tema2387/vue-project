@@ -12,27 +12,15 @@ const props = defineProps({
     required: true
   },
   width: {
-    type: Number,
+    type: [String, Number],
     default() {
-      return 50;
+      return 'auto';
     }
   },
   height: {
-    type: Number,
+    type: [String, Number],
     default() {
-      return 50;
-    }
-  },
-  widthFull: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  },
-  heightFull: {
-    type: Boolean,
-    default() {
-      return false;
+      return 'auto';
     }
   }
 })
@@ -54,11 +42,10 @@ watch(() => props.src, (newValue) => {
     :src="loaded" 
     :alt="alt"
   >
-  <div 
+  <div
     v-else
-    class="loader-wrapper flex items-center justify-center" 
-    :style="{ width: widthFull ? '100%' : props.width + 'px', height: heightFull ? '100%' : props.height + 'px' }"
+    class="loader-wrapper flex items-center justify-center"
   >
-    <div class="loader"></div>
+      <div class="loader"></div>
   </div>
 </template>
