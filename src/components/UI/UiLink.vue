@@ -7,9 +7,10 @@ const props = defineProps({
     }
   }
 })
+
 </script>
 <template>
-  <a 
+  <a
     :href="href"
     class="link duration-200 hover:opacity-70"
   >
