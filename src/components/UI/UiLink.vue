@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
   href: {
-    type: [String, Object],
+    type: String,
     default() {
       return '/';
     }
@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 <template>
   <a
-    :href="href"
+    :href="props.href"
     class="link duration-200 hover:opacity-70"
   >
     <slot></slot>

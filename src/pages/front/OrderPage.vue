@@ -115,7 +115,7 @@ const modelRadio = ref('radio-pay-visa');
             <UiLink 
               class="mt-[16px]" 
               :type="'inside'"
-              :href="{ path: '/', hash: '#section-plans-list' }"
+              :href="'/#section-plans-list'"
             >
               <UiButton 
                 :type="'outline'"
