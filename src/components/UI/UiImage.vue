@@ -11,6 +11,12 @@ const props = defineProps({
     type: String,
     required: true
   },
+  loaderSize: {
+    type: Number,
+    default() {
+      return 50;
+    }
+  }
 })
 
 const { loaded, loading } = loadingImage();
@@ -34,6 +40,6 @@ watch(() => props.src, (newValue) => {
     v-else
     class="loader-wrapper flex items-center justify-center"
   >
-      <div class="loader"></div>
+      <div class="loader" :style="{ 'width': loaderSize + 'px' }"></div>
   </div>
 </template>
