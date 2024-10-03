@@ -65,7 +65,7 @@ onMounted(() => {
             <UiImage 
               :src="activeDarkTheme ? '/public/img/hero-image-dark.png' : '/public/img/hero-image-light.png'"
               :alt="'hero-img'"
-              class="w-[1083px]"
+              class="w-[1083px] aspect-video"
             />
           </div>
         </div>
@@ -402,7 +402,7 @@ onMounted(() => {
           <UiImage 
             :src="'/public/img/section-ready-image.png'" 
             :alt="'ready-img'" 
-            class="absolute right-0 bottom-[-115px]" 
+            class="absolute right-0 bottom-[-115px] w-[594px] aspect-video" 
           />
           <div class="ready__left">
             <div class="ready__title text-primary-500 text-title-ready-bold">Ready to Get Started?</div>
