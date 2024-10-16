@@ -1,5 +1,5 @@
 <script setup>
-import { computed, readonly } from 'vue';
+import { computed } from 'vue';
 
 // icons
 import SearchIcon from '@/components/UI/svg/SearchIcon.vue'
