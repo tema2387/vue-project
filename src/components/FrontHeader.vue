@@ -31,7 +31,7 @@ import UiLink from './UI/UiLink.vue';
     :class="setType"
   >
   <div class="container flex items-center">
-    <UiLink to="/" class="header__left flex gap-[12px] items-center mr-[32px]">
+    <UiLink :href="'/'" class="header__left flex gap-[12px] items-center mr-[32px]">
         <img 
           class="max-w-[30px]"
           src="/public/img/logos/materio-logo.png"

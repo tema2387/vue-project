@@ -2,7 +2,7 @@
 import { computed } from "vue";
 
 // icons
-import ArrowRightKnowledge from "@/components/UI/svg/ArrowRightKnowledge.vue";
+import ArrowRightSIcon from "@/components/UI/svg/ArrowRightSIcon.vue";
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 
 const props = defineProps({
@@ -41,7 +41,7 @@ const itemsMax = computed(() => {
         class="flex items-center"
       >
         <div class="flex-1">{{ item.title }}</div>
-        <ArrowRightKnowledge />
+        <ArrowRightSIcon class="opacity-[0.4]" />
       </router-link>
     </div>
     <UiLink :href="'#'" class="text-primary-500 flex items-center gap-[8px]">

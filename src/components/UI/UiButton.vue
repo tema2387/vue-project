@@ -4,7 +4,7 @@ import { computed } from 'vue';
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 import ArrowLeftIcon from '@/components/UI/svg/ArrowLeftIcon.vue';
 
-// type can be 'default', 'label', 'outline', 'text'
+// type can be 'default', 'label', 'outline', 'text', 'inline-text'
 // size can be 'lg', 'md', 'sm'
 // text can be 'lg', 'md', 'sm'
 // color can be  'primary', 'secondary', 'error', 'warning', 'info', 'success'
@@ -161,6 +161,13 @@ const colorBtn = computed(() => {
     v-if="type === 'text'" 
     class="w-full bg-transparent duration-200 rounded-md disabled:opacity-[45%]"
     :class="[sizeBtn, colorBtn, sizeText]"
+  >
+    <slot></slot>
+  </button>
+  <button 
+    v-if="type === 'inline-text'" 
+    class="w-full bg-transparent duration-200 rounded-md disabled:opacity-[45%]"
+    :class="[colorBtn]"
   >
     <slot></slot>
   </button>
