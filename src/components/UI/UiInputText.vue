@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, readonly } from 'vue';
 
 // icons
 import SearchIcon from '@/components/UI/svg/SearchIcon.vue'
@@ -30,9 +30,15 @@ const props = defineProps({
       return 'main'
     }
   },
-  label: String,
-  placeholder: String,
+  label: [Number, String],
+  placeholder: [Number, String],
   searchIcon: {
+    type: Boolean,
+    default() {
+      return false;
+    }
+  },
+  readonly: {
     type: Boolean,
     default() {
       return false;
@@ -82,9 +88,10 @@ const labelBgColor = computed(() => {
     <input 
       :id="id" 
       :placeholder="placeholder"
+      :readonly="props.readonly"
       type="text" 
-      class="peer w-full text-input-text duration-200 bg-transparent outline outline-transparent outline-offset-[-2px] border border-input-border rounded-lg text-text-disabled placeholder-transparent focus:placeholder-text-disabled focus:border-primary-500 focus:outline-primary-500 focus:text-text-primary hover:border-action-active hover:text-text-primary"
-      :class="[sizeInput, { 'pl-[46px]': searchIcon }]"
+      class="peer w-full text-input-text duration-200 bg-transparent outline outline-transparent outline-offset-[-2px] border border-input-border rounded-lg text-text-disabled focus:placeholder-text-disabled focus:border-primary-500 focus:outline-primary-500 focus:text-text-primary hover:border-action-active hover:text-text-primary"
+      :class="[sizeInput, { 'pl-[46px]': searchIcon }, {'placeholder-transparent': label}]"
       v-model="model"
     />
     <label 
@@ -95,6 +102,7 @@ const labelBgColor = computed(() => {
       {{ label }} 
     </label>
     <div 
+      v-if="label"
       class="input-label-background text-13 duration-200 absolute h-[4px] left-[14px] top-[-1px] px-[2px] opacity-0 peer-focus:opacity-100"
       :class="[{'opacity-100': model, '!left-[44px]': searchIcon}, labelBgColor]"
     >

@@ -149,6 +149,7 @@ const modelRadio = ref('radio-pay-visa');
               :color="'success'"
               :text="'md'"
               :rightIcon="true"
+              class="mt-[20px]"
             >
               Proceed with payment
             </UiButton>
