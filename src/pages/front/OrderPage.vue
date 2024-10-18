@@ -26,21 +26,33 @@ const modelRadio = ref('radio-pay-visa');
                 :id="'radio-pay-visa'" 
                 v-model="modelRadio" 
               >
-                <UiImage 
-                  :src="'/public/icon/visa-icon.svg'" 
-                  :alt="'visa-icon'" 
-                  :loaderSize="20"
-                  class="p-[11px] bg-action-hover w-[58px] h-[34px] rounded-md" 
-                />
-                <div>Credit card</div>
+                <template v-slot:title>
+                  <div class="ml-[16px] flex items-center gap-[16px]">
+                    <UiImage 
+                      :src="'/public/icon/visa-icon.svg'" 
+                      :alt="'visa-icon'" 
+                      :loaderSize="20"
+                      class="p-[11px] bg-action-hover w-[58px] h-[34px] rounded-md" 
+                    />
+                    <div>Credit card</div>
+                  </div>
+                </template>
               </UiRadioCustom>
               <UiRadioCustom 
                 :name="'pay-checkout-plan'" 
                 :id="'radio-pay-paypal'" 
                 v-model="modelRadio" 
               >
-                <img src="/public/icon/paypal-icon.svg" alt="paypal-icon" class="py-[7px] px-[21px] w-[58px] h-[34px] bg-action-hover rounded-md" />
-                <div>Paypal</div>
+                <template v-slot:title>
+                  <div class="ml-[16px] flex items-center gap-[16px]">
+                    <img 
+                      src="/public/icon/paypal-icon.svg" 
+                      alt="paypal-icon" 
+                      class="py-[7px] px-[21px] w-[58px] h-[34px] bg-action-hover rounded-md" 
+                    />
+                    <div>Paypal</div>
+                  </div>
+                </template>
               </UiRadioCustom>
             </div>
           </div>

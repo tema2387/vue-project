@@ -166,8 +166,7 @@ const colorBtn = computed(() => {
   </button>
   <button 
     v-if="type === 'inline-text'" 
-    class="w-full bg-transparent duration-200 rounded-md disabled:opacity-[45%]"
-    :class="[colorBtn]"
+    class="bg-transparent duration-200 rounded-md disabled:opacity-[45%]"
   >
     <slot></slot>
   </button>

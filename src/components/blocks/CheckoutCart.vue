@@ -79,7 +79,7 @@ import { products } from '@/store/productsStore.js';
             <p class="gift__desc mt-[8px] text-text-secondary">Gift wrap and personalized message on card, Only for $2.</p>
             <UiButton
               :type="'inline-text'"
-              class="mt-[8px] text-primary-500 inline-block"
+              class="mt-[8px] text-primary-500"
             >
               Add a gift wrap
             </UiButton>
