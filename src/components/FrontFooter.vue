@@ -9,22 +9,22 @@ import GoogleIcon from '@/components/UI/svg/GoogleIcon.vue';
 import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
 
 </script>
-
 <template>
   <div class="footer m-0 dark">
     <div class="footer__top bg-footer-bg-color">
       <div class="footer__top-content container flex justify-between py-[48px] gap-[64px]">
         <div class="footer__left flex flex-col gap-[24px]">
-          <div class="logo flex gap-[12px] items-center">
+          <UiLink 
+            :href="'/'" 
+            class="header__left flex gap-[12px] items-center mr-[32px]"
+          >
             <img 
-              class="max-w-[30px]" 
+              class="max-w-[30px]"
               src="/public/img/logos/materio-logo.png"
-              alt="logo"
+              alt="logo" 
             >
-            <div class="logo-name text-logo text-white">
-              MATERIO
-            </div>
-          </div>
+            <div div class="logo-name text-logo text-white">MATERIO</div>
+          </UiLink>
           <p class="footer__description max-w-[372px] text-white/[78%]">
             Most Powerful & Comprehensive 🤩 React NextJS Admin Template with Elegant Material Design & Unique Layouts.
           </p>
