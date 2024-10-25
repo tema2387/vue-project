@@ -30,6 +30,10 @@ function changeComponent(newComponent) {
   component.value = newComponent;
 }
 
+const changeComponentsOnAddress = () => {
+  component.value = 'address';
+}
+
 const step1 = computed(() => {
   return component.value === 'cart' 
     || component.value === 'address' 
@@ -51,7 +55,6 @@ const step3 = computed(() => {
 const step4 = computed(() => {
   return component.value === 'confirmation';
 })
-
 </script>
 <template>
 <FrontLayout>
@@ -133,7 +136,7 @@ const step4 = computed(() => {
       </div>
       <div class="checkout-page__bottom p-[20px]">
         <KeepAlive>
-          <component :is="currentComponent"></component>
+          <component @changeAddress="changeComponentsOnAddress" :is="currentComponent"></component>
         </KeepAlive>
       </div>
     </div>

@@ -3,35 +3,44 @@ import { ref } from 'vue';
 
 // components
 import UiInputText from '@/components/UI/UiInputText.vue';
-import ProductCart from '@/components/blocks/ProductCart.vue';
+import ProductCard from '@/components/blocks/ProductCard.vue';
 import UIPopup from '@/components/UI/UIPopup.vue';
 
 // icons 
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
-
-// js
-const popupStatus = ref(true);
 
 // border for product-cart
 const borderAloneElement = 'border rounded-md';
 const borderTwoElements = ['border rounded-t-md', 'border-x border-b rounded-b-md']
 const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'border rounded-b-md']
 
+// js
 import { products } from '@/store/productsStore.js';
+import { activatePopup } from '@/modules/showPopup.js';
+import { checkValidPromo } from '@/modules/validateInputs';
+
+const popupOfferStatus = ref(true);
+const promo = ref('');
+
+function activatePromo() {
+  const statusPromo = checkValidPromo(promo.value);
+  statusPromo ? activatePopup('Промокод активирован', 'success') : activatePopup('Промокод не найден', 'error');
+}
 </script>
 <template>
   <div class="checkout-cart flex">
     <div class="checkout-cart__left flex flex-col gap-[16px] flex-1 mr-[24px]">
       <UIPopup 
-        v-if="popupStatus" 
-        @close="popupStatus = false"
+        v-if="popupOfferStatus" 
+        :type="'offer'"
+        @close="popupOfferStatus = false"
       />
       <h5>My Shopping Bag {{ products.length ? `(${products.length} items)` : '' }}</h5>
       <div 
         v-if="products.length" 
         class="checkout-cart__products"
       >
-        <ProductCart 
+        <ProductCard 
           v-for="product in products" 
           :key="product.id" 
           :id="product.id"
@@ -55,7 +64,7 @@ import { products } from '@/store/productsStore.js';
         <ArrowRightIcon />
       </UiLink>
     </div>
-    <div class="checkout-cart__right max-w-[334px]">
+    <div class="checkout-cart__right w-[334px]">
       <div class="border border-devider rounded-md">
         <div class="offer p-[20px]">
           <div class="text-15-500">Offer</div>
@@ -64,12 +73,14 @@ import { products } from '@/store/productsStore.js';
               :id="'promo'"
               :size="'sm'" 
               :label="'Enter Promo Code'"
-              class="flex-1 max-w-[200px]" 
+              class="flex-1 max-w-[200px]"
+              v-model="promo" 
             />
             <UiButton 
               :type="'outline'" 
               :size="'sm'" 
               :text="'md'"
+              @click="activatePromo"
             >
               Apply
             </UiButton>
@@ -98,6 +109,7 @@ import { products } from '@/store/productsStore.js';
                 <UiButton 
                   :type="'inline-text'"
                   class="text-primary-500"
+
                 >
                   Apply Coupon
                 </UiButton>
@@ -109,7 +121,10 @@ import { products } from '@/store/productsStore.js';
             </div>
             <div class="flex justify-between">
               <div>Delivery Charges</div>
-              <div class="text-text-disabled">$5.00</div>
+              <div class="text-text-disabled flex items-center gap-[8px]">
+                <span>$5.00</span>
+                <span class="bg-success-opacity/[16%] text-success-500 px-[12px] py-[2px] rounded-full text-chip">FREE</span>
+              </div>
             </div>
           </div>
         </div>

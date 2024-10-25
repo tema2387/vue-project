@@ -1,6 +1,5 @@
 <script setup>
 // type can be 'basic'(its default), 'icon', 'custom-icon', 'image'
-
 const props = defineProps({
   id: {
     type: [String, Number],
@@ -19,13 +18,12 @@ const props = defineProps({
 });
 
 const model = defineModel();
-
 </script>
 <template>
   <label 
+    v-if="type === 'icon'"
     class="radio-custom px-[16px] pt-[28px] pb-[16px] w-full border border-devider cursor-pointer rounded-md flex flex-col items-center"
     :class="{ 'border-primary-500': model === id }"
-    v-if="type === 'icon'"
   >
     <input 
       :id="id" 
@@ -43,9 +41,9 @@ const model = defineModel();
     </div>
   </label>
   <label 
+    v-else
     class="radio-custom p-[16px] w-full border border-devider cursor-pointer rounded-md"
     :class="{ 'border-primary-500': model === id }"
-    v-else
   >
     <input 
       :id="id" 

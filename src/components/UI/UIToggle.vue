@@ -6,13 +6,13 @@ const props = defineProps({
   leftTextFalse: {
     type: String,
     default() {
-      return 'false';
+      return '';
     }
   },
   rightTextTrue: {
     type: String,
     default() {
-      return 'true';
+      return '';
     }
   }
 })
@@ -33,7 +33,12 @@ watch(model, (newValue) => {
 </script>
 <template>
   <div class="toggle flex items-center gap-[13px]">
-    <div class="toggle-text__false text-text-secondary">{{ leftTextFalse }}</div>
+    <div 
+      v-if="leftTextFalse" 
+      class="toggle-text__false"
+    >
+      {{ leftTextFalse }}
+    </div>
     <VueToggles 
       :width="30" 
       :height="18"
@@ -41,6 +46,11 @@ watch(model, (newValue) => {
       :uncheckedBg="'var(--action-focus)'"
       v-model="model"
     />
-    <div class="toggle-text__true text-text-secondary">{{ rightTextTrue }}</div>
+    <div 
+      v-if="rightTextTrue" 
+      class="toggle-text__true"
+    >
+      {{ rightTextTrue }}
+    </div>
   </div>
 </template>

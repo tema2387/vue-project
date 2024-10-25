@@ -35,8 +35,20 @@ h6 {
   font-weight: 500;
 }
 
-// loader 
-/* HTML: <div class="loader"></div> */
+// remove style for default select global
+select {
+  -webkit-appearance: none;    // Для Chrome и Safari
+  -moz-appearance: none;      // Для Firefox 
+  appearance: none;           // Стандартное свойство
+}
+
+// remove font weight bold for elements table (global)
+tr, th, td {
+  font-weight: inherit;
+}
+
+// loader for async load images
+/* HTML: <div class="loader"></div> in component UiImage */
 .loader {
   padding: 10px;
   aspect-ratio: 1;
@@ -53,24 +65,12 @@ h6 {
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
 
-// remove style for default select global
-select {
-  -webkit-appearance: none;    // Для Chrome и Safari
-  -moz-appearance: none;      // Для Firefox 
-  appearance: none;           // Стандартное свойство
-}
-
-// remove font weight bold
-tr, th, td {
-  font-weight: inherit;
-}
-
-// swiper slider styles global
+// swiper slider styles (global)
 .swiper {
   overflow: visible !important;
 }
 
-// vue toggle styles global
+// vue toggle styles (global)
 .vue-toggles__dot {
   width: 14px !important;
   height: 14px !important;
@@ -81,8 +81,9 @@ tr, th, td {
   margin-left: 14px !important;
 }
 
-// style for libraries in front-main-page
+// style for libraries for front-main-page
 .front-main-page {
+
   // swiper slider
   .swiper-wrapper {
     align-items: center;
@@ -157,5 +158,17 @@ tr, th, td {
       z-index: -1;
     }
   }
+}
+
+// transition settings
+.popup-enter-active,
+.popup-leave-active {
+  transition: all 0.5s ease;
+}
+
+.popup-enter-from, 
+.popup-leave-to {
+  transform: translateY(-150px);
+  opacity: 0;
 }
 
