@@ -1,11 +1,10 @@
 <script setup>
-import { ref } from "vue";
-import VueSlider from "vue-3-slider-component";
+import VueSlider from 'vue-3-slider-component';
 
-const value = ref(0);
+const model = defineModel();
 </script>
 <template>
   <div>
-    <VueSlider v-model="value" />
+    <VueSlider v-model="model" />
   </div>
 </template>

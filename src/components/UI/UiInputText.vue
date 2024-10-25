@@ -43,7 +43,7 @@ const props = defineProps({
     default() {
       return false;
     }
-  }
+  },
 });
 
 // sizes input

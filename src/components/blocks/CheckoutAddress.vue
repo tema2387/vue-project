@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 // components
-import ProductCartDelivery from '@/components/blocks/ProductCartDelivery.vue';
+import ProductCardDelivery from '@/components/blocks/ProductCardDelivery.vue';
 import UiRadioCustom from '@/components/UI/UiRadioCustom.vue';
 
 // icons
@@ -9,15 +9,13 @@ import UserStandardIcon from '@/components/UI/svg/UserStandardIcon.vue';
 import StarSmileIcon from '@/components/UI/svg/StarSmileIcon.vue';
 import VipCrownIcon from '@/components/UI/svg/VipCrownIcon.vue';
 
-
 // js
 import { products } from '@/store/productsStore.js';
-import { addresses, removeAddress } from '@/store/addressStore.js';
+import { addresses, removeAddress, selectedAddress } from '@/store/addressStore.js';
+import { deliveries } from '@/store/deliverySpeedStore.js';
 
-const modelAddress = ref(1);
-const modelDelivery = ref('standard');
+const modelDelivery = ref('Standard');
 </script>
-
 <template>
   <div class="checkout-address flex">
     <div class="checkout-address__left flex-1">
@@ -29,7 +27,7 @@ const modelDelivery = ref('standard');
             :key="address.id"
             :name="'radio-addresses'"
             :id="address.id"
-            v-model="modelAddress"
+            v-model="selectedAddress"
             class="max-w-[361px]"
           >
             <template v-slot:title>
@@ -79,62 +77,43 @@ const modelDelivery = ref('standard');
         <div class="text-15-500">Choose Delivery Speed</div>
         <div class="radio-deliveries flex flex-wrap gap-[24px] mt-[16px]">
           <UiRadioCustom 
-            :id="'standard'"
+            v-for="(delivery, indx) in deliveries"
+            :id="delivery.name"
+            :key="indx"
             :type="'icon'"
             :name="'radio-deliveries'"
             class="max-w-[231px]"
             v-model="modelDelivery"
           >
             <div class="flex flex-col items-center gap-[8px] mb-[8px] relative">
-              <div class="absolute top-[-12px] right-0 text-chip px-[12px] py-[2px] text-success-500 bg-success-opacity/[16%] rounded-full">
-                Free
+              <div 
+                v-if="delivery.price === 'Free'" 
+                class="absolute top-[-12px] right-0 text-chip px-[12px] py-[2px] text-success-500 bg-success-opacity/[16%] rounded-full"
+              >
+                {{ delivery.price }}
               </div>
-              <UserStandardIcon />
-              <div class="text-15-500">Standard</div>
-              <div class="text-13 text-text-secondary">Get your product in 1 Week.</div>
-            </div>
-          </UiRadioCustom>
-          <UiRadioCustom 
-            :id="'express'"
-            :type="'icon'"
-            :name="'radio-deliveries'"
-            class="max-w-[231px]"
-            v-model="modelDelivery"
-          >
-            <div class="flex flex-col items-center gap-[8px] mb-[8px] relative">
-              <div class="absolute top-[-12px] right-0 text-chip px-[12px] py-[2px] text-secondary-500 bg-secondary-opacity/[16%] rounded-full">
-                $10
+              <div 
+                v-else
+                class="absolute top-[-12px] right-0 text-chip px-[12px] py-[2px] text-secondary-500 bg-secondary-opacity/[16%] rounded-full"
+              >
+                {{ delivery.price }}
               </div>
-              <StarSmileIcon />
-              <div class="text-15-500">Express</div>
-              <div class="text-13 text-text-secondary">Get your product in 4 days.</div>
-            </div>
-          </UiRadioCustom>
-          <UiRadioCustom 
-            :id="'overnight'"
-            :type="'icon'"
-            :name="'radio-deliveries'"
-            class="max-w-[231px]"
-            v-model="modelDelivery"
-          >
-            <div class="flex flex-col items-center gap-[8px] mb-[8px] relative">
-              <div class="absolute top-[-12px] right-0 text-chip px-[12px] py-[2px] text-secondary-500 bg-secondary-opacity/[16%] rounded-full">
-                $15
-              </div>
-              <VipCrownIcon />
-              <div class="text-15-500">Overnight</div>
-              <div class="text-13 text-text-secondary">Get your product in 1 day.</div>
+              <UserStandardIcon v-if="delivery.name === 'Standard'" />
+              <StarSmileIcon v-else-if="delivery.name === 'Express'" />
+              <VipCrownIcon v-else-if="delivery.name === 'Overnight'" />
+              <div class="text-15-500">{{ delivery.name }}</div>
+              <div class="text-13 text-text-secondary">{{ delivery.desc }}</div>
             </div>
           </UiRadioCustom>
         </div>
       </div>
     </div>
-    <div class="checkout-cart__right max-w-[334px]">
+    <div class="checkout-address__right w-[334px]">
       <div class="border border-devider rounded-md">
         <div class="delivery p-[20px]">
           <div class="text-15-500">Estimated Delivery Date</div>
           <div class="delivery-list flex flex-col gap-[16px] mt-[16px]">
-            <ProductCartDelivery
+            <ProductCardDelivery
               v-for="product in products"
               :key="product.id"
               :img="product.img"
@@ -151,7 +130,10 @@ const modelDelivery = ref('standard');
             </div>
             <div class="flex justify-between">
               <div>Delivery Charges</div>
-              <div class="text-text-disabled">$5.00</div>
+              <div class="text-text-disabled flex items-center gap-[8px]">
+                <span>$5.00</span>
+                <span class="bg-success-opacity/[16%] text-success-500 px-[12px] py-[2px] rounded-full text-chip">FREE</span>
+              </div>
             </div>
           </div>
         </div>

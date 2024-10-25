@@ -70,7 +70,7 @@ const colorInfoLabel = 'text-info-500 bg-info-opacity/[16%] hover:bg-info-opacit
 const colorSuccessLabel = 'text-success-500 bg-success-opacity/[16%] hover:bg-success-opacity/[24%] active:bg-success-opacity/[24%] focus:bg-success-opacity/[24%]';
 
 const colorPrimaryOutline = 'text-primary-500 hover:bg-primary-opacity/[8%] active:bg-primary-opacity/[8%] focus:bg-primary-opacity/[8%] border-primary-500';
-const colorSecondaryOutline = 'text-secondary-500 hover:bg-secondary-opacity/[8%] active:bg-secondary-opacity/[8%] focus:bg-secondary-opacity/[8%] border-secondary--500';
+const colorSecondaryOutline = 'text-secondary-500 hover:bg-secondary-opacity/[8%] active:bg-secondary-opacity/[8%] focus:bg-secondary-opacity/[8%] border-secondary-500';
 const colorErrorOutline = 'text-error-500 hover:bg-error-opacity/[8%] active:bg-error-opacity/[8%] focus:bg-error-opacity/[8%] border-error-500';
 const colorWarningOutline = 'text-warning-500 hover:bg-warning-opacity/[8%] active:bg-warning-opacity/[8%] focus:bg-warning-opacity/[8%] border-warning-500';
 const colorInfoOutline = 'text-info-500 hover:bg-info-opacity/[8%] active:bg-info-opacity/[8%] focus:bg-info-opacity/[8%] border-info-500';
