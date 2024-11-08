@@ -17,7 +17,7 @@ import { deliveries } from '@/store/deliverySpeedStore.js';
 const modelDelivery = ref('Standard');
 </script>
 <template>
-  <div class="checkout-address flex">
+  <div class="checkout-address flex flex-col gap-[24px] lg:flex-row">
     <div class="checkout-address__left flex-1">
       <div class="checkout-address__select">
         <div class="text-15-500">Select your preferable address</div>
@@ -108,7 +108,7 @@ const modelDelivery = ref('Standard');
         </div>
       </div>
     </div>
-    <div class="checkout-address__right w-[334px]">
+    <div class="checkout-address__right lg:w-[334px]">
       <div class="border border-devider rounded-md">
         <div class="delivery p-[20px]">
           <div class="text-15-500">Estimated Delivery Date</div>

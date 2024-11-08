@@ -26,9 +26,11 @@ const props = defineProps({
 
 </script>
 <template>
-  <div class="card-read flex flex-1 flex-col p-[20px] rounded-md border border-devider text-center items-center gap-[12px] text-text-secondary">
-    <component :is="img" class="text-text-secondary"></component>
-    <h5>{{ title }}</h5>
+  <div class="card-read flex flex-1 flex-col min-w-[200px] justify-between p-[20px] rounded-md border border-devider text-center items-center gap-[12px] text-text-secondary">
+    <div class="flex flex-col items-center gap-[12px]">
+      <component :is="img" class="text-text-secondary"></component>
+      <h5>{{ title }}</h5>
+    </div>
     <div class="text-text-secondary">
       <div>{{ subtitle1 }}</div>
       <div>{{ subtitle2 }}</div>

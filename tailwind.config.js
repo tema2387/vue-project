@@ -2,7 +2,7 @@
 export default {
   content: [
     './index.html',
-    './src/**/*.*',
+    './src/**/*.{vue,js}',
   ],
   theme: {
     backgroundPosition: {

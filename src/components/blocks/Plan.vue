@@ -72,11 +72,11 @@ const isHovered = ref(false);
         <div class="text-15-500">Per month</div>
         <div class="text-text-secondary text-13">10% off for yearly subscription</div>
       </div>
-      <img src="/public/icon/icon-plan.svg" alt="icon-plan" class="absolute left-0 bottom-[-19px]" />
+      <img src="/icon/icon-plan.svg" alt="icon-plan" class="absolute left-0 bottom-[-19px]" />
     </div>
     <div class="plan__possibilities flex flex-col mt-[51px] mb-[16px] gap-[12px]">
       <div v-for="poss in possibilities" :key="poss" class="plant__possibility flex gap-[12px]">
-        <img src="/public/icon/arrow-right-plan.svg" alt="arrow-right" />
+        <img src="/icon/arrow-right-plan.svg" alt="arrow-right" />
         <h5>{{ poss }}</h5>
       </div>
     </div>

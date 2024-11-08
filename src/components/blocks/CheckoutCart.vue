@@ -28,8 +28,8 @@ function activatePromo() {
 }
 </script>
 <template>
-  <div class="checkout-cart flex">
-    <div class="checkout-cart__left flex flex-col gap-[16px] flex-1 mr-[24px]">
+  <div class="checkout-cart flex flex-col gap-[24px] lg:flex-row">
+    <div class="checkout-cart__left flex flex-col gap-[16px] flex-1">
       <UIPopup 
         v-if="popupOfferStatus" 
         :type="'offer'"
@@ -64,7 +64,7 @@ function activatePromo() {
         <ArrowRightIcon />
       </UiLink>
     </div>
-    <div class="checkout-cart__right w-[334px]">
+    <div class="checkout-cart__right lg:w-[334px]">
       <div class="border border-devider rounded-md">
         <div class="offer p-[20px]">
           <div class="text-15-500">Offer</div>

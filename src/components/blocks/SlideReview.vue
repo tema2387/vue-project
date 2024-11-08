@@ -11,7 +11,7 @@ const props = defineProps({
   src: {
     type: String,
     default() {
-      return '/public/img/logos/levis-logo.png'
+      return '/img/logos/levis-logo.png'
     }
   },
   desc: {
@@ -64,7 +64,7 @@ const amountStars = computed(() => {
       <img 
         v-for="star in amountStars" 
         :key="star" 
-        src="/public/icon/star-fill-icon.svg" 
+        src="/icon/star-fill-icon.svg" 
         alt="star-fill" 
       />
     </div>
@@ -75,11 +75,11 @@ const amountStars = computed(() => {
       <img 
         v-for="star in amountStars" 
         :key="star" 
-        src="/public/icon/star-fill-icon.svg" 
+        src="/icon/star-fill-icon.svg" 
         alt="star-fill" 
       />
       <img 
-        src="/public/icon/star-half-icon.svg" 
+        src="/icon/star-half-icon.svg" 
         alt="star-half" 
       />
     </div>

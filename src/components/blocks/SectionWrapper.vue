@@ -40,10 +40,10 @@ const props = defineProps({
 </script>
 <template>
   <div class="section text-15-50">
-    <div class="section__top flex flex-col items-center">
+    <div class="section__top flex flex-col text-center items-center">
       <div class="section__title flex gap-[12px] items-center">
         <img 
-          src="/public/icon/section-tilte-icon.svg" 
+          src="/icon/section-tilte-icon.svg" 
           alt="section-title-icon"
         >
         <span>{{ title }}</span>

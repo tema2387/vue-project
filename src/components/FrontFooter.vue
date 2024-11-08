@@ -11,8 +11,8 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
 </script>
 <template>
   <div class="footer m-0 dark">
-    <div class="footer__top bg-footer-bg-color">
-      <div class="footer__top-content container flex justify-between py-[48px] gap-[64px]">
+    <div class="footer__top px-[20px] bg-footer-bg-color">
+      <div class="footer__top-content container flex flex-wrap justify-start lg:justify-between py-[48px] gap-[64px]">
         <div class="footer__left flex flex-col gap-[24px]">
           <UiLink 
             :href="'/'" 
@@ -20,7 +20,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
           >
             <img 
               class="max-w-[30px]"
-              src="/public/img/logos/materio-logo.png"
+              src="/img/logos/materio-logo.png"
               alt="logo" 
             >
             <div div class="logo-name text-logo text-white">MATERIO</div>
@@ -95,7 +95,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
             <UiButton>
               <div class="flex items-center w-max gap-[24px]">
                 <img 
-                  src="/public/icon/apple-icon.svg" 
+                  src="/icon/apple-icon.svg" 
                   alt="apple-icon"
                 >
                 <div class="text-start text-13">
@@ -107,7 +107,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
             <UiButton>
               <div class="flex items-center w-max gap-[24px]">
                 <img 
-                  src="/public/icon/google-play-icon.svg" 
+                  src="/icon/google-play-icon.svg" 
                   alt="google-play-icon"
                 >
                 <div class="text-start text-13">
@@ -120,7 +120,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
         </div>
       </div>
     </div>
-    <div class="footer__bottom bg-footer-bg-color py-[19px]">
+    <div class="footer__bottom px-[20px] bg-footer-bg-color py-[19px]">
       <div class="footer__bottom-content container flex justify-between text-white/[82%]">
         <div class="footer__disign text-13">
           © 2024, Made with <span class="text-error-main">❤️</span> by <span class="text-white/[92%] text-15">ThemeSelection</span> 

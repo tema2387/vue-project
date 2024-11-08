@@ -21,7 +21,7 @@ function changeAccordion(id) {
 <template>
   <FrontLayout>
     <div class="plans-page">
-      <section class="main py-[100px] bg-paper-bg">
+      <section class="main px-[20px] py-[100px] bg-paper-bg">
         <div class="main__content container">
           <div class="main__top flex flex-col items-center">
             <h2 class="main__title">Pricing Plans</h2>
@@ -29,7 +29,7 @@ function changeAccordion(id) {
               <p class="text-text-secondary">All plans include 40+ advanced tools and features to boost your product.</p>
               <p class="text-text-secondary">Choose the best plan to fit your needs.</p>
             </div>
-            <div class="main__save mt-[15px] translate-x-[130px] flex">
+            <div class="main__save mt-[15px] translate-x-[80%] flex">
               <ArrowDownSaveIcon class="text-text-disabled mt-[11px] mr-[9px]" />
               <span class="text-primary-500 rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%]">Save up to 10%</span>
             </div>
@@ -39,7 +39,7 @@ function changeAccordion(id) {
               class="mt-[20px]"
             />
           </div>
-          <div class="main__bottom mt-[32px] flex gap-[24px]">
+          <div class="main__bottom mt-[32px] flex flex-wrap gap-[24px]">
             <PricingPlan
               :alreadyActivePlan="true"
               :plan="'Basic'"
@@ -47,7 +47,7 @@ function changeAccordion(id) {
               :wallet="'$'"
               :price="'0'"
               :possibilities="['100 responses a month', 'Unlimited forms and surveys', 'Unlimited fields', 'Basic form creation tools', 'Up to 2 subdomains']"
-              :img="'/public/img/tree-1-image.png'"
+              :img="'/img/tree-1-image.png'"
             />
             <PricingPlan
               :plan="'Standard'"
@@ -58,7 +58,7 @@ function changeAccordion(id) {
               :priceYear="'480'"
               :popular="true"
               :possibilities="['Unlimited responses', 'Unlimited forms and surveys', 'Instagram profile page', 'Google Docs integration', 'Custom “Thank you” page']"
-              :img="'/public/img/tree-2-image.png'"
+              :img="'/img/tree-2-image.png'"
             />
             <PricingPlan
               :plan="'Enterprise'"
@@ -68,19 +68,19 @@ function changeAccordion(id) {
               :priceYearActive="true"
               :priceYear="'960'"
               :possibilities="['PayPal payments', 'Logic Jumps', 'File upload with 5GB storage', 'Custom domain support', 'Stripe integration']"
-              :img="'/public/img/tree-3-image.png'"
+              :img="'/img/tree-3-image.png'"
             />
           </div>
         </div>
       </section>
-      <section class="free-trials pt-[50px] pb-[38px] bg-primary-opacity/[16%]">
+      <section class="free-trials px-[20px] pt-[50px] pb-[38px] bg-primary-opacity/[16%]">
         <div class="free-trials__content relative container">
           <div class="free-trials__left">
             <h4 class="free-trials__title text-primary-500">Still not convinced? Start with a 14-day FREE trial!</h4>
             <p class="free-trials__desc mt-[8px] text-text-secondary">You will get full access to with all the features for 14 days.</p>
             <UiButton class="mt-[44px] max-w-max">Start 14-day free trial</UiButton>
           </div>
-          <UiImage :src="'/public/img/image-for-section-free-trials.png'" :alt="'free-trials-image'" class="absolute right-0 w-[248px] aspect-[1] bottom-[-38px]"></UiImage>
+          <UiImage :src="'/img/image-for-section-free-trials.png'" :alt="'free-trials-image'" class="hidden lg:block absolute right-0 w-[248px] aspect-[1] bottom-[-38px]"></UiImage>
         </div>
       </section>
       <section class="best-plan py-[100px]">
@@ -99,7 +99,7 @@ function changeAccordion(id) {
                 <th class="px-[20px] text-table-header w-1/4 py-[16px]">
                   <div class="flex justify-center">
                     <div class="self-center">PRO</div>
-                    <img src="/public/icon/star-table-icon.svg" alt="star-icon" class="ml-[8px] mb-[8px]" />
+                    <img src="/icon/star-table-icon.svg" alt="star-icon" class="ml-[8px] mb-[8px]" />
                   </div>
                   <div class="text-13 text-text-secondary">$7.5/Month</div>
                 </th>
@@ -196,7 +196,7 @@ function changeAccordion(id) {
         </div>
       </div>
       </section>
-      <section class="faq bg-body-bg py-[100px]">
+      <section class="faq px-[20px] bg-body-bg py-[100px]">
         <div class="faq__content container">
           <h4 class="faq__title text-center">FAQ’s</h4>
           <p class="faq__subtitle text-center mt-[8px]">Let us help answer the most common questions.</p>
