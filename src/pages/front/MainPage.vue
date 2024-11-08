@@ -47,30 +47,30 @@ const { loaded, loading }  = loadingImage();
 
 onMounted(() => {
   // async load bg image
-  loading('/public/img/front-bg-image.png');
+  loading('/img/front-bg-image.png');
 })
 </script>
 
 <template>
   <FrontLayout :header="'fixed'">
     <div class="front-main-page">
-      <section class="start relative bg-no-repeat bg-center-top bg-contain" :style="{ backgroundImage: `url(${loaded})` }">
-        <div class="start__content pt-[126px] flex flex-col items-center text-center">
+      <section class="start px-[20px] relative bg-no-repeat bg-center-top bg-contain" :style="{ backgroundImage: `url(${loaded})` }">
+        <div class="start__content container pt-[126px] flex flex-col items-center text-center">
           <div class="start__top">
-            <h2 class="start__title text-primary-500">All in one sass application<br>for your business</h2>
+            <h2 class="start__title text-primary-500 font-extrabold">All in one sass application<br>for your business</h2>
             <p class="start__desc mt-[16px]">No coding required to make customizations.<br>The live customizer has everything your marketing need.</p>
             <UiButton class="mt-[32px] m-auto max-w-max">Get early access</UiButton>
           </div>
           <div class="start__bottom">
             <UiImage 
-              :src="activeDarkTheme ? '/public/img/hero-image-dark.png' : '/public/img/hero-image-light.png'"
+              :src="activeDarkTheme ? '/img/hero-image-dark.png' : '/img/hero-image-light.png'"
               :alt="'hero-img'"
               class="w-[1083px] aspect-video"
             />
           </div>
         </div>
       </section>
-      <section class="features py-[100px]">
+      <section class="features px-[20px] py-[100px]">
         <div class="features__content container">
           <SectionWrapper 
             :title="'USEFUL FEATURES'"
@@ -78,7 +78,7 @@ onMounted(() => {
             :subtitleBold="'Everything you need'"
             :desc="'Not just a set of tools, the package includes ready-to-deploy conceptual application.'"
           >
-            <ul class="features__list flex justify-between flex-wrap gap-x-[24px] gap-y-[48px] mt-[48px]">
+            <ul class="features__list flex lg:justify-between justify-center flex-wrap gap-x-[24px] gap-y-[48px] mt-[48px]">
               <li class="features__item max-w-[364px] flex flex-col items-center group text-center">
                 <div class="features__icon duration-200 bg-transparent p-[20px] border-2 border-primary-opacity/[32%] group-hover:bg-primary-opacity/[16%] rounded-[50%] text-primary-500">
                   <LaptopChargingIcon />
@@ -149,8 +149,8 @@ onMounted(() => {
           </SectionWrapper>
         </div>
       </section>
-      <section class="reviews bg-body-bg py-[100px]">
-        <div class="reviews__content">
+      <section class="reviews px-[20px] bg-body-bg py-[100px]">
+        <div class="reviews__content container">
           <SectionWrapper
             :title="'REAL CUSTOMERS REVIEWS'"
             :subtitleSmall="'from clients'"
@@ -171,7 +171,7 @@ onMounted(() => {
                 >
                 <SwiperSlide v-slot="{ isActive }">
                   <SlideReview
-                      :src="'/public/img/logos/eckerd-logo.png'"
+                      :src="'/img/logos/eckerd-logo.png'"
                       :desc="'“Ive never used a theme as versatile and flexible as Vuexy. Its my go to for building dashboard sites on almost any project.”'"
                       :authorName="'Eugenia Moore'"
                       :authorJob="'Founder of HubSpot'"
@@ -181,7 +181,7 @@ onMounted(() => {
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
                   <SlideReview
-                      :src="'/public/img/logos/levis-logo.png'"
+                      :src="'/img/logos/levis-logo.png'"
                       :desc="'Materio is awesome, and I particularly enjoy knowing that if I get stuck on something.'"
                       :authorName="'Tommy Hoffman'"
                       :authorJob="'Founder of Levis'"
@@ -191,7 +191,7 @@ onMounted(() => {
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
                   <SlideReview
-                      :src="'/public/img/logos/airbnb-logo.png'"
+                      :src="'/img/logos/airbnb-logo.png'"
                       :desc="'This template is superior in so many ways. The code, the design, the regular updates, the support.. It’s the whole package. Excellent Work.'"
                       :authorName="'Eugenia Moore'"
                       :authorJob="'CTO of Airbnb'"
@@ -201,7 +201,7 @@ onMounted(() => {
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
                   <SlideReview
-                      :src="'/public/img/logos/continentals-logo.png'"
+                      :src="'/img/logos/continentals-logo.png'"
                       :desc="'All the requirements for developers have been taken into consideration, so I’m able to build any interface I want.'"
                       :authorName="'Sara Smith'"
                       :authorJob="'Founder of Continental'"
@@ -211,7 +211,7 @@ onMounted(() => {
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
                   <SlideReview
-                      :src="'/public/img/logos/dribbble-logo.png'"
+                      :src="'/img/logos/dribbble-logo.png'"
                       :desc="'“Ive never used a theme as versatile and flexible as Vuexy. Its my go to for building dashboard sites on almost any project.”'"
                       :authorName="'Eugenia Moore'"
                       :authorJob="'Founder of HubSpot'"
@@ -221,7 +221,7 @@ onMounted(() => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div class="reviews__logos mt-[98px] flex gap-[64px] justify-center">
+            <div class="reviews__logos mt-[98px] flex gap-[64px] justify-center flex-wrap">
               <LevisIcon />
               <ContinentalsIcon />
               <AirBnbIcon />
@@ -231,7 +231,7 @@ onMounted(() => {
           </SectionWrapper>
         </div>
       </section>
-      <section class="team py-[100px]">
+      <section class="team px-[20px] py-[100px]">
         <div class="team__content relative container">
           <SectionStarIcon class="absolute right-0 top-0" />
           <SectionWrapper
@@ -240,27 +240,27 @@ onMounted(() => {
             :subtitleBold="'Supported'"
             :desc="'Who is behind these great-looking interfaces?'"
           >
-            <div class="team__list flex justify-between gap-[24px] mt-[100px]">
+            <div class="team__list flex flex-wrap lg:justify-between justify-center gap-[24px] mt-[100px]">
               <CardTeam 
-                :img="'/public/img/woman-1.png'" 
+                :img="'/img/woman-1.png'" 
                 :color="'primary'" 
                 :name="'Sophie Gilbert'" 
                 :job="'Project Manager'"
               />
               <CardTeam 
-                :img="'/public/img/man-1.png'" 
+                :img="'/img/man-1.png'" 
                 :color="'error'" 
                 :name="'Nannie Ford'" 
                 :job="'Development Lead'"
               />
               <CardTeam 
-                :img="'/public/img/woman-2.png'" 
+                :img="'/img/woman-2.png'" 
                 :color="'success'" 
                 :name="'Chris Watkins'" 
                 :job="'Marketing Manager'"
               />
               <CardTeam 
-                :img="'/public/img/man-2.png'"
+                :img="'/img/man-2.png'"
                 :color="'info'" 
                 :name="'Paul Miles'" 
                 :job="'UI Designer'"
@@ -269,7 +269,7 @@ onMounted(() => {
           </SectionWrapper>
         </div>
       </section>
-      <section class="plans bg-body-bg py-[100px]">
+      <section class="plans px-[20px] bg-body-bg py-[100px]">
         <div class="plans__content container relative">
           <SectionCheckIcon class="absolute left-0 top-0" />
           <SectionWrapper
@@ -282,7 +282,7 @@ onMounted(() => {
             <div class="plans__range-slider mt-[64px]">
               <UiInputRange />
             </div>
-            <div id="section-plans-list" class="plans__list flex gap-[24px] mt-[64px]">
+            <div id="section-plans-list" class="plans__list flex flex-wrap justify-center gap-[24px] mt-[64px]">
               <Plan
                 :id="1"
                 :plan="'Basic Plan'"
@@ -317,32 +317,32 @@ onMounted(() => {
           </SectionWrapper>
         </div>
       </section>
-      <section class="count py-[84px]">
+      <section class="count px-[20px] py-[84px]">
         <div class="count__content container">
-          <ul class="count__list flex gap-[24px]">
+          <ul class="count__list flex flex-wrap justify-center gap-[24px]">
             <li class="count__item flex flex-col items-center w-[267px]">
-              <img src="/public/icon/layout-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-primary-opacity/[16%]" />
+              <img src="/icon/layout-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-primary-opacity/[16%]" />
               <div class="count__item-title mt-[24px] text-center">
                 <div class="text-count-bold">137+</div>
                 <div class="text-15-500 text-text-secondary">Completed Sites</div>
               </div>
             </li>
             <li class="count__item flex flex-col items-center w-[267px]">
-              <img src="/public/icon/time-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-success-opacity/[16%]" />
+              <img src="/icon/time-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-success-opacity/[16%]" />
               <div class="count__item-title mt-[24px] text-center">
                 <div class="text-count-bold">1100+</div>
                 <div class="text-15-500 text-text-secondary">Working Hourse</div>
               </div>
             </li>
             <li class="count__item flex flex-col items-center w-[267px]">
-              <img src="/public/icon/user-smile-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-warning-500" />
+              <img src="/icon/user-smile-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-warning-500" />
               <div class="count__item-title mt-[24px] text-center">
                 <div class="text-count-bold">137+</div>
                 <div class="text-15-500 text-text-secondary">Happy Customers</div>
               </div>
             </li>
             <li class="count__item flex flex-col items-center w-[267px]">
-              <img src="/public/icon/award-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-info-opacity/[16%]" />
+              <img src="/icon/award-line.svg" alt="count-img" class="max-w-max p-[25px] rounded-full bg-info-opacity/[16%]" />
               <div class="count__item-title mt-[24px] text-center">
                 <div class="text-count-bold">23+</div>
                 <div class="text-15-500 text-text-secondary">Awards Winning</div>
@@ -351,7 +351,7 @@ onMounted(() => {
           </ul>
         </div>
       </section>
-      <section class="faq bg-body-bg py-[100px]">
+      <section class="faq px-[20px] bg-body-bg py-[100px]">
         <div class="faq__content container relative">
           <SectionStarIcon class="absolute right-0 top-0" />
           <SectionWrapper
@@ -361,11 +361,11 @@ onMounted(() => {
             :desc="'Browse through these FAQs to find answers to commonly asked questions.'"
             :subtitleBoldOnRight="true"
           >
-            <div class="faq__section-content flex gap-[100px] mt-[64px]">
+            <div class="faq__section-content flex flex-col lg:flex-row gap-[100px] mt-[64px]">
               <UiImage
-                :src="'/public/img/Illustration-faq-section.png'" 
+                :src="'/img/Illustration-faq-section.png'" 
                 :alt="'faq-img'" 
-                class="ml-[200px] w-[320px] max-w-full max-h-[340px] h-full self-center" 
+                class="lg:ml-[200px] w-[320px] aspect-auto max-h-[340px] self-center" 
               />
               <div class="faq__accordion flex flex-1 flex-col gap-[8px]"> 
                 <UiAccordion
@@ -397,12 +397,12 @@ onMounted(() => {
           </SectionWrapper>
         </div>
       </section>
-      <section class="ready py-[81px]">
+      <section class="ready px-[20px] py-[81px]">
         <div class="ready__content container relative">
           <UiImage 
-            :src="'/public/img/section-ready-image.png'" 
+            :src="'/img/section-ready-image.png'" 
             :alt="'ready-img'" 
-            class="absolute right-0 bottom-[-115px] w-[594px] aspect-video" 
+            class="absolute right-0 hidden lg:block bottom-[-115px] w-[594px] aspect-video" 
           />
           <div class="ready__left">
             <div class="ready__title text-primary-500 text-title-ready-bold">Ready to Get Started?</div>
@@ -418,7 +418,7 @@ onMounted(() => {
           </div>
         </div>
       </section>
-      <section class="contact py-[100px] bg-body-bg">
+      <section class="contact px-[20px] py-[100px] bg-body-bg">
         <div class="contact__content container">
           <SectionWrapper
             :title="'CONTACT US'"
@@ -426,19 +426,19 @@ onMounted(() => {
             :subtitleBold="'Lets work'"
             :desc="'Any question or remark? Just write us a message'"
           >
-            <div class="contact__section-content mt-[60px] flex gap-[24px]">
-              <div class="contact__left max-w-[450px] text-bg-white p-[32px] bg-primary-500 rounded-md">
+            <div class="contact__section-content mt-[60px] lg:flex-row flex flex-col gap-[24px]">
+              <div class="contact__left lg:max-w-[450px] text-bg-white p-[32px] bg-primary-500 rounded-md">
                 <div class="contact text-15-500">Let’s contact with us</div>
                 <h4 class="contact__title mt-[6px]">Share your ideas or requirement with our experts.</h4>
                 <div class="contact__line-one mt-[30px] flex items-center gap-[16px]">
-                  <img src="/public/img/man-circle-1.png" alt="man-img" />
+                  <img src="/img/man-circle-1.png" alt="man-img" />
                   <div class="h-[38px] w-full rounded-full   bg-primary-400"></div>
-                  <img src="/public/img/woman-circle-2.png" alt="woman-img" />
+                  <img src="/img/woman-circle-2.png" alt="woman-img" />
                 </div>
                 <div class="contact__line-two mt-[16px] flex items-center gap-[16px]">
-                  <div class="h-[38px] w-[100px] rounded-full bg-primary-400"></div>
-                  <img src="/public/img/woman-circle-3.png" alt="woman-img" />
-                  <div class="h-[38px] w-[208px] rounded-full bg-primary-400"></div>
+                  <div class="h-[38px] flex-[20%] rounded-full bg-primary-400"></div>
+                  <img src="/img/woman-circle-3.png" alt="woman-img" />
+                  <div class="h-[38px] flex-[50%] rounded-full bg-primary-400"></div>
                 </div>
                 <p class="contact__desc mt-[20px]">Looking for more customization, more features, and more anything? Don’t worry, We’ve provided you with an entire team of experienced professionals.</p>
               </div>

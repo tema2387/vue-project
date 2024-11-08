@@ -22,7 +22,7 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
 <template>
 <FrontLayout>
   <div class="help-page">
-    <section class="help-search py-[100px]">
+    <section class="help-search px-[20px] py-[100px]">
       <div class="help-search__content max-w-[476px] m-auto text-center">
         <h4 class="text-primary-500">Hello, how can we help?</h4>
         <UiInputText 
@@ -36,10 +36,10 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
         <div class="text-text-secondary mt-[16px]">Common troubleshooting topics: eCommerce, Blogging to payment</div>
       </div>
     </section>
-    <section class="articles py-[100px]">
+    <section class="articles px-[20px] py-[100px]">
       <div class="articles__content container">
         <h4 class="text-center">Popular Articles</h4>
-        <div class="articles__list flex gap-[24px] mt-[24px]">
+        <div class="articles__list flex flex-wrap gap-[24px] mt-[24px]">
           <CardRead 
             :img="RocketIcon"
             :title="'Getting Started'"
@@ -61,49 +61,49 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
         </div>
       </div>
     </section>
-    <section class="knowledge-base py-[100px] bg-body-bg">
+    <section class="knowledge-base px-[20px] py-[100px] bg-body-bg">
       <div class="knowledge-base__content container">
         <h4 class="text-center">Knowledge Base</h4>
-        <div class="flex gap-[24px] mt-[24px]">
+        <div class="flex flex-wrap gap-[24px] mt-[24px]">
           <CardKnowledge 
             :title="'Buying'"
-            :titleIcon="'/public/icon/cart-icon.svg'"
+            :titleIcon="'/icon/cart-icon.svg'"
             :items="buying"
           />
           <CardKnowledge 
             :title="'Item Support'"
-            :titleIcon="'/public/icon/question-icon.svg'"
+            :titleIcon="'/icon/question-icon.svg'"
             :items="itemSupport"
           />
           <CardKnowledge 
             :title="'Licenses'"
-            :titleIcon="'/public/icon/licenses-icon.svg'"
+            :titleIcon="'/icon/licenses-icon.svg'"
             :items="licenses"
           />
         </div>
-        <div class="flex gap-[24px] mt-[24px]">
+        <div class="flex flex-wrap justify-between gap-[24px] mt-[24px]">
           <CardKnowledge 
             :title="'Template Kits'"
-            :titleIcon="'/public/icon/kits-icon.svg'"
+            :titleIcon="'/icon/kits-icon.svg'"
             :items="templateKits"
           />
           <CardKnowledge 
             :title="'Account & Password'"
-            :titleIcon="'/public/icon/lock-icon.svg'"
+            :titleIcon="'/icon/lock-icon.svg'"
             :items="accountAndPassword"
           />
           <CardKnowledge 
             :title="'Account Settings'"
-            :titleIcon="'/public/icon/account-icon.svg'"
+            :titleIcon="'/icon/account-icon.svg'"
             :items="accountSettings"
           />
         </div>
       </div>
     </section>
-    <section class="learning py-[100px]">
+    <section class="learning px-[20px] py-[100px]">
       <div class="learning__content container">
         <h4 class="text-center">Keep Learning</h4>
-        <div class="learning__list flex gap-[24px] mt-[24px]">
+        <div class="learning__list flex flex-wrap gap-[24px] mt-[24px]">
           <CardRead 
             :img="LaptopIcon"
             :title="'Blogging'"
@@ -125,7 +125,7 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
         </div>
       </div>
     </section>
-    <section class="steel-help py-[100px] bg-body-bg">
+    <section class="steel-help px-[20px] py-[100px] bg-body-bg">
       <div class="help-search__content flex flex-col gap-[16px] items-center text-center">
         <h4>Still need help?</h4>
         <div class="text-text-secondary">

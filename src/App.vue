@@ -18,7 +18,7 @@ const currentComponent = computed(() => {
 <template>
   <div class="app flex flex-col min-h-screen bg-paper-bg overflow-hidden text-text-primary text-15 relative">
     <Transition name="popup">
-      <div 
+      <div
         v-if="popupStatus" 
         class="popup-wrapper fixed z-[999] top-[50px] left-[50%] w-max"
       >

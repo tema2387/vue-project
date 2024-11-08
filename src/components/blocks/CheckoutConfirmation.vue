@@ -30,8 +30,8 @@ const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'b
         <div class="text-text-secondary">Time placed: 25/05/2020 13:35pm</div>
       </div>
     </div>
-    <div class="checkout-confirmation__list mt-[20px] flex">
-      <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] rounded-l-md border-l border-t border-b border-devider">
+    <div class="checkout-confirmation__list mt-[20px] flex flex-col md:flex-row">
+      <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] max-md:rounded-t-md md:rounded-l-md border-l border-t max-md:border-r md:border-b border-devider">
         <div class="flex gap-[8px] items-center">
           <MapPinIcon />
           <div>Shipping</div>
@@ -47,65 +47,63 @@ const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'b
         <div>{{ address.address }}</div>
         <div>{{ address.mobile }}</div>
       </div>
-      <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] rounded-r-md border-r border-t border-b border-devider">
+      <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] max-md:rounded-b-md md:rounded-r-md max-md:border-l border-r md:border-t border-b border-devider">
         <div class="flex gap-[8px] items-center">
           <Ship2Icon />
-          <div></div>
+          <div>Shipping Method</div>
         </div>
         <div>{{ address.address }}</div>
         <div>{{ address.mobile }}</div>
       </div>
     </div>
-    <div class="checkout-confirmation__sum mt-[20px]">
-      <div class="flex gap-[24px]">
-        <div 
-          v-if="products.length" 
-          class="checkout-confirmation__products flex-1"
-        >
-          <ProductCard 
-            v-for="product in products" 
-            :key="product.id"
-            :type="'confirm'"
-            :id="product.id"
-            :img="product.img"
-            :name="product.name"
-            :rating="product.rating"
-            :brand="product.brand"
-            :price="product.price"
-            :oldPrice="product.oldPrice"
-            :count="product.count"
-            :class="products.length < 2 ? borderAloneElement 
-              : products.length === 2 ? borderTwoElements[products.indexOf(product)] 
-                : products.length > 2 ? borderMoreTwo[products.indexOf(product) === 0 ? 0 
-                                          : products.indexOf(product) === products.indexOf(products[products.length - 1]) ? 2 
-                                            : 1] 
-                  : ''"
+    <div class="checkout-confirmation__sum flex flex-col lg:flex-row gap-[24px] mt-[20px]">
+      <div 
+        v-if="products.length" 
+        class="checkout-confirmation__products flex-1"
+      >
+        <ProductCard 
+          v-for="product in products" 
+          :key="product.id"
+          :type="'confirm'"
+          :id="product.id"
+          :img="product.img"
+          :name="product.name"
+          :rating="product.rating"
+          :brand="product.brand"
+          :price="product.price"
+          :oldPrice="product.oldPrice"
+          :count="product.count"
+          :class="products.length < 2 ? borderAloneElement 
+            : products.length === 2 ? borderTwoElements[products.indexOf(product)] 
+              : products.length > 2 ? borderMoreTwo[products.indexOf(product) === 0 ? 0 
+                                        : products.indexOf(product) === products.indexOf(products[products.length - 1]) ? 2 
+                                          : 1] 
+                : ''"
         />
-        </div>
-        <div class="checkout-confirmation__right">
-          <div class="w-[290px] border border-devider rounded-md">
-            <div class="price p-[20px] border-b border-devider">
-              <div class="price__title text-15-500">Price Details</div>
-              <div class="price__list flex flex-col gap-[16px] mt-[16px]">
-                <div class="flex justify-between">
-                  <div>Order Total</div>
-                <div class="text-text-secondary">$1198.00</div>
-                </div>
-                <div class="flex justify-between">
-                  <div>Charges</div>
-                  <div class="text-text-disabled flex items-center gap-[8px]">
-                    <span>$5.00</span>
-                    <span class="bg-success-opacity/[16%] text-success-500 px-[12px] py-[2px] rounded-full text-chip">FREE</span>
-                  </div>
+      </div>
+      <div class="checkout-confirmation__right">
+        <div class="lg:w-[290px] border border-devider rounded-md">
+          <div class="price p-[20px] border-b border-devider">
+            <div class="price__title text-15-500">Price Details</div>
+            <div class="price__list flex flex-col gap-[16px] mt-[16px]">
+              <div class="flex justify-between">
+                <div>Order Total</div>
+              <div class="text-text-secondary">$1198.00</div>
+              </div>
+              <div class="flex justify-between">
+                <div>Charges</div>
+                <div class="text-text-disabled flex items-center gap-[8px]">
+                  <span>$5.00</span>
+                  <span class="bg-success-opacity/[16%] text-success-500 px-[12px] py-[2px] rounded-full text-chip">FREE</span>
                 </div>
               </div>
             </div>
-            <div class="total p-[20px]">
-              <div class="total-sum flex flex-col gap-[8px]">
-                <div class="flex text-15-500 justify-between">
-                  <div>Total</div>
-                  <div>$1198.00</div>
-                </div>
+          </div>
+          <div class="total p-[20px]">
+            <div class="total-sum flex flex-col gap-[8px]">
+              <div class="flex text-15-500 justify-between">
+                <div>Total</div>
+                <div>$1198.00</div>
               </div>
             </div>
           </div>

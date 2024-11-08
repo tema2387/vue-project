@@ -58,9 +58,9 @@ const step4 = computed(() => {
 </script>
 <template>
 <FrontLayout>
-  <div class="checkout-page py-[100px] m-auto bg-body-bg">
+  <div class="checkout-page px-[20px] py-[100px] m-auto bg-body-bg">
     <div class="checkout-page__content bg-paper-bg shadow-md rounded-md container">
-      <div class="checkout-page__top py-[20px] justify-center border-b border-devider flex gap-[16px] items-center text-center">
+      <div class="checkout-page__top hidden md:flex py-[20px] justify-center border-b border-devider  gap-[16px] items-center text-center">
         <div 
           @click="changeComponent('cart')" 
           class="cart py-[20px] px-[45px] cursor-pointer"
@@ -77,7 +77,7 @@ const step4 = computed(() => {
           </div>
         </div>
         <ArrowRightSIcon 
-          class="opacity-[0.4]" 
+          class="opacity-[0.4] flex-shrink-0" 
           :class="{ 'text-primary-500': step2, '!opacity-100': step2 }" 
         />
         <div 
@@ -96,7 +96,7 @@ const step4 = computed(() => {
           </div>
         </div>
         <ArrowRightSIcon 
-          class="opacity-[0.4]" 
+          class="opacity-[0.4] flex-shrink-0" 
           :class="{ 'text-primary-500': step3, '!opacity-100': step3 }" 
         />
         <div 
@@ -115,7 +115,7 @@ const step4 = computed(() => {
           </div>
         </div>
         <ArrowRightSIcon 
-          class="opacity-[0.4]" 
+          class="opacity-[0.4] flex-shrink-0" 
           :class="{ 'text-primary-500': step4, '!opacity-100': step4 }" 
         />
         <div 

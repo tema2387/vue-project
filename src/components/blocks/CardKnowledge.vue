@@ -28,7 +28,7 @@ const itemsMax = computed(() => {
 
 </script>
 <template>
-  <div class="card-knowledge flex flex-1 flex-col shadow-md p-[20px] rounded-md gap-[24px]">
+  <div class="card-knowledge flex flex-1 flex-col min-w-[250px] justify-between shadow-md p-[20px] rounded-md gap-[24px]">
     <div class="card-knowledge__title flex items-center">
       <img :src="titleIcon" alt="card-base-icon" class="p-[6px] rounded-md bg-primary-opacity/[16%]" />
       <h5 class="ml-[12px]">{{ title }}</h5>

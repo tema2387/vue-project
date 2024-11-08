@@ -36,10 +36,9 @@ watch(() => props.src, (newValue) => {
     :src="loaded" 
     :alt="alt"
   >
-  <div
-    v-else
-    class="loader-wrapper flex items-center justify-center"
-  >
-      <div class="loader" :style="{ 'width': loaderSize + 'px' }"></div>
+  <div v-else>
+    <div class="loader-wrapper w-full h-full flex justify-center items-center">
+      <div class="loader max-w-[50px] max-h-[50px]" :style="{ 'width': loaderSize + 'px' }"></div>
+    </div>
   </div>
 </template>

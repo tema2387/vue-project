@@ -13,23 +13,24 @@ const modelRadio = ref('radio-pay-visa');
 </script>
 <template>
   <FrontLayout :header="'fixed'">
-    <div class="order-page bg-body-bg pt-[162px] pb-[100px]">
-      <div class="order-page__content container flex rounded-md shadow-sm bg-paper-bg">
-        <div class="order-page__left flex-1 p-[32px] border-r border-devider">
+    <div class="order-page px-[20px] bg-body-bg pt-[162px] pb-[100px]">
+      <div class="order-page__content container flex flex-col lg:flex-row rounded-md shadow-sm bg-paper-bg">
+        <div class="order-page__left flex-1 p-[32px] lg:border-r border-devider">
           <div class="order-page__checkout">
             <h4 class="order-page__title">Checkout</h4>
             <p class="order-page__subtitle text-text-secondary mt-[8px]">All plans include 40+ advanced tools and features to boost your product.</p>
             <p class="order-page__subtitle text-text-secondary">Choose the best plan to fit your needs.</p>
-            <div class="order-page__inputs flex gap-[20px] mt-[32px]">
+            <div class="order-page__inputs flex flex-wrap gap-[20px] mt-[32px]">
               <UiRadioCustom 
                 :name="'pay-checkout-plan'" 
                 :id="'radio-pay-visa'" 
-                v-model="modelRadio" 
+                v-model="modelRadio"
+                class="flex-1 min-w-max"
               >
                 <template v-slot:title>
                   <div class="ml-[16px] flex items-center gap-[16px]">
                     <UiImage 
-                      :src="'/public/icon/visa-icon.svg'" 
+                      :src="'/icon/visa-icon.svg'" 
                       :alt="'visa-icon'" 
                       :loaderSize="20"
                       class="p-[11px] bg-action-hover w-[58px] h-[34px] rounded-md" 
@@ -41,12 +42,13 @@ const modelRadio = ref('radio-pay-visa');
               <UiRadioCustom 
                 :name="'pay-checkout-plan'" 
                 :id="'radio-pay-paypal'" 
-                v-model="modelRadio" 
+                v-model="modelRadio"
+                class="flex-1 min-w-max"
               >
                 <template v-slot:title>
                   <div class="ml-[16px] flex items-center gap-[16px]">
                     <img 
-                      src="/public/icon/paypal-icon.svg" 
+                      src="/icon/paypal-icon.svg" 
                       alt="paypal-icon" 
                       class="py-[7px] px-[21px] w-[58px] h-[34px] bg-action-hover rounded-md" 
                     />
@@ -59,7 +61,7 @@ const modelRadio = ref('radio-pay-visa');
           <div class="order-page__details mt-[32px]">
             <h4 class="order-page__title">Billing Details</h4>
             <div class="order-page__inputs mt-[24px]">
-              <div class="order-page__inputs-top flex gap-[20px]">
+              <div class="order-page__inputs-top flex flex-col md:flex-row gap-[20px]">
                 <UiInputText 
                   :id="'order-email'" 
                   :label="'Email Address'"
@@ -71,7 +73,7 @@ const modelRadio = ref('radio-pay-visa');
                   class="flex-1"
                 />
               </div>
-              <div class="order-page__inputs-bottom mt-[20px] flex gap-[20px]">
+              <div class="order-page__inputs-bottom mt-[20px] flex flex-col md:flex-row gap-[20px]">
                 <UiSelect 
                   :id="'select-1'" 
                   :label="'Billing Country'"
@@ -101,7 +103,7 @@ const modelRadio = ref('radio-pay-visa');
                 <UiInputText 
                   :id="'card-holder'" 
                   :label="'Card Holder'" 
-                  class="flex-1"
+                  class="flex-grow"
                 />
                 <UiInputText 
                   :id="'card-date'" 
@@ -117,7 +119,7 @@ const modelRadio = ref('radio-pay-visa');
             </div>
           </div>
         </div>
-        <div class="order-page__summary max-w-[452px] p-[32px]">
+        <div class="order-page__summary lg:max-w-[452px] p-[32px]">
           <h4 class="order-page__title">Order Summary</h4>
           <p class="order-page__subtitle text-text-secondary mt-[8px]">All plans include 40+ advanced tools and features to boost your product.</p>
           <div class="order-page__plan rounded-md p-[24px] mt-[32px] bg-body-bg">

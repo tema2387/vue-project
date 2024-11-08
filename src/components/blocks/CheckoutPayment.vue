@@ -15,8 +15,8 @@ const emit = defineEmits('changeAddress');
 const popupOfferStatus = ref(true);
 </script>
 <template>
-  <div class="checkout-payment flex">
-    <div class="checkout-payment__left mr-[24px] flex-1">
+  <div class="checkout-payment flex flex-col gap-[24px] lg:flex-row">
+    <div class="checkout-payment__left flex-1">
       <UIPopup 
         v-if="popupOfferStatus" 
         :type="'offer'"
@@ -104,7 +104,7 @@ const popupOfferStatus = ref(true);
       </div>
     </div>
     <div class="checkout-payment__right">
-      <div class="w-[334px] border border-devider rounded-md">
+      <div class="lg:w-[334px] border border-devider rounded-md">
         <div class="price p-[20px] border-b border-devider">
           <div class="price__title text-15-500">Price Details</div>
           <div class="price__list flex flex-col gap-[8px] mt-[16px]">
