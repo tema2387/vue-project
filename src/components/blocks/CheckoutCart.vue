@@ -4,7 +4,7 @@ import { ref } from 'vue';
 // components
 import UiInputText from '@/components/UI/UiInputText.vue';
 import ProductCard from '@/components/blocks/ProductCard.vue';
-import UIPopup from '@/components/UI/UIPopup.vue';
+import UiPopup from '@/components/UI/UiPopup.vue';
 
 // icons 
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
@@ -20,17 +20,17 @@ import { activatePopup } from '@/modules/showPopup.js';
 import { checkValidPromo } from '@/modules/validateInputs';
 
 const popupOfferStatus = ref(true);
-const promo = ref('');
+const promo = ref('123');
 
 function activatePromo() {
   const statusPromo = checkValidPromo(promo.value);
-  statusPromo ? activatePopup('Промокод активирован', 'success') : activatePopup('Промокод не найден', 'error');
+  statusPromo ? activatePopup('Promocode activated', 'success') : activatePopup('Promocode not found', 'error');
 }
 </script>
 <template>
   <div class="checkout-cart flex flex-col gap-[24px] lg:flex-row">
     <div class="checkout-cart__left flex flex-col gap-[16px] flex-1">
-      <UIPopup 
+      <UiPopup 
         v-if="popupOfferStatus" 
         :type="'offer'"
         @close="popupOfferStatus = false"
