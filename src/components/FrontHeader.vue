@@ -1,10 +1,12 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
 // icons
 import MoonClearIcon from '@/components/UI/svg/MoonClearIcon.vue';
 import ArrowDownSIcon from '@/components/UI/svg/ArrowDownSIcon.vue';
-import ShoppingCartIcon from '@/components/UI/svg/ShoppingCartIcon.vue';
+import SignInIcon from '@/components/UI/svg/SignInIcon.vue';
+import SignUpIcon from '@/components/UI/svg/SignUpIcon.vue';
 
 // type can be 'fixed' or without value
 const props = defineProps({
@@ -27,6 +29,7 @@ onMounted(() => {
 const typeFixed = 'fixed border border-t-0 border-paper-bg/[75%] rounded-b-md top-0 left-0 right-0 m-auto max-w-[1140px]';
 const dropdownMenuOpen = ref(false);
 const dropdownMenu = ref(null);
+const route = useRoute();
 
 function toggleDropdown() {
   dropdownMenuOpen.value = !dropdownMenuOpen.value;
@@ -52,12 +55,12 @@ const setType = computed(() => {
 </script>
 <template>
   <div 
-    class="header z-[99] bg-paper-bg/[64%] text-text-primary text-15-500 py-[12px] px-[20px] md:px-[32px]"
+    class="header z-[99] bg-paper-bg/[64%] text-15-500"
     :class="setType"
   >
-    <div class="flex items-center gap-[20px] sm:gap-[32px] max-w-[1140px]">
+    <div class="flex items-center gap-[20px] sm:gap-[32px] max-w-[1140px] m-auto px-[20px] md:px-[32px] py-[12px]">
       <UiLink 
-        :href="'/'" 
+        :href="'/'"
         class="header__left flex gap-[0px] sm:gap-[12px] items-center"
       >
         <img 
@@ -72,6 +75,7 @@ const setType = computed(() => {
           <li 
             v-for="nav in navList" 
             class="menu__item"
+            :class="{ 'text-primary-500': route.path === nav.link }"
           >
             <UiLink :href="nav.link">{{ nav.name }}</UiLink>
           </li>
@@ -84,23 +88,41 @@ const setType = computed(() => {
               Pages
               <ArrowDownSIcon class="duration-200" :class="{'rotate-180': dropdownMenuOpen}" />
             </div>
-              <div v-if="dropdownMenuOpen" class="w-max rounded-md border py-[10px] flex flex-col border-devider absolute bg-paper-bg top-[150%]">
-                <UiLink v-for="nav in hiddenNavList" :href="nav.link" class="px-[20px] py-[10px] hover:bg-secondary-opacity/[16%] hover:opacity-100">{{ nav.name }}</UiLink>
+              <div v-if="dropdownMenuOpen"  class="w-max rounded-md border py-[10px] flex flex-col border-devider absolute bg-paper-bg top-[150%]">
+                <UiLink 
+                  v-for="nav in hiddenNavList" 
+                  :href="nav.link" 
+                  :class="{ 'text-primary-500': route.path === nav.link }" 
+                  class="px-[20px] py-[10px] hover:bg-secondary-opacity/[16%] hover:opacity-100"
+                >
+                    {{ nav.name }}
+                </UiLink>
               </div>
           </li>
         </ul>
       </nav>
-      <div class="header__right flex-shrink-0 flex justify-end items-center">
-        <MoonClearIcon
-          class="cursor-pointer mr-[24px]" 
-          @click="activeDarkTheme = !activeDarkTheme" 
-        />
-        <UiButton :text="'md'">
-          <div class="flex items-center gap-[6px]">
-            <ShoppingCartIcon />
-            <span class="hidden sm:block">Purchase Now</span>
-          </div>
+      <div class="header__right flex-shrink-0 flex justify-end gap-[20px] sm:gap-[24px] items-center">
+        <UiButton 
+          :type="'inline-text'" 
+          class="flex items-center"
+          @click="activeDarkTheme = !activeDarkTheme"
+        >
+          <MoonClearIcon />
         </UiButton>
+        <div class="header__right-btns flex items-center gap-[20px] sm:gap-[10px]">
+          <UiLink :href="'/auth'" class="hover:!opacity-100">
+            <UiButton :type="'inline-text'" class="hidden max-sm:flex items-center">
+              <SignInIcon></SignInIcon>
+            </UiButton>
+            <UiButton :type="'text'" :text="'sm'" class="hidden sm:block">Sign in</UiButton>
+          </UiLink>
+          <UiLink :href="'/registration'" class="hover:!opacity-100">
+            <UiButton :size="'sm'" class="hidden max-sm:flex items-center">
+              <SignUpIcon></SignUpIcon>
+            </UiButton>
+            <UiButton :text="'md'" class="hidden sm:block">Sign up</UiButton>
+          </UiLink>
+        </div>
       </div>
     </div>
   </div>

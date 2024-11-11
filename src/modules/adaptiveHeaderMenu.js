@@ -3,10 +3,10 @@ import { ref, watch } from 'vue';
 // Список нескрытых элеметов 
 export const navList = ref([
   { name: 'Home', link: '/' },
-  { name: 'Features', link: '/' },
-  { name: 'Team', link: '/' },
-  { name: 'FAQ', link: '/' },
-  { name: 'Contact us', link: '/' },
+  { name: 'Order', link: '/order' },
+  { name: 'Plans', link: '/plans' },
+  { name: 'Help center', link: '/help' },
+  { name: 'Checkout', link: '/checkout' },
 ]);
 
 // Список скрытых элементов в dropdown

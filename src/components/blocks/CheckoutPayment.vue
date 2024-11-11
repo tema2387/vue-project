@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 // components
-import UIPopup from '@/components/UI/UIPopup.vue';
+import UiPopup from '@/components/UI/UiPopup.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiToggle from '@/components/UI/UiToggle.vue';
 
@@ -17,7 +17,7 @@ const popupOfferStatus = ref(true);
 <template>
   <div class="checkout-payment flex flex-col gap-[24px] lg:flex-row">
     <div class="checkout-payment__left flex-1">
-      <UIPopup 
+      <UiPopup 
         v-if="popupOfferStatus" 
         :type="'offer'"
         @close="popupOfferStatus = false"
