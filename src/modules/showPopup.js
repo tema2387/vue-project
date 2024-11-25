@@ -1,6 +1,5 @@
 import { ref } from 'vue';
 
-// color can be 'success' and 'error'
 export const popupStatus = ref(false);
 export const popupText = ref('');
 export const popupColor = ref('success');

@@ -1,19 +1,16 @@
 <script setup>
-// components
+// Компоненты
 import ProductCard from '@/components/blocks/ProductCard.vue';
-
-// icons
+// Иконки
 import TimeClockIcon from '@/components/UI/svg/TimeClockIcon.vue';
 import MapPinIcon from '@/components/UI/svg/MapPinIcon.vue';
 import BankCardIcon from '@/components/UI/svg/BankCardIcon.vue';
 import Ship2Icon from '@/components/UI/svg/Ship2Icon.vue';
-
-
-// js
+// Хранилище
 import { address } from '@/store/addressStore.js';
 import { products } from '@/store/productsStore.js';
 
-// border for product-card
+// border для product-card
 const borderAloneElement = 'border rounded-md';
 const borderTwoElements = ['border rounded-t-md', 'border-x border-b rounded-b-md']
 const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'border rounded-b-md']

@@ -132,12 +132,32 @@ export default {
         lineHeight: '42px',
         fontWeight: '700',
       }],
+      'error-number': ['96px', {
+        lineHeight: '96px',
+        fontWeight: '500',
+      }]
     },
     extend: {
       boxShadow: {
         'sm': '0 2px 3px 0 rgba(0, 0, 0, 30%)',
         'md': '0 4px 16px 0 rgba(0, 0, 0, 45%)',
         'lg': '0 6px 20px 0 rgba(0, 0, 0, 40%)',
+      },
+      backgroundImage: {
+        'gray-linear': 'linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--secondary-100) 100%, rgba(0,0,0,0) 100%)',
+      },
+      keyframes: {
+        line: {
+          '0%': {
+            backgroundPosition: '-100% 100%',
+          },
+          '100%': { 
+            backgroundPosition: '200% 100%',
+          },
+        }
+      },
+      animation: {
+        line: 'line 2s ease-in-out infinite',
       },
       colors: {
         // Purple

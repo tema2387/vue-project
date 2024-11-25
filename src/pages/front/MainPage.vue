@@ -1,12 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-// Swiper slider
+// Swiper Slider
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-// Components
+// Компоненты
 import FrontLayout from '@/layouts/FrontLayout.vue';
 import SectionWrapper from '@/components/blocks/SectionWrapper.vue';
 import SlideReview from '@/components/blocks/SlideReview.vue';
@@ -17,8 +16,7 @@ import UiAccordion from '@/components/UI/UiAccordion.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiButton from '@/components/UI/UiButton.vue';
 import UiTextarea from '@/components/UI/UiTextarea.vue';
-
-// Icons
+// Иконки
 import LaptopChargingIcon from '@/components/UI/svg/LaptopChargingIcon.vue';
 import TransitionUpIcon from '@/components/UI/svg/TransitionUpIcon.vue';
 import EditIcon from '@/components/UI/svg/EditIcon.vue';
@@ -39,18 +37,16 @@ function changeAccordion(activeIndex) {
   activeAccordion.value = activeIndex;
 }
 
- // JS modules
 import activeDarkTheme from '@/modules/changeTheme.js';
 import loadingImage from '@/modules/loadingImage.js';
 
 const { loaded, loading }  = loadingImage();
 
 onMounted(() => {
-  // async load bg image
+  // Асинхронная загрузка бэкграунда
   loading('/img/front-bg-image.png');
 })
 </script>
-
 <template>
   <FrontLayout :header="'fixed'">
     <div class="front-main-page">
@@ -363,9 +359,9 @@ onMounted(() => {
           >
             <div class="faq__section-content flex flex-col lg:flex-row gap-[100px] mt-[64px]">
               <UiImage
-                :src="'/img/Illustration-faq-section.png'" 
+                :src="'/img/illustration-faq-section.png'" 
                 :alt="'faq-img'" 
-                class="lg:ml-[200px] w-[320px] aspect-auto max-h-[340px] self-center" 
+                class="lg:ml-[200px] w-[320px] aspect-[4/4.25] self-center" 
               />
               <div class="faq__accordion flex flex-1 flex-col gap-[8px]"> 
                 <UiAccordion

@@ -1,14 +1,12 @@
 <script setup>
-// components
+// Компоненты
 import UiInputText from '@/components/UI/UiInputText.vue';
-
-// icons
+// Иконки
 import CloseLineIcon from '@/components/UI/svg/CloseLineIcon.vue';
-
-// js
+// Хранилище
 import { removeProduct } from '@/store/productsStore.js';
 
-// type can be default(default) or confirm
+// Пропс type может быть default или confirm
 const props = defineProps({
   id: {
     type: Number,
@@ -51,7 +49,6 @@ const props = defineProps({
     required: true,
   }
 })
-
 </script>
 <template>
   <div 

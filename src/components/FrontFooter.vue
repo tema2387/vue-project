@@ -1,13 +1,11 @@
 <script setup>
-// Components
+// Компоненты
 import UiInputText from '@/components/UI/UiInputText.vue';
-
-// Icons
+// Иконки
 import FacebookIcon from '@/components/UI/svg/FacebookIcon.vue';
 import GithubIcon from '@/components/UI/svg/GithubIcon.vue';
 import GoogleIcon from '@/components/UI/svg/GoogleIcon.vue';
 import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
-
 </script>
 <template>
   <div class="footer m-0 dark">
@@ -33,7 +31,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
               :id="'footer-mail'" 
               :type="'outlined'" 
               :label="'Subscribe to newsletter'" 
-              :placeholder="'aboba@mail'"
+              :placeholder="'test@mail'"
               :size="'sm'"
               :label-bg-color="'footer'"
               class="max-w-[230px]"

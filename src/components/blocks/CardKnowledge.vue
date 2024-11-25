@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from "vue";
-
-// icons
+// Иконки
 import ArrowRightSIcon from "@/components/UI/svg/ArrowRightSIcon.vue";
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 
@@ -25,7 +24,6 @@ const props = defineProps({
 const itemsMax = computed(() => {
   return props.items.length > 6 ? props.items.slice(0, 6) : props.items;
 })
-
 </script>
 <template>
   <div class="card-knowledge flex flex-1 flex-col min-w-[250px] justify-between shadow-md p-[20px] rounded-md gap-[24px]">

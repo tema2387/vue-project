@@ -1,6 +1,5 @@
 import { ref, watch } from 'vue';
 
-// default card
 export const cardNumber = ref(null);
 export const cardName = ref(null);
 export const cardDate = ref(null);

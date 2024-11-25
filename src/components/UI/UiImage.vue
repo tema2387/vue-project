@@ -10,12 +10,6 @@ const props = defineProps({
   alt: {
     type: String,
     required: true
-  },
-  loaderSize: {
-    type: Number,
-    default() {
-      return 50;
-    }
   }
 })
 
@@ -35,10 +29,6 @@ watch(() => props.src, (newValue) => {
     v-if="loaded"
     :src="loaded" 
     :alt="alt"
-  >
-  <div v-else>
-    <div class="loader-wrapper w-full h-full flex justify-center items-center">
-      <div class="loader max-w-[50px] max-h-[50px]" :style="{ 'width': loaderSize + 'px' }"></div>
-    </div>
-  </div>
+  />
+  <img v-else src="/public/img/opacity-loader-bg.png" class="bg-gray-linear bg-[length:50%_100%] bg-no-repeat animate-line rounded-md">
 </template>

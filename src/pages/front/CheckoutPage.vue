@@ -1,21 +1,19 @@
 <script setup>
 import { computed, ref } from 'vue';
-
-// components
+// Компоненты
 import FrontLayout from '@/layouts/FrontLayout.vue';
 import CheckoutCart from '@/components/blocks/CheckoutCart.vue';
 import CheckoutAddress from '@/components/blocks/CheckoutAddress.vue';
 import CheckoutPayment from '@/components/blocks/CheckoutPayment.vue';
 import CheckoutConfirmation from '@/components/blocks/CheckoutConfirmation.vue';
-
-// icons
+// Иконки
 import CheckoutCartIcon from '@/components/UI/svg/CheckoutCartIcon.vue';
 import CheckoutAddressIcon from '@/components/UI/svg/CheckoutAddressIcon.vue';
 import CheckoutPaymentIcon from '@/components/UI/svg/CheckoutPaymentIcon.vue';
 import CheckoutConfirmationIcon from '@/components/UI/svg/CheckoutConfirmationIcon.vue';
 import ArrowRightSIcon from '@/components/UI/svg/ArrowRightSIcon.vue';
 
-// component can be 'cart', 'address', 'payment', 'confirmation'
+// Пременная component может быть 'cart', 'address', 'payment', 'confirmation'
 const component = ref('cart');
 
 const currentComponent = computed(() => {

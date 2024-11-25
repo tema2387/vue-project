@@ -1,4 +1,4 @@
-// H settings
+// H настройки
 h1 {
   font-size: 46px;
   line-height: 68px;
@@ -35,37 +35,42 @@ h6 {
   font-weight: 500;
 }
 
-// remove style for default select global
+// Удаление стилей у селекта (глобально)
 select {
   -webkit-appearance: none;    // Для Chrome и Safari
   -moz-appearance: none;      // Для Firefox 
   appearance: none;           // Стандартное свойство
 }
 
-// remove font weight bold for elements table (global)
+// Удаление жирного шрифта для таблицы (глобально)
 tr, th, td {
   font-weight: inherit;
 }
 
+// Неровная фигура для компонента CenterLayout
+.center-layout-bottom-figure {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 40%);
+}
+
 // loader for async load images
 /* HTML: <div class="loader"></div> in component UiImage */
-.loader {
-  padding: 10px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--primary-500);
-  --_m: 
-    conic-gradient(#0000 10%,#000),
-    linear-gradient(#000 0 0) content-box;
-  -webkit-mask: var(--_m);
-          mask: var(--_m);
-  -webkit-mask-composite: source-out;
-          mask-composite: subtract;
-  animation: l3 1s infinite linear;
-}
-@keyframes l3 {to{transform: rotate(1turn)}}
+// .loader {
+//   padding: 10px;
+//   aspect-ratio: 1;
+//   border-radius: 50%;
+//   background: var(--primary-500);
+//   --_m: 
+//     conic-gradient(#0000 10%,#000),
+//     linear-gradient(#000 0 0) content-box;
+//   -webkit-mask: var(--_m);
+//           mask: var(--_m);
+//   -webkit-mask-composite: source-out;
+//           mask-composite: subtract;
+//   animation: l3 1s infinite linear;
+// }
+// @keyframes l3 {to{transform: rotate(1turn)}}
 
-// swiper slider styles (global)
+// Swiper Slider стили (глобально)
 .swiper {
   overflow: visible !important;
 }
@@ -81,10 +86,9 @@ tr, th, td {
   margin-left: 14px !important;
 }
 
-// style for libraries for front-main-page
+// Стили для библиотек на странице front-main-page
 .front-main-page {
-
-  // swiper slider
+  // Swiper Slider
   .swiper-wrapper {
     align-items: center;
   }
@@ -160,7 +164,7 @@ tr, th, td {
   }
 }
 
-// transition settings
+// Настройки transition
 .popup-enter-active,
 .popup-leave-active {
   transition: all 0.5s ease;
