@@ -1,12 +1,11 @@
 <script setup>
 import { ref } from "vue";
-// components
+// Компоненты
 import FrontLayout from "@/layouts/FrontLayout.vue";
 import UiToggle from "@/components/UI/UiToggle.vue";
 import PricingPlan from "@/components/blocks/PricingPlan.vue";
 import UiAccordion from "@/components/UI/UiAccordion.vue";
-
-// icons
+// Иконки
 import ArrowDownSaveIcon from "@/components/UI/svg/ArrowDownSaveIcon.vue";
 import ApproveTableIcon from "@/components/UI/svg/ApproveTableIcon.vue";
 import CancelTableIcon from "@/components/UI/svg/CancelTableIcon.vue";
@@ -16,7 +15,6 @@ const activeAccordion = ref(2);
 function changeAccordion(id) {
   activeAccordion.value = id;
 }
-
 </script>
 <template>
   <FrontLayout>

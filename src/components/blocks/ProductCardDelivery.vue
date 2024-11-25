@@ -9,7 +9,6 @@ const props = defineProps({
     required: true,
   },
 })
-
 </script>
 <template>
   <div class="product-cart-delivery flex items-center gap-[16px]">

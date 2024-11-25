@@ -1,17 +1,16 @@
 import {createRouter, createWebHistory} from 'vue-router';
-
-// Components
-// front pages
+// Компоненты
+// Страницы демонстрационные
 import MainPage from '@/pages/front/MainPage.vue';
 import OrderPage from '@/pages/front/OrderPage.vue';
 import PlansPage from '@/pages/front/PlansPage.vue';
 import HelpPage from '@/pages/front/HelpPage.vue';
 import QuestionPage from '@/pages/front/QuestionPage.vue';
 import CheckoutPage from '@/pages/front/CheckoutPage.vue';
-
-// admin pages
+// Страницы админки
 import RegistrationPage from '@/pages/admin/RegistrationPage.vue';
 import AuthPage from '@/pages/admin/AuthPage.vue';
+import AdminPage from '@/pages/admin/AdminPage.vue';
 
 const routes = [
   { path: '/', component: MainPage },
@@ -21,7 +20,8 @@ const routes = [
   { path: '/question/:id', component: QuestionPage },
   { path: '/checkout', component: CheckoutPage  },
   { path: '/registration', component: RegistrationPage },
-  { path: '/auth', component: AuthPage }
+  { path: '/auth', component: AuthPage },
+  { path: '/admin', component: AdminPage  },
 ]
 
 const router = createRouter({

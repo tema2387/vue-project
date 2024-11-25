@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-
-// store
+// Хранилище
 import { setPlanPrice } from '@/store/plansStore.js';
 
 const props = defineProps({
@@ -54,7 +53,6 @@ const props = defineProps({
 })
 
 const isHovered = ref(false);
-
 </script>
 <template>
   <div 

@@ -1,23 +1,18 @@
 <script setup>
 import FrontLayout from "@/layouts/FrontLayout.vue";
-
-// components
+// Компоненты
 import UiInputText from "@/components/UI/UiInputText.vue";
 import CardRead from "@/components/blocks/CardRead.vue";
 import CardKnowledge from "@/components/blocks/CardKnowledge.vue";
-
-// icons
+// Иконки
 import RocketIcon from "@/components/UI/svg/RocketIcon.vue";
 import GiftIcon from "@/components/UI/svg/GiftIcon.vue";
 import KeyboardIcon from "@/components/UI/svg/KeyboardIcon.vue";
 import LaptopIcon from "@/components/UI/svg/LaptopIcon.vue";
 import LightBulbIcon from "@/components/UI/svg/LightBulbIcon.vue";
 import DiscordIcon from "@/components/UI/svg/DiscordIcon.vue";
-
-// store
+// Хранилище
 import { buying, itemSupport, licenses, templateKits, accountAndPassword, accountSettings } from "@/store/knowledgeBaseStore.js";
-
-
 </script>
 <template>
 <FrontLayout>

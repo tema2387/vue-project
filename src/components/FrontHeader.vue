@@ -1,14 +1,16 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-
-// icons
+// Иконки
 import MoonClearIcon from '@/components/UI/svg/MoonClearIcon.vue';
 import ArrowDownSIcon from '@/components/UI/svg/ArrowDownSIcon.vue';
 import SignInIcon from '@/components/UI/svg/SignInIcon.vue';
 import SignUpIcon from '@/components/UI/svg/SignUpIcon.vue';
+// Модули
+import activeDarkTheme from '@/modules/changeTheme.js';
+import { navList, hiddenNavList, loadWindowWidth } from '@/modules/adaptiveHeaderMenu';
 
-// type can be 'fixed' or without value
+// Пропс type может быть 'fixed' или любое другое текстовое значение
 const props = defineProps({
   type: {
     type: String,
@@ -17,10 +19,6 @@ const props = defineProps({
     }
   }
 })
-
-// js
-import activeDarkTheme from '@/modules/changeTheme.js';
-import { navList, hiddenNavList, loadWindowWidth } from '@/modules/adaptiveHeaderMenu';
 
 onMounted(() => {
   loadWindowWidth();

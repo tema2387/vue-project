@@ -1,13 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-
-// components
+// Компоненты
 import UiPopup from '@/components/UI/UiPopup.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiToggle from '@/components/UI/UiToggle.vue';
-
-// js
+// Хранилище
 import { address } from '@/store/addressStore.js';
+// Модули
 import { cardNumber, cardName, cardDate, cardCvv, clearCardFields, saveCard } from '@/modules/checkCardFields.js';
 
 const emit = defineEmits('changeAddress');

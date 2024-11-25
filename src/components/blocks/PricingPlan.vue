@@ -61,7 +61,6 @@ const props = defineProps({
     }
   }
 })
-
 </script>
 <template>
   <div class="pricing-plan flex-1 flex flex-col min-w-[280px] gap-[20px] px-[24px] pt-[60px] pb-[20px] border border-devider rounded-md text-center relative">

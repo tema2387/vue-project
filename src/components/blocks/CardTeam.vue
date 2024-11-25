@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from 'vue';
-// Icons
+// Иконки
 import FacebookCircleIcon from '@/components/UI/svg/FacebookCircleIcon.vue';
 import TwitterLineIcon from '@/components/UI/svg/TwitterLineIcon.vue';
 import LinkedInBoxIcon from '@/components/UI/svg/LinkedInBoxIcon.vue';
 
-// color can be 'primary', 'error', 'success', 'info'
+// Пропс color может быть 'primary', 'error', 'success', 'info'
 const props = defineProps({
   img: {
     type: String,
@@ -46,7 +46,6 @@ const colorBorder = computed(() => {
       : props.color === 'info' ? 'hover:border-info-opacity/[16%]' 
         : 'hover:border-primary-opacity/[16%]';
 });
-
 </script>
 <template>
   <div 

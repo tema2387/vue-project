@@ -1,15 +1,13 @@
 <script setup>
 import { ref } from 'vue';
-// components
+// Компоненты
 import ProductCardDelivery from '@/components/blocks/ProductCardDelivery.vue';
 import UiRadioCustom from '@/components/UI/UiRadioCustom.vue';
-
-// icons
+// Иконки
 import UserStandardIcon from '@/components/UI/svg/UserStandardIcon.vue';
 import StarSmileIcon from '@/components/UI/svg/StarSmileIcon.vue';
 import VipCrownIcon from '@/components/UI/svg/VipCrownIcon.vue';
-
-// js
+// Хранилище
 import { products } from '@/store/productsStore.js';
 import { addresses, removeAddress, selectedAddress } from '@/store/addressStore.js';
 import { deliveries } from '@/store/deliverySpeedStore.js';

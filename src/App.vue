@@ -1,19 +1,20 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-
-// components
-import UIPopup from '@/components/UI/UIPopup.vue';
+// Страницы
+import NotFoundPage from '@/pages/error/NotFoundPage.vue';
+// Компоненты
+import UiPopup from '@/components/UI/UIPopup.vue';
+// Модули
+import { popupText, popupStatus, popupColor, closePopup } from '@/modules/showPopup.js';
 
 const route = useRoute();
 
-// js
-import { popupText, popupStatus, popupColor, closePopup } from '@/modules/showPopup.js';
-
 const currentComponent = computed(() => {
-  return route.matched[0]?.components.default;
+  if(route.matched[0]) {
+    return route.matched[0]?.components.default;
+  }
 });
-
 </script>
 <template>
   <div class="app flex flex-col min-h-screen bg-paper-bg overflow-hidden text-text-primary text-15 relative">
@@ -22,15 +23,16 @@ const currentComponent = computed(() => {
         v-if="popupStatus" 
         class="popup-wrapper fixed z-[999] top-[50px] left-[50%] w-max"
       >
-        <UIPopup 
+        <UiPopup 
           :title="popupText" 
           :color="popupColor"
           class="translate-x-[-50%]"
           @close="closePopup"
         >
-        </UIPopup>
+        </UiPopup>
       </div> 
     </Transition>
-    <component :is="currentComponent"></component>
+    <component v-if="currentComponent" :is="currentComponent"></component>
+    <NotFoundPage v-else />
   </div>
 </template>

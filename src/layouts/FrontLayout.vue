@@ -2,7 +2,7 @@
 import FrontHeader from '@/components/FrontHeader.vue';
 import FrontFooter from '@/components/FrontFooter.vue';
 
-// header can be 'fixed' or without value
+// Пропс header может быть 'fixed' или любое другое текстовое значение
 const props = defineProps({
   header: {
     type: String,
@@ -12,7 +12,6 @@ const props = defineProps({
   }
 })
 </script>
-
 <template>
   <FrontHeader :type="header" />
   <div class="page-content grow">

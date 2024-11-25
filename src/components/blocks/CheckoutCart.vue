@@ -1,26 +1,24 @@
 <script setup>
 import { ref } from 'vue';
-
-// components
+// Компоненты
 import UiInputText from '@/components/UI/UiInputText.vue';
 import ProductCard from '@/components/blocks/ProductCard.vue';
 import UiPopup from '@/components/UI/UiPopup.vue';
-
-// icons 
+// Иконки
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
+// Хранилище
+import { products } from '@/store/productsStore.js';
+// Модули
+import { activatePopup } from '@/modules/showPopup.js';
+import { checkValidPromo } from '@/modules/validateInputs';
 
-// border for product-cart
+// border для product-cart
 const borderAloneElement = 'border rounded-md';
 const borderTwoElements = ['border rounded-t-md', 'border-x border-b rounded-b-md']
 const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'border rounded-b-md']
 
-// js
-import { products } from '@/store/productsStore.js';
-import { activatePopup } from '@/modules/showPopup.js';
-import { checkValidPromo } from '@/modules/validateInputs';
-
 const popupOfferStatus = ref(true);
-const promo = ref('123');
+const promo = ref('test');
 
 function activatePromo() {
   const statusPromo = checkValidPromo(promo.value);

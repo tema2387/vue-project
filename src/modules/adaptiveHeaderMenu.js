@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue';
 
-// Список нескрытых элеметов 
+// Список нескрытых элементов 
 export const navList = ref([
   { name: 'Home', link: '/' },
   { name: 'Order', link: '/order' },

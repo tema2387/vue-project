@@ -23,7 +23,6 @@ const props = defineProps({
     }
   },
 })
-
 </script>
 <template>
   <div class="card-read flex flex-1 flex-col min-w-[200px] justify-between p-[20px] rounded-md border border-devider text-center items-center gap-[12px] text-text-secondary">

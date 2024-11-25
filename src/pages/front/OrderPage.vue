@@ -1,12 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-// components
+// Компоненты
 import FrontLayout from "@/layouts/FrontLayout.vue";
 import UiInputText from "@/components/UI/UiInputText.vue";
 import UiRadioCustom from "@/components/UI/UiRadioCustom.vue";
 import UiSelect from "@/components/UI/UiSelect.vue";
-
-// store
+// Хранилище
 import { planPrice } from '@/store/plansStore.js';
 
 const modelRadio = ref('radio-pay-visa');
