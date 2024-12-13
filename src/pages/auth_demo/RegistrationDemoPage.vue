@@ -1,14 +1,11 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 // Компоненты
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiCheckbox from '@/components/UI/UiCheckbox.vue';
-
-const passwordHidden = ref(true);
-
-const registrationFields = reactive({ username: null, email: null, password: null });
-
+// Импортирование функций для валидации регистрационных данных
+const passwordHidden = ref(false);
 </script>
 <template>
   <AuthLayout>
@@ -26,17 +23,11 @@ const registrationFields = reactive({ username: null, email: null, password: nul
           :id="'username'" 
           :size="'md'"
           :label="'Username'"
-          :status="errorUsername ? 'error' : 'default'"
-          :helpText="errorUsername ? errorUsername : ''"
-          v-model="registrationFields.username"
         />
         <UiInputText 
           :id="'email'" 
           :size="'md'" 
           :label="'Email'"
-          :status="errorEmail ? 'error' : 'default'"
-          :helpText="errorEmail ? errorEmail : ''"
-          v-model="registrationFields.email"
         />
         <UiInputText 
           :id="'password'" 
@@ -44,21 +35,18 @@ const registrationFields = reactive({ username: null, email: null, password: nul
           :label="'Password'"
           :eyeIcon="true"
           :passwordInput="passwordHidden"
-          :status="errorPassword ? 'error' : 'default'"
-          :helpText="errorPassword ? errorPassword : ''"
           @toggleInput="passwordHidden = !passwordHidden"
-          v-model="registrationFields.password"
         />
         <div class="flex gap-[5px]">
           <UiCheckbox :id="'agree'" :name="'agree'">I agree to</UiCheckbox>
           <UiLink class="text-primary-500">privacy policy & terms</UiLink>
         </div>
-        <UiButton :size="'md'" @click="signUp">Sign Up</UiButton>
+        <UiButton :size="'md'">Sign Up</UiButton>
       </div>
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>Already have an account?</span>
         <UiLink 
-          :href="'/auth'" 
+          :href="'/auth-demo'" 
           class="text-primary-500"
         >
           Sign in instead

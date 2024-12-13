@@ -30,6 +30,10 @@ import DribbbleIcon from '@/components/UI/svg/DribbbleIcon.vue';
 import ContinentalsIcon from '@/components/UI/svg/ContinentalsIcon.vue';
 import SectionStarIcon from '@/components/UI/svg/SectionStarIcon.vue';
 import SectionCheckIcon from '@/components/UI/svg/SectionCheckIcon.vue';
+// Модули
+import { activeDarkTheme } from '@/modules/changeTheme.js';
+import loadingImage from '@/modules/loadingImage.js';
+import { home, features, team, faq, contact, setObserver } from '@/modules/observeSections.js';
 
 const activeAccordion = ref(2);
 
@@ -37,20 +41,18 @@ function changeAccordion(activeIndex) {
   activeAccordion.value = activeIndex;
 }
 
-import activeDarkTheme from '@/modules/changeTheme.js';
-import loadingImage from '@/modules/loadingImage.js';
-
 const { loaded, loading }  = loadingImage();
 
 onMounted(() => {
+  setObserver(home, features, team, faq, contact);
   // Асинхронная загрузка бэкграунда
   loading('/img/front-bg-image.png');
 })
 </script>
 <template>
-  <FrontLayout :header="'fixed'">
+  <FrontLayout>
     <div class="front-main-page">
-      <section class="start px-[20px] relative bg-no-repeat bg-center-top bg-contain" :style="{ backgroundImage: `url(${loaded})` }">
+      <section ref="home" class="start px-[20px] relative bg-no-repeat bg-center-top bg-contain" :style="{ backgroundImage: `url(${loaded})` }">
         <div class="start__content container pt-[126px] flex flex-col items-center text-center">
           <div class="start__top">
             <h2 class="start__title text-primary-500 font-extrabold">All in one sass application<br>for your business</h2>
@@ -66,7 +68,7 @@ onMounted(() => {
           </div>
         </div>
       </section>
-      <section class="features px-[20px] py-[100px]">
+      <section ref="features" class="features px-[20px] py-[100px]">
         <div class="features__content container">
           <SectionWrapper 
             :title="'USEFUL FEATURES'"
@@ -227,7 +229,7 @@ onMounted(() => {
           </SectionWrapper>
         </div>
       </section>
-      <section class="team px-[20px] py-[100px]">
+      <section ref="team" class="team px-[20px] py-[100px]">
         <div class="team__content relative container">
           <SectionStarIcon class="absolute right-0 top-0" />
           <SectionWrapper
@@ -347,7 +349,7 @@ onMounted(() => {
           </ul>
         </div>
       </section>
-      <section class="faq px-[20px] bg-body-bg py-[100px]">
+      <section ref="faq" class="faq px-[20px] bg-body-bg py-[100px]">
         <div class="faq__content container relative">
           <SectionStarIcon class="absolute right-0 top-0" />
           <SectionWrapper
@@ -414,7 +416,7 @@ onMounted(() => {
           </div>
         </div>
       </section>
-      <section class="contact px-[20px] py-[100px] bg-body-bg">
+      <section ref="contact" class="contact px-[20px] py-[100px] bg-body-bg">
         <div class="contact__content container">
           <SectionWrapper
             :title="'CONTACT US'"

@@ -35,6 +35,14 @@ h6 {
   font-weight: 500;
 }
 
+// Запретить выделять текс у ссылок и кнопок
+a, button {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Стандартный синтаксис */
+}
+
 // Удаление стилей у селекта (глобально)
 select {
   -webkit-appearance: none;    // Для Chrome и Safari
@@ -46,6 +54,7 @@ select {
 tr, th, td {
   font-weight: inherit;
 }
+
 
 // Неровная фигура для компонента CenterLayout
 .center-layout-bottom-figure {
@@ -176,3 +185,31 @@ tr, th, td {
   opacity: 0;
 }
 
+.burger-menu-enter-active,
+.burger-menu-leave-active {
+  transition: all 0.5s ease;
+}
+
+.burger-menu-enter-from, 
+.burger-menu-leave-to {
+  transform: translateX(-100%);
+}
+
+.opacity-enter-active,
+.opacity-leave-active {
+  transition: all 0.5s ease;
+}
+
+.opacity-enter-from, 
+.opacity-leave-to {
+  opacity: 0;
+}
+
+.admin-menu-enter-active,
+.admin-menu-leave-active {
+  transition: max-height 0.5s ease;
+}
+.admin-menu-enter-from,
+.admin-menu-leave-to {
+  max-height: 0 !important;
+}

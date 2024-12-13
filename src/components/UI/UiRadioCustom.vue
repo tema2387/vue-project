@@ -1,5 +1,5 @@
 <script setup>
-// type can be 'basic'(its default), 'icon', 'custom-icon', 'image'
+// Пропс может быть 'basic', 'icon', 'custom-icon', 'image'
 const props = defineProps({
   id: {
     type: [String, Number],

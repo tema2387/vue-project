@@ -1,12 +1,8 @@
 <script setup>
-import { reactive } from 'vue';
 // Компоненты
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiCheckbox from '@/components/UI/UiCheckbox.vue';
-
-
-const authFields = reactive({ email: 'test@test', password: 'test' });
 </script>
 <template>
   <AuthLayout>
@@ -24,27 +20,22 @@ const authFields = reactive({ email: 'test@test', password: 'test' });
           :id="'email'" 
           :size="'md'" 
           :label="'Email'"
-          :status="authError ? 'error' : 'default'"
-          v-model="authFields.email"
         />
         <UiInputText 
           :id="'password'" 
           :size="'md'" 
           :label="'Password'"
-          :status="authError ? 'error' : 'default'"
-          v-model="authFields.password"
         />
-        <div v-if="authError" class="error-auth text-error-500">Incorrect login or password</div>
         <div class="flex justify-between">
           <UiCheckbox :id="'remember-account'" :name="'remember-account'">Remember Me</UiCheckbox>
           <UiLink :href="'#'" class="text-primary-500">Forgot Password?</UiLink>
         </div>
-        <UiButton :size="'md'" @click="auth">Login</UiButton>
+        <UiButton :size="'md'">Login</UiButton>
       </div>
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>New on our platform?</span>
         <UiLink 
-          :href="'/registration'" 
+          :href="'/registration-demo'" 
           class="text-primary-500"
         >
           Create an account

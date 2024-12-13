@@ -49,11 +49,11 @@ const colorBorder = computed(() => {
 </script>
 <template>
   <div 
-    class="card group duration-200 rounded-md border border-devider w-[265px]" 
+    class="card-team group duration-200 rounded-md border border-devider w-[265px]" 
     :class="colorBorder"
   >
     <div 
-      class="card__bg rounded-t-md relative h-[189px]" 
+      class="card-team__bg rounded-t-md relative h-[189px]" 
       :class="colorBg"
     >
       <UiImage 
@@ -62,10 +62,10 @@ const colorBorder = computed(() => {
         :alt="'team-photo'"
       />
     </div>
-    <div class="card__content py-[20px] text-center">
-      <h5 class="card__name">{{ name }}</h5>
-      <span class="card__job text-text-secondary">{{ job }}</span>
-      <div class="card__socials mt-[12px] text-text-primary flex gap-[12px] justify-center">
+    <div class="card-team__content py-[20px] text-center">
+      <h5 class="card-team__name">{{ name }}</h5>
+      <span class="card-team__job text-text-secondary">{{ job }}</span>
+      <div class="card-team__socials mt-[12px] text-text-primary flex gap-[12px] justify-center">
         <UiLink>
           <FacebookCircleIcon class="group-hover:text-color-facebook-icon duration-200" />
         </UiLink>

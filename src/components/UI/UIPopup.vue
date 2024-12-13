@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-
-// icons
+// Иконки
 import CloseLineIcon from '@/components/UI/svg/CloseLineIcon.vue';
 
 const props = defineProps({
@@ -73,14 +72,14 @@ const emit = defineEmits(['close']);
     :class="setBg"
   >
     <div 
-      class="flex-1"
+      class="popup__title flex-1"
       :class="setColor"
     >
       <h5>{{ title }}</h5>
     </div>
     <CloseLineIcon 
       @click="emit('close')"
-      class="cursor-pointer" 
+      class="popup__icon cursor-pointer" 
       :class="setColor"
     />
   </div>

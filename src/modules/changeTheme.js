@@ -1,7 +1,11 @@
 import { ref, watch } from 'vue';
 
-const activeDarkTheme = ref(false);
+export const activeDarkTheme = ref(false);
 const html = document.querySelector('html');
+
+export function changeTheme() {
+  activeDarkTheme.value = !activeDarkTheme.value;
+}
 
 if (document.cookie.includes('theme=dark')) {
   html.classList.add('dark');
@@ -17,5 +21,3 @@ watch(activeDarkTheme, (value) => {
     document.cookie = 'theme=dark; max-age=-1';
   }
 });
-
-export default activeDarkTheme;

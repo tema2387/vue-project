@@ -1,101 +1,143 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 // Иконки
 import MoonClearIcon from '@/components/UI/svg/MoonClearIcon.vue';
 import ArrowDownSIcon from '@/components/UI/svg/ArrowDownSIcon.vue';
-import SignInIcon from '@/components/UI/svg/SignInIcon.vue';
-import SignUpIcon from '@/components/UI/svg/SignUpIcon.vue';
+import ShoppingCatIcon from '@/components/UI/svg/ShoppingCartIcon.vue';
+import SunIcon from '@/components/UI/svg/SunIcon.vue';
+import CloseLineIcon from '@/components/UI/svg/CloseLineIcon.vue';
+import CircleIcon from '@/components/UI/svg/CircleIcon.vue';
+import PagesTitleIcon from '@/components/UI/svg/PagesTitleIcon.vue';
 // Модули
-import activeDarkTheme from '@/modules/changeTheme.js';
-import { navList, hiddenNavList, loadWindowWidth } from '@/modules/adaptiveHeaderMenu';
+import { activeDarkTheme, changeTheme } from '@/modules/changeTheme.js';
+import { home, features, team, faq, contact, visibleSection } from '@/modules/observeSections.js';
 
-// Пропс type может быть 'fixed' или любое другое текстовое значение
-const props = defineProps({
-  type: {
-    type: String,
-    default() {
-      return '';
-    }
-  }
-})
-
-onMounted(() => {
-  loadWindowWidth();
-})
-
-const typeFixed = 'fixed border border-t-0 border-paper-bg/[75%] rounded-b-md top-0 left-0 right-0 m-auto max-w-[1140px]';
-const dropdownMenuOpen = ref(false);
-const dropdownMenu = ref(null);
 const route = useRoute();
+const router = useRouter();
 
-function toggleDropdown() {
-  dropdownMenuOpen.value = !dropdownMenuOpen.value;
+const pagesMenuDesktop = ref(false);
+const pagesMenu = ref(false);
+const burgerMenuOpened = ref(false);
+
+const itemActive = ref(false);
+const menuActive = ref(false);
+
+let timeout;
+
+function scrollToSection(section) {
+  if(route.path !== '/landing') {
+    router.push('/landing');
+  }
+  
+  burgerMenuOpened.value = false;
+  section?.scrollIntoView({ behavior: 'smooth' });
 }
 
-function clickOutside(event) {
-  if(!dropdownMenu.value.contains(event.target)) {
-    dropdownMenuOpen.value = false;
-  }
+function openBurgerMenu() {
+  burgerMenuOpened.value = true;
 }
 
-watch(dropdownMenuOpen, (newValue) => {
-  if(newValue) {
-    document.addEventListener('click', clickOutside);
-  } else {
-    document.removeEventListener('click', clickOutside);
-  }
-})
+function closeBurgerMenu() {
+  burgerMenuOpened.value = false;
+}
 
-const setType = computed(() => {
-  return props.type === 'fixed' ? typeFixed : '';
-})
+function mouseItemEnter() {
+  clearTimeout(timeout);
+
+  pagesMenuDesktop.value = true;
+  itemActive.value = true;
+}
+
+function mouseMenuEnter() {
+  clearTimeout(timeout);
+
+  pagesMenuDesktop.value = true;
+  menuActive.value = true;
+}
+
+function mouseItemLeave() {
+  itemActive.value = false;
+
+  timeout = setTimeout(() => {
+    if(!itemActive.value && !menuActive.value) {
+      pagesMenuDesktop.value = false;
+    }
+  }, 1000)
+}
+
+function mouseMenuLeave() {
+  menuActive.value = false;
+
+  timeout = setTimeout(() => {
+    if(!itemActive.value && !menuActive.value) {
+      pagesMenuDesktop.value = false;
+    }
+  }, 1000)
+}
 </script>
 <template>
-  <div 
-    class="header z-[99] bg-paper-bg/[64%] text-15-500"
-    :class="setType"
-  >
-    <div class="flex items-center gap-[20px] sm:gap-[32px] max-w-[1140px] m-auto px-[20px] md:px-[32px] py-[12px]">
+  <div class="header h-[62px] flex items-center z-[100] fixed border border-t-0 border-paper-bg/[75%] rounded-b-md top-0 left-0 right-0 m-auto max-w-[1140px] bg-paper-bg/[64%] text-15-500">
+    <div class="header__content flex flex-grow relative items-center gap-[20px] px-[20px] lg:px-[32px]">
+      <div @click="openBurgerMenu" class="burger cursor-pointer w-[20px] h-[16px] flex flex-col justify-between lg:hidden">
+        <span class="h-[2px] bg-text-primary rounded-md"></span>
+        <span class="h-[2px] bg-text-primary rounded-md"></span>
+        <span class="h-[2px] bg-text-primary rounded-md"></span>
+      </div>
       <UiLink 
         :href="'/'"
-        class="header__left flex gap-[0px] sm:gap-[12px] items-center"
+        class="header__left flex gap-[0px] sm:gap-[12px] items-center max-lg:flex-1"
       >
         <img 
           class="max-w-[30px]"
           src="/img/logos/materio-logo.png"
           alt="logo" 
         >
-        <div div class="logo-name hidden sm:block text-logo">MATERIO</div>
+        <div class="logo-name hidden sm:block text-logo">MATERIO</div>
       </UiLink>
-      <nav class="menu flex-grow flex-shrink">
+      <nav class="menu flex-grow flex-shrink hidden lg:block">
         <ul class="menu__list flex items-center gap-[20px]">
           <li 
-            v-for="nav in navList" 
-            class="menu__item"
-            :class="{ 'text-primary-500': route.path === nav.link }"
+            class="menu__item cursor-pointer" 
+            @click="scrollToSection(home)" 
+            :class="{ 'text-primary-500': visibleSection?.target === home }"
           >
-            <UiLink :href="nav.link">{{ nav.name }}</UiLink>
+            Home
           </li>
           <li 
-            v-if="hiddenNavList.length" 
-            class="menu__item relative duration-200 cursor-pointer"
-            ref="dropdownMenu"
-          > 
-            <div @click="toggleDropdown" class="flex items-center gap-[8px]">
-              Pages
-              <ArrowDownSIcon class="duration-200" :class="{'rotate-180': dropdownMenuOpen}" />
-            </div>
-              <div v-if="dropdownMenuOpen"  class="w-max rounded-md border py-[10px] flex flex-col border-devider absolute bg-paper-bg top-[150%]">
-                <UiLink 
-                  v-for="nav in hiddenNavList" 
-                  :href="nav.link" 
-                  :class="{ 'text-primary-500': route.path === nav.link }" 
-                  class="px-[20px] py-[10px] hover:bg-secondary-opacity/[16%] hover:opacity-100"
-                >
-                    {{ nav.name }}
-                </UiLink>
-              </div>
+            class="menu__item cursor-pointer" 
+            @click="scrollToSection(features)" 
+            :class="{ 'text-primary-500': visibleSection?.target === features }"
+          >
+            Features
+          </li>
+          <li 
+            class="menu__item cursor-pointer" 
+            @click="scrollToSection(team)" 
+            :class="{ 'text-primary-500': visibleSection?.target === team }"
+          >
+            Team
+          </li>
+          <li 
+            class="menu__item cursor-pointer" 
+            @click="scrollToSection(faq)" :class="{ 'text-primary-500': visibleSection?.target === faq }"
+          >
+            FAQ
+          </li>
+          <li 
+            class="menu__item cursor-pointer" 
+            @click="scrollToSection(contact)" 
+            :class="{ 'text-primary-500': visibleSection?.target === contact }"
+          >
+            Contact us
+          </li>
+          <li 
+            @mouseenter="mouseItemEnter" 
+            @mouseleave="mouseItemLeave" 
+            class="menu__item flex items-center cursor-pointer"
+          >
+            <div>Pages</div>
+            <ArrowDownSIcon :class="{'rotate-180': pagesMenuDesktop}" />
           </li>
         </ul>
       </nav>
@@ -103,25 +145,221 @@ const setType = computed(() => {
         <UiButton 
           :type="'inline-text'" 
           class="flex items-center"
-          @click="activeDarkTheme = !activeDarkTheme"
+          @click="changeTheme"
         >
-          <MoonClearIcon />
+          <MoonClearIcon v-if="activeDarkTheme" />
+          <SunIcon v-else />
         </UiButton>
-        <div class="header__right-btns flex items-center gap-[20px] sm:gap-[10px]">
-          <UiLink :href="'/auth'" class="hover:!opacity-100">
-            <UiButton :type="'inline-text'" class="hidden max-sm:flex items-center">
-              <SignInIcon></SignInIcon>
+        <div class="header__right-btns flex items-center gap-[20px] lg:gap-[10px]">
+          <UiLink :href="'#'" class="hover:!opacity-100">
+            <UiButton :size="'md'" :text="'md'">
+              <ShoppingCatIcon />
+              <span class="hidden lg:block">Purchase Now</span>
             </UiButton>
-            <UiButton :type="'text'" :text="'sm'" class="hidden sm:block">Sign in</UiButton>
-          </UiLink>
-          <UiLink :href="'/registration'" class="hover:!opacity-100">
-            <UiButton :size="'sm'" class="hidden max-sm:flex items-center">
-              <SignUpIcon></SignUpIcon>
-            </UiButton>
-            <UiButton :text="'md'" class="hidden sm:block">Sign up</UiButton>
           </UiLink>
         </div>
       </div>
     </div>
+    <Transition name="opacity">
+      <div  
+        @mouseenter="mouseMenuEnter"
+        @mouseleave="mouseMenuLeave"
+        v-if="pagesMenuDesktop" 
+        class="pages-menu-desktop flex gap-[70px] left-[50%] top-[100%] translate-x-[-50%] absolute w-full p-[20px] rounded-md bg-paper-bg"
+      >
+        <div class="pages">
+          <div class="flex items-center gap-[8px]">
+            <div class="bg-primary-500 p-[5px] rounded-md">
+              <PagesTitleIcon class="text-paper-bg" />
+            </div>
+            <span>Pages</span>
+          </div>
+          <ul class="list mt-[20px] flex flex-col gap-[20px]">
+            <li class="item">
+              <UiLink :href="'/landing'" class="flex items-center">
+                <CircleIcon />
+                <span>Landing</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :href="'/payment'" class="flex items-center">
+                <CircleIcon />
+                <span>Payment</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :href="'/pricing'" class="flex items-center">
+                <CircleIcon />
+                <span>Pricing</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :href="'/help'" class="flex items-center">
+                <CircleIcon />
+                <span>Help center</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :href="'/checkout'" class="flex items-center">
+                <CircleIcon />
+                <span>Checkout</span>
+              </UiLink>
+            </li>
+          </ul>
+        </div>
+        <div class="auth-demo-pages">
+          <div class="flex items-center gap-[8px]">
+            <div class="bg-primary-500 p-[5px] rounded-md">
+              <PagesTitleIcon class="text-paper-bg" />
+            </div>
+            <span>Auth pages</span>
+          </div>
+          <ul class="list mt-[20px] flex flex-col gap-[20px]">
+            <li class="item">
+              <UiLink :href="'/auth-demo'" class="flex items-center">
+                <CircleIcon />
+                <span>Auth demo</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :href="'/registration-demo'" class="flex items-center">
+                <CircleIcon />
+                <span>Registration demo</span>
+              </UiLink>
+            </li>
+          </ul>
+        </div>
+        <div class="other-pages">
+          <div class="flex items-center gap-[8px]">
+            <div class="bg-primary-500 p-[5px] rounded-md">
+              <PagesTitleIcon class="text-paper-bg" />
+            </div>
+            <span>Other pages</span>
+          </div>
+          <ul class="list mt-[20px] flex flex-col gap-[20px]">
+            <li class="item">
+              <UiLink :href="'/not-found'" class="flex items-center">
+                <CircleIcon />
+                <span>Not found page</span>
+              </UiLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Transition>
   </div>
+  <Transition name="burger-menu">
+    <div v-if="burgerMenuOpened" class="burger-menu overflow-y-auto fixed flex justify-between gap-[20px] p-[20px] left-0 top-0 h-[100vh] max-w-[100%] sm:max-w-[300px] w-full bg-paper-bg z-[100]">
+      <ul class="menu__list flex flex-col top-[200px] gap-[20px]">
+        <li @click="scrollToSection(home)" class="menu__item flex items-center cursor-pointer">
+          <CircleIcon></CircleIcon>
+          <div :class="{ 'text-primary-500': visibleSection?.target === home }">Home</div>
+        </li>
+        <li @click="scrollToSection(features)" class="menu__item flex items-center cursor-pointer">
+          <CircleIcon></CircleIcon>
+          <div :class="{ 'text-primary-500': visibleSection?.target === features }">Features</div>
+        </li>
+        <li @click="scrollToSection(team)" class="menu__item flex items-center cursor-pointer">
+          <CircleIcon></CircleIcon>
+          <div :class="{ 'text-primary-500': visibleSection?.target === team }">Team</div>
+        </li>
+        <li @click="scrollToSection(faq)" class="menu__item flex items-center cursor-pointer">
+          <CircleIcon></CircleIcon>
+          <div :class="{ 'text-primary-500': visibleSection?.target === faq }">FAQ</div>
+        </li>
+        <li @click="scrollToSection(contact)" class="menu__item flex items-center cursor-pointer">
+          <CircleIcon></CircleIcon>
+          <div :class="{ 'text-primary-500': visibleSection?.target === contact }">Contact us</div>
+        </li>
+        <li class="menu__item">
+          <div @click="pagesMenu = !pagesMenu" class="flex items-center cursor-pointer">
+            <CircleIcon></CircleIcon>
+            <div>Pages</div>
+            <ArrowDownSIcon :class="{'rotate-180': pagesMenu}" />
+          </div>
+          <div v-if="pagesMenu" class="pages-menu mt-[20px] flex flex-col gap-[20px]">
+            <div class="pages">
+              <div class="flex items-center gap-[8px]">
+                <div class="bg-primary-500 p-[5px] rounded-md">
+                  <PagesTitleIcon class="text-paper-bg" />
+                </div>
+                <span>Pages</span>
+              </div>
+              <ul class="list mt-[20px] flex flex-col gap-[20px]">
+                <li class="item">
+                  <UiLink :href="'/landing'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Landing</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :href="'/payment'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Payment</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :href="'/pricing'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Pricing</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :href="'/help'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Help center</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :href="'/checkout'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Checkout</span>
+                  </UiLink>
+                </li>
+              </ul>
+            </div>
+            <div class="auth-pages">
+              <div class="flex items-center gap-[8px]">
+                <div class="bg-primary-500 p-[5px] rounded-md">
+                  <PagesTitleIcon class="text-paper-bg" />
+                </div>
+                <span>Auth pages</span>
+              </div>
+              <ul class="list mt-[20px] flex flex-col gap-[20px]">
+                <li class="item">
+                    <UiLink :href="'/auth-demo'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Auth demo</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :href="'/registration-demo'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Registration demo</span>
+                  </UiLink>
+                </li>
+              </ul>
+            </div>
+            <div class="other-pages">
+              <div class="flex items-center gap-[8px]">
+                <div class="bg-primary-500 p-[5px] rounded-md">
+                  <PagesTitleIcon class="text-paper-bg" />
+                </div>
+                <span>Other pages</span>
+              </div>
+              <ul class="list mt-[20px] flex flex-col gap-[20px]">
+                <li class="item">
+                  <UiLink :href="'/not-found'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Not found page</span>
+                  </UiLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <CloseLineIcon @click="closeBurgerMenu" class="cursor-pointer"></CloseLineIcon>
+    </div>
+  </Transition>
 </template>

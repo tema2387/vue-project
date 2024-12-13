@@ -1,19 +1,10 @@
 <script setup>
+// Компоненты
 import FrontHeader from '@/components/FrontHeader.vue';
 import FrontFooter from '@/components/FrontFooter.vue';
-
-// Пропс header может быть 'fixed' или любое другое текстовое значение
-const props = defineProps({
-  header: {
-    type: String,
-    default() {
-      return '';
-    },
-  }
-})
 </script>
 <template>
-  <FrontHeader :type="header" />
+  <FrontHeader />
   <div class="page-content grow">
     <slot></slot>
   </div>

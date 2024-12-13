@@ -2,11 +2,11 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 // Страницы
-import NotFoundPage from '@/pages/error/NotFoundPage.vue';
+import NotFoundPage from '@/pages/others/NotFoundPage.vue';
 // Компоненты
 import UiPopup from '@/components/UI/UIPopup.vue';
 // Модули
-import { popupText, popupStatus, popupColor, closePopup } from '@/modules/showPopup.js';
+import { popupText, popupStatus, popupColor, closePopup } from '@/modules/togglePopup.js';
 
 const route = useRoute();
 
