@@ -11,7 +11,7 @@ import { planPrice } from '@/store/plansStore.js';
 const modelRadio = ref('radio-pay-visa');
 </script>
 <template>
-  <FrontLayout :header="'fixed'">
+  <FrontLayout>
     <div class="order-page px-[20px] bg-body-bg pt-[162px] pb-[100px]">
       <div class="order-page__content container flex flex-col lg:flex-row rounded-md shadow-sm bg-paper-bg">
         <div class="order-page__left flex-1 p-[32px] lg:border-r border-devider">

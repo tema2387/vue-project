@@ -4,10 +4,10 @@ import { computed } from 'vue';
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 import ArrowLeftIcon from '@/components/UI/svg/ArrowLeftIcon.vue';
 
-// type can be 'default', 'label', 'outline', 'text', 'inline-text'
-// size can be 'lg', 'md', 'sm'
-// text can be 'lg', 'md', 'sm'
-// color can be  'primary', 'secondary', 'error', 'warning', 'info', 'success'
+// Пропс type может быть 'default', 'label', 'outline', 'text', 'inline-text'
+// Пропс size может быть 'lg', 'md', 'sm'
+// Пропс text может быть 'lg', 'md', 'sm'
+// Пропс color может быть  'primary', 'secondary', 'error', 'warning', 'info', 'success'
 const props = defineProps({
   type: {
     type: String,
@@ -89,7 +89,7 @@ const sizeBtn = computed(() => {
 })
 
 const sizeText = computed(() => {
-  return props.text === 'md' ? textMd : props.size === 'sm' ? textSm : textLg;
+  return props.text === 'md' ? textMd : props.text === 'sm' ? textSm : textLg;
 })
 
 const colorBtn = computed(() => {

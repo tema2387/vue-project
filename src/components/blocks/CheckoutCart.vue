@@ -9,8 +9,7 @@ import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 // Хранилище
 import { products } from '@/store/productsStore.js';
 // Модули
-import { activatePopup } from '@/modules/showPopup.js';
-import { checkValidPromo } from '@/modules/validateInputs';
+import { activatePopup } from '@/modules/togglePopup.js';
 
 // border для product-cart
 const borderAloneElement = 'border rounded-md';
@@ -23,6 +22,13 @@ const promo = ref('test');
 function activatePromo() {
   const statusPromo = checkValidPromo(promo.value);
   statusPromo ? activatePopup('Promocode activated', 'success') : activatePopup('Promocode not found', 'error');
+}
+
+function checkValidPromo(promo) {
+  if(promo === 'test') {
+    return true;
+  }
+  return false;
 }
 </script>
 <template>

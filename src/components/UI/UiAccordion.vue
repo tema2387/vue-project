@@ -23,7 +23,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['show'])
-
 </script>
 <template>
   <div 

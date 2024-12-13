@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 
-// size can be 'lg', 'md', 'sm' 
-// labelBgColor can be 'footer', 'main'
+// Пропс size может быть 'lg', 'md', 'sm' 
+// Пропс labelBgColor может быть 'footer', 'main'
 const props = defineProps({
   id: {
     type: [String, Number],
@@ -24,17 +24,17 @@ const props = defineProps({
   placeholder: String,
 });
 
-// sizes textarea
+// Размеры textarea
 const sizeLg = 'py-[16px] px-[16px]';
 const sizeMd = 'py-[12px] px-[16px]';
 const sizeSm = 'py-[8px] px-[16px]';
 
-// position label
+// Позиционирование label
 const posLabelLg = 'top-[16px] left-[16px]';
 const posLabelMd = 'top-[12px] left-[16px]';
 const posLabelSm = 'top-[8px] left-[16px]';
 
-// colors background label
+// Цвет бэкграунда label
 const footerLabelBgColor = 'bg-footer-bg-color';
 const mainLabelBgColor = 'bg-paper-bg';
 

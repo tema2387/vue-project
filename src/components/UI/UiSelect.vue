@@ -2,8 +2,8 @@
 import { ref, computed } from 'vue';
 import CheckAccordionIcon from '@/components/UI/svg/CheckAccordionIcon.vue';
 
-// size can be 'lg', 'md', 'sm' 
-// labelBgColor can be 'footer', 'main'
+// Пропс size может быть 'lg', 'md', 'sm' 
+// Пропс labelBgColor может быть 'footer', 'main'
 const props = defineProps({
   id: {
     type: [String, Number],
@@ -30,12 +30,12 @@ const props = defineProps({
   }
 });
 
-// sizes select
+// Размеры select
 const sizeLg = 'py-[16px] px-[16px]';
 const sizeMd = 'py-[12px] px-[16px]';
 const sizeSm = 'py-[8px] px-[16px]';
 
-// colors background label
+// Цвет бэкграунда label
 const footerLabelBgColor = 'bg-footer-bg-color';
 const mainLabelBgColor = 'bg-paper-bg';
 
@@ -50,13 +50,12 @@ const labelBgColor = computed(() => {
   return props.labelBgColor === 'footer' ? footerLabelBgColor : mainLabelBgColor;
 })
 
-// remove focus from select
+// Удаление сосотянияния фокус с селекта
 function handlerSelect(event) {
   event.target.blur();
   openSelect.value = false;
 }
 </script>
-
 <template>
   <div 
     class="select relative text-input-text"

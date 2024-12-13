@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-body-bg flex flex-col min-h-screen">
-    <div class="page-content p-[20px] grow flex items-center justify-center">
+  <div class="auth-layout bg-body-bg flex flex-col min-h-screen">
+    <div class="auth-layout__page-content p-[20px] grow flex items-center justify-center">
       <slot></slot>
     </div>
     <div class="center-layout-bottom-images relative">

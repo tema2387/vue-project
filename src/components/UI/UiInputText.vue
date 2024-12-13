@@ -1,14 +1,13 @@
 <script setup>
-import { computed, watch } from 'vue';
-
-// icons
+import { computed } from 'vue';
+// Иконки
 import SearchIcon from '@/components/UI/svg/SearchIcon.vue'
 import EyePasswordIcon from '@/components/UI/svg/EyePasswordIcon.vue';
 
-// type can be 'outlined', 'filled' or 'custom'
-// size can be 'lg', 'md', 'sm' 
-// labelBgColor can be 'footer', 'main'
-// status can be 'default' (default), success, error
+// Пропс type может быть 'outlined', 'filled' or 'custom'
+// Пропс size может быть 'lg', 'md', 'sm' 
+// Пропс labelBgColor может быть 'footer', 'main'
+// Пропс status может быть 'default' (default), success, error
 const props = defineProps({
   id: {
     type: [String, Number],
@@ -72,16 +71,16 @@ const props = defineProps({
   }
 });
 
-// sizes input
+// Размеры input
 const sizeLg = 'px-[16px] py-[16px]';
 const sizeMd = 'px-[16px] py-[12px]';
 const sizeSm = 'px-[16px] py-[8px]';
 
-// status border (color)
+// Цвет border
 const borderError = '!border-error-500 !outline-error-500 focus:border-error-500 focus:outline-error-500';
 const borderSuccess = '!border-success-500 !outline-success-500 focus:border-success-500 focus:outline-success-500';
 
-// colors background label
+// Цвет бэкграунда label
 const footerLabelBgColor = 'bg-footer-bg-color';
 const mainLabelBgColor = 'bg-paper-bg';
 
@@ -112,7 +111,6 @@ const labelBgColor = computed(() => {
   return props.labelBgColor === 'footer' ? footerLabelBgColor : mainLabelBgColor;
 })
 </script>
-
 <template>
   <div 
     v-if="type === 'outlined'" 

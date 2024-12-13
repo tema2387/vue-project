@@ -22,13 +22,13 @@ onMounted(() => {
 watch(() => props.src, (newValue) => {
   loading(newValue);
 })
-
 </script>
 <template>
   <img
     v-if="loaded"
     :src="loaded" 
     :alt="alt"
+    class="image"
   />
-  <img v-else src="/public/img/opacity-loader-bg.png" class="bg-gray-linear bg-[length:50%_100%] bg-no-repeat animate-line rounded-md">
+  <img v-else src="/public/img/opacity-loader-bg.png" class="preloader-image bg-gray-linear bg-[length:50%_100%] bg-no-repeat animate-line rounded-md">
 </template>

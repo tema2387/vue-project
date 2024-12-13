@@ -12,7 +12,7 @@ const props = defineProps({
 <template>
   <a
     :href="props.href"
-    class="link duration-200 hover:opacity-70"
+    class="link"
   >
     <slot></slot>
   </a>

@@ -58,7 +58,7 @@ const step4 = computed(() => {
 <FrontLayout>
   <div class="checkout-page px-[20px] py-[100px] m-auto bg-body-bg">
     <div class="checkout-page__content bg-paper-bg shadow-md rounded-md container">
-      <div class="checkout-page__top hidden md:flex py-[20px] justify-center border-b border-devider  gap-[16px] items-center text-center">
+      <div class="checkout-page__top hidden md:flex py-[20px] justify-center border-b border-devider gap-[16px] items-center text-center">
         <div 
           @click="changeComponent('cart')" 
           class="cart py-[20px] px-[45px] cursor-pointer"

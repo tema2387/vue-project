@@ -1,8 +1,8 @@
 <script setup>
-import CenterLayout from '@/layouts/CenterLayout.vue';
+import AuthLayout from '@/layouts/AuthLayout.vue';
 </script>
 <template>
-  <CenterLayout>
+  <AuthLayout>
     <div class="not-found-page">
       <div class="not-found-page__title flex flex-col items-center gap-[8px]">
         <div class="text-error-number">404</div>
@@ -11,5 +11,5 @@ import CenterLayout from '@/layouts/CenterLayout.vue';
       </div>
       <UiImage :src="'/img/not-found-page-img.png'" :alt="'error-img'" class="mt-[40px] w-[849px] aspect-video"></UiImage>
     </div>
-  </CenterLayout>
+  </AuthLayout>
 </template>
