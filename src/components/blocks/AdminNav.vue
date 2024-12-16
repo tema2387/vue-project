@@ -59,8 +59,8 @@ function toggleMenu() {
 </script>
 <template>
   <UiLink 
-    v-if="link" 
-    :href="link"
+    v-if="link"
+    :link="link"
     class="admin-nav-link flex min-h-[38px] max-w-[264px] pr-[14px] mr-[16px] py-[8px] items-center hover:bg-action-selected gap-[8px] rounded-br-full rounded-tr-full"
     :class="{ 'mr-[0px]': menuHidden }"
     :style="{ 'padding-left': `${paddingLevel + 'px'}` }"
@@ -95,7 +95,8 @@ function toggleMenu() {
         class="admin-nav-menu__list overflow-hidden flex flex-col gap-[8px]"
       >
         <li 
-          v-for="(item, index) in list" 
+          v-for="(item, index) in list"
+          :key="index" 
           class="admin-nav-menu__item"
           :class="{ 'mt-[8px]': index === 0 }"
         >

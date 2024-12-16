@@ -33,16 +33,16 @@ const itemsMax = computed(() => {
     </div>
     <div class="card-knowledge__list flex flex-col gap-[8px]">
       <UiLink
-        v-for="item in itemsMax" 
-        :href="'#'"
+        v-for="item in itemsMax"
         :key="item.id"
+        :link="'#'"
         class="flex items-center"
       >
         <div class="flex-1">{{ item.title }}</div>
         <ArrowRightSIcon class="opacity-[0.4]" />
       </UiLink>
     </div>
-    <UiLink :href="'#'" class="text-primary-500 flex items-center gap-[8px]">
+    <UiLink :link="'#'" class="text-primary-500 flex items-center gap-[8px]">
       <div>See all {{ items.length || '' }} articles</div>
       <ArrowRightIcon />
     </UiLink>

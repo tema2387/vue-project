@@ -107,7 +107,7 @@ function openBurgerMenu() {
         :class="{ '!pl-[18px]': adminMenuHidden, '!mr-[0px]': adminMenuHidden }"
       >
         <UiLink
-          :href="'/'"
+          :link="'/'"
           class="flex flex-grow gap-[12px] items-center"
         >  
           <img 
@@ -129,6 +129,7 @@ function openBurgerMenu() {
         <li class="admin-layout-menu__item flex flex-col gap-[8px]">
           <AdminNav
             v-for="(el, index) in mainNav"
+            :key="index"
             :title="el.title"
             :list="el.list"
             :link="el.link"
@@ -150,6 +151,7 @@ function openBurgerMenu() {
           </div>
           <AdminNav
             v-for="(el, index) in appsAndPages"
+            :key="index"
             :title="el.title"
             :list="el.list"
             :link="el.link"

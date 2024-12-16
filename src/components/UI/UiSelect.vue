@@ -69,7 +69,13 @@ function handlerSelect(event) {
       @mouseleave="handlerSelect"
       @click="openSelect = true"
     >
-      <option v-for="select in selects" :value="select">{{ select }}</option>
+      <option 
+        v-for="(select, index) in selects" 
+        :key="index"
+        :value="select"
+      >
+        {{ select }}
+      </option>
     </select>
     <CheckAccordionIcon 
         class="duration-200 absolute pointer-events-none right-[20px] top-[50%] translate-y-[-50%]" 

@@ -96,14 +96,14 @@ const props = defineProps({
       </div>
       <div class="product-card__rating flex">
         <img 
-          v-for="r in rating" 
-          :key="r" 
+          v-for="num in rating" 
+          :key="num" 
           src="/icon/star-fill-icon.svg" 
           alt="fill-star-icon" 
         />
         <img 
-          v-for="r in (5 - rating)" 
-          :key="r" 
+          v-for="num in (5 - rating)" 
+          :key="num" 
           src="/icon/star-void-icon.svg" 
           alt="fill-star-icon" 
         />
@@ -125,7 +125,13 @@ const props = defineProps({
         <span class="text-primary-500">{{ price }}/</span>
         <span>{{ oldPrice }}</span>
       </div>
-      <UiButton :type="'outline'" :size="'md'" :text="'md'">Move to Wishlist</UiButton>
+      <UiButton 
+        :type="'outline'" 
+        :size="'md'" 
+        :text="'md'"
+      >
+        Move to Wishlist
+      </UiButton>
     </div>
   </div>
 </template>

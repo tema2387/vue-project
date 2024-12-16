@@ -128,8 +128,7 @@ const modelRadio = ref('radio-pay-visa');
             </h1>
             <UiLink 
               class="mt-[16px]" 
-              :type="'inside'"
-              :href="'/#section-plans-list'"
+              :link="'/#section-plans-list'"
             >
               <UiButton 
                 :type="'outline'"
@@ -155,7 +154,7 @@ const modelRadio = ref('radio-pay-visa');
           </div>
           <UiLink 
             class="mt-[20px]" 
-            :type="'inside'"
+            :link="'#'"
           >
             <UiButton 
               :type="'default'"

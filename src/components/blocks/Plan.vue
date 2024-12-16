@@ -73,7 +73,11 @@ const isHovered = ref(false);
       <img src="/icon/icon-plan.svg" alt="icon-plan" class="absolute left-0 bottom-[-19px]" />
     </div>
     <div class="plan__possibilities flex flex-col mt-[51px] mb-[16px] gap-[12px]">
-      <div v-for="poss in possibilities" :key="poss" class="plant__possibility flex gap-[12px]">
+      <div 
+        v-for="(poss, index) in possibilities" 
+        :key="index" 
+        class="plant__possibility flex gap-[12px]"
+      >
         <img src="/icon/arrow-right-plan.svg" alt="arrow-right" />
         <h5>{{ poss }}</h5>
       </div>
@@ -85,8 +89,13 @@ const isHovered = ref(false);
       </div>
       <div class="plan__support-time text-13 text-primary-500 bg-primary-opacity/[16%] px-[12px] py-[2px] rounded-full">{{ supportTime }}</div>
     </div>
-    <UiLink :href="'/order'">
-      <UiButton :type="isHovered ? 'default': 'outline'" @click="setPlanPrice(id)">Get Started</UiButton>
+    <UiLink :link="'/order'">
+      <UiButton 
+        :type="isHovered ? 'default': 'outline'" 
+        @click="setPlanPrice(id)"
+      >
+        Get Started
+      </UiButton>
     </UiLink>
   </div>
 </template>
