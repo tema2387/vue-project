@@ -75,9 +75,9 @@ const modelDelivery = ref('Standard');
         <div class="text-15-500">Choose Delivery Speed</div>
         <div class="radio-deliveries flex flex-wrap gap-[24px] mt-[16px]">
           <UiRadioCustom 
-            v-for="(delivery, indx) in deliveries"
+            v-for="(delivery, index) in deliveries"
+            :key="index"
             :id="delivery.name"
-            :key="indx"
             :type="'icon'"
             :name="'radio-deliveries'"
             class="max-w-[231px]"

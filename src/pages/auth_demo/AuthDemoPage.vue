@@ -28,14 +28,14 @@ import UiCheckbox from '@/components/UI/UiCheckbox.vue';
         />
         <div class="flex justify-between">
           <UiCheckbox :id="'remember-account'" :name="'remember-account'">Remember Me</UiCheckbox>
-          <UiLink :href="'#'" class="text-primary-500">Forgot Password?</UiLink>
+          <UiLink :link="'#'" class="text-primary-500">Forgot Password?</UiLink>
         </div>
         <UiButton :size="'md'">Login</UiButton>
       </div>
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>New on our platform?</span>
         <UiLink 
-          :href="'/registration-demo'" 
+          :link="'/registration-demo'" 
           class="text-primary-500"
         >
           Create an account
@@ -47,10 +47,10 @@ import UiCheckbox from '@/components/UI/UiCheckbox.vue';
         <span class="h-[1px] bg-devider w-full"></span>
       </div>
       <div class="mt-[20px] flex justify-center items-center gap-[24px]">
-        <UiLink :href="'#'"><img src="/icon/bxl-facebook.svg" alt="facebook-icon" /></UiLink>
-        <UiLink :href="'#'"><img src="/icon/bxl-twitter.svg" alt="twitter-icon" /></UiLink>
-        <UiLink :href="'#'"><img src="/icon/bxl-github.svg" alt="github-icon" /></UiLink>
-        <UiLink :href="'#'"><img src="/icon/bxl-google.svg" alt="google-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-facebook.svg" alt="facebook-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-twitter.svg" alt="twitter-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-github.svg" alt="github-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-google.svg" alt="google-icon" /></UiLink>
       </div>
     </div>
   </AuthLayout>

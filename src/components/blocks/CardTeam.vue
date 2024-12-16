@@ -66,13 +66,22 @@ const colorBorder = computed(() => {
       <h5 class="card-team__name">{{ name }}</h5>
       <span class="card-team__job text-text-secondary">{{ job }}</span>
       <div class="card-team__socials mt-[12px] text-text-primary flex gap-[12px] justify-center">
-        <UiLink>
+        <UiLink 
+          :type="'outside'" 
+          :link="'#'"
+        >
           <FacebookCircleIcon class="group-hover:text-color-facebook-icon duration-200" />
         </UiLink>
-        <UiLink>
+        <UiLink 
+          :type="'outside'" 
+          :link="'#'"
+        >
           <TwitterLineIcon class="group-hover:text-color-twitter-icon duration-200" />
         </UiLink>
-        <UiLink>
+        <UiLink 
+          :type="'outside'" 
+          :link="'#'"
+        >
           <LinkedInBoxIcon class="group-hover:text-color-linkedin-icon duration-200" />
         </UiLink>
       </div>

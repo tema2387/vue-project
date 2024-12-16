@@ -63,7 +63,10 @@ function checkValidPromo(promo) {
                 : ''"
         />
       </div>
-      <UiLink class="flex justify-between items-center text-primary-500 px-[18px] py-[8px] border rounded-md border-devider">
+      <UiLink 
+        :link="'#'" 
+        class="flex justify-between items-center text-primary-500 px-[18px] py-[8px] border rounded-md border-devider"
+      >
         <div>Add more product from Wishlist</div>
         <ArrowRightIcon />
       </UiLink>

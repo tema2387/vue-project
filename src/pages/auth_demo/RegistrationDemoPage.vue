@@ -39,14 +39,14 @@ const passwordHidden = ref(false);
         />
         <div class="flex gap-[5px]">
           <UiCheckbox :id="'agree'" :name="'agree'">I agree to</UiCheckbox>
-          <UiLink class="text-primary-500">privacy policy & terms</UiLink>
+          <UiLink :link="'#'" class="text-primary-500">privacy policy & terms</UiLink>
         </div>
         <UiButton :size="'md'">Sign Up</UiButton>
       </div>
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>Already have an account?</span>
         <UiLink 
-          :href="'/auth-demo'" 
+          :link="'/auth-demo'" 
           class="text-primary-500"
         >
           Sign in instead
@@ -58,10 +58,10 @@ const passwordHidden = ref(false);
         <span class="h-[1px] bg-devider w-full"></span>
       </div>
       <div class="mt-[20px] flex justify-center items-center gap-[24px]">
-        <UiLink :href="'#'"><img src="/icon/bxl-facebook.svg" alt="facebook-icon" /></UiLink>
-        <UiLink :href="'#'"><img src="/icon/bxl-twitter.svg" alt="twitter-icon" /></UiLink>
-        <UiLink :href="'#'"><img src="/icon/bxl-github.svg" alt="github-icon" /></UiLink>
-        <UiLink :href="'#'"><img src="/icon/bxl-google.svg" alt="google-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-facebook.svg" alt="facebook-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-twitter.svg" alt="twitter-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-github.svg" alt="github-icon" /></UiLink>
+        <UiLink :type="'outside'" :link="'#'"><img src="/icon/bxl-google.svg" alt="google-icon" /></UiLink>
       </div>
     </div>
   </AuthLayout>

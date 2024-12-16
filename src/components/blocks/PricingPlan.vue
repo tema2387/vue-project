@@ -84,7 +84,11 @@ const props = defineProps({
       </div>
     </div>
     <ul class="pricing-plan__possibilities flex text-start flex-col gap-[16px]">
-      <li v-for="poss in possibilities" class="pricing-plan__possibility flex items-center">
+      <li 
+        v-for="(poss, index) in possibilities"
+        :key="index" 
+        class="pricing-plan__possibility flex items-center"
+      >
         <span class="w-[14px] h-[14px] border-[2px] border-text-secondary bg-transparent rounded-full mr-[21px]" />
         <div>{{ poss }}</div>
       </li>

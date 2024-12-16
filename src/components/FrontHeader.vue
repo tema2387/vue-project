@@ -85,7 +85,7 @@ function mouseMenuLeave() {
         <span class="h-[2px] bg-text-primary rounded-md"></span>
       </div>
       <UiLink 
-        :href="'/'"
+        :link="'/'"
         class="header__left flex gap-[0px] sm:gap-[12px] items-center max-lg:flex-1"
       >
         <img 
@@ -151,7 +151,7 @@ function mouseMenuLeave() {
           <SunIcon v-else />
         </UiButton>
         <div class="header__right-btns flex items-center gap-[20px] lg:gap-[10px]">
-          <UiLink :href="'#'" class="hover:!opacity-100">
+          <UiLink :link="'#'" class="hover:!opacity-100">
             <UiButton :size="'md'" :text="'md'">
               <ShoppingCatIcon />
               <span class="hidden lg:block">Purchase Now</span>
@@ -176,31 +176,31 @@ function mouseMenuLeave() {
           </div>
           <ul class="list mt-[20px] flex flex-col gap-[20px]">
             <li class="item">
-              <UiLink :href="'/landing'" class="flex items-center">
+              <UiLink :link="'/landing'" class="flex items-center">
                 <CircleIcon />
                 <span>Landing</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :href="'/payment'" class="flex items-center">
+              <UiLink :link="'/payment'" class="flex items-center">
                 <CircleIcon />
                 <span>Payment</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :href="'/pricing'" class="flex items-center">
+              <UiLink :link="'/pricing'" class="flex items-center">
                 <CircleIcon />
                 <span>Pricing</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :href="'/help'" class="flex items-center">
+              <UiLink :link="'/help'" class="flex items-center">
                 <CircleIcon />
                 <span>Help center</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :href="'/checkout'" class="flex items-center">
+              <UiLink :link="'/checkout'" class="flex items-center">
                 <CircleIcon />
                 <span>Checkout</span>
               </UiLink>
@@ -216,13 +216,13 @@ function mouseMenuLeave() {
           </div>
           <ul class="list mt-[20px] flex flex-col gap-[20px]">
             <li class="item">
-              <UiLink :href="'/auth-demo'" class="flex items-center">
+              <UiLink :link="'/auth-demo'" class="flex items-center">
                 <CircleIcon />
                 <span>Auth demo</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :href="'/registration-demo'" class="flex items-center">
+              <UiLink :link="'/registration-demo'" class="flex items-center">
                 <CircleIcon />
                 <span>Registration demo</span>
               </UiLink>
@@ -238,7 +238,7 @@ function mouseMenuLeave() {
           </div>
           <ul class="list mt-[20px] flex flex-col gap-[20px]">
             <li class="item">
-              <UiLink :href="'/not-found'" class="flex items-center">
+              <UiLink :link="'/not-found'" class="flex items-center">
                 <CircleIcon />
                 <span>Not found page</span>
               </UiLink>
@@ -287,31 +287,31 @@ function mouseMenuLeave() {
               </div>
               <ul class="list mt-[20px] flex flex-col gap-[20px]">
                 <li class="item">
-                  <UiLink :href="'/landing'" class="flex items-center">
+                  <UiLink :link="'/landing'" class="flex items-center">
                     <CircleIcon />
                     <span>Landing</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :href="'/payment'" class="flex items-center">
+                  <UiLink :link="'/payment'" class="flex items-center">
                     <CircleIcon />
                     <span>Payment</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :href="'/pricing'" class="flex items-center">
+                  <UiLink :link="'/pricing'" class="flex items-center">
                     <CircleIcon />
                     <span>Pricing</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :href="'/help'" class="flex items-center">
+                  <UiLink :link="'/help'" class="flex items-center">
                     <CircleIcon />
                     <span>Help center</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :href="'/checkout'" class="flex items-center">
+                  <UiLink :link="'/checkout'" class="flex items-center">
                     <CircleIcon />
                     <span>Checkout</span>
                   </UiLink>
@@ -327,13 +327,13 @@ function mouseMenuLeave() {
               </div>
               <ul class="list mt-[20px] flex flex-col gap-[20px]">
                 <li class="item">
-                    <UiLink :href="'/auth-demo'" class="flex items-center">
+                    <UiLink :link="'/auth-demo'" class="flex items-center">
                     <CircleIcon />
                     <span>Auth demo</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :href="'/registration-demo'" class="flex items-center">
+                  <UiLink :link="'/registration-demo'" class="flex items-center">
                     <CircleIcon />
                     <span>Registration demo</span>
                   </UiLink>
@@ -349,7 +349,7 @@ function mouseMenuLeave() {
               </div>
               <ul class="list mt-[20px] flex flex-col gap-[20px]">
                 <li class="item">
-                  <UiLink :href="'/not-found'" class="flex items-center">
+                  <UiLink :link="'/not-found'" class="flex items-center">
                     <CircleIcon />
                     <span>Not found page</span>
                   </UiLink>

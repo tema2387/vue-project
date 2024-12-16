@@ -27,12 +27,16 @@ const routes = [
   { path: '/checkout', component: CheckoutPage  },
   { path: '/registration-demo', component: RegistrationDemoPage },
   { path: '/auth-demo', component: AuthDemoPage },
-  { path: '/not-found', component: NotFoundPage  },
+  { path: '/:pathMath(.*)*', component: NotFoundPage  },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Всегда прокручивать к верху страницы
+    return { top: 0 };
+  },
 })
 
 export default router;

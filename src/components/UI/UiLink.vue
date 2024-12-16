@@ -1,19 +1,33 @@
 <script setup>
 const props = defineProps({
-  href: {
+  type: {
+    type: String,
+    default() {
+      return 'inside';
+    }
+  },
+  link: {
     type: String,
     default() {
       return '/';
     }
-  }
+  },
 })
 
 </script>
 <template>
   <a
-    :href="props.href"
+    v-if="type === 'outside'"
+    :href="props.link"
     class="link"
   >
     <slot></slot>
   </a>
+  <RouterLink
+    v-else 
+    :to="props.link"
+    class="link"
+  >
+    <slot></slot>
+  </RouterLink>
 </template>
