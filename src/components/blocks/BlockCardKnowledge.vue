@@ -1,25 +1,21 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from "vue";
 // Иконки
 import ArrowRightSIcon from "@/components/UI/svg/ArrowRightSIcon.vue";
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  titleIcon: {
-    type: String,
-    required: true,
-  },
-  items: {
-    type: Array,
-    default() {
-      return [];
-    }
-  },
-})
+type TypeKnowledgeBase = {
+  id: string,
+  title: string,
+}
+
+type TypeProps = {
+  title: string,
+  titleIcon: string,
+  items: TypeKnowledgeBase[]
+}
+
+const props = defineProps<TypeProps>();
 
 const itemsMax = computed(() => {
   return props.items.length > 6 ? props.items.slice(0, 6) : props.items;

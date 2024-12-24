@@ -1,46 +1,35 @@
-<script setup>
+<script lang="ts" setup>
 import CheckAccordionIcon from '@/components/UI/svg/CheckAccordionIcon.vue';
 
-const props = defineProps({
-  title: {
-    type: String,
-    default() {
-      return 'title';
-    }
-  },
-  text: {
-    type: String,
-    default() {
-      return 'text';
-    }
-  },
-  status: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  }
-})
+type TypeProps = {
+  title: string,
+  text: string,
+  status: boolean,
+}
 
-const emit = defineEmits(['show'])
+const props = defineProps<TypeProps>();
+
+const emit = defineEmits<{
+  (e: 'show'): void,
+}>();
 </script>
 <template>
   <div 
-    @click="$emit('show')" 
+    @click="emit('show')" 
     class="accordion rounded-md shadow-sm px-[20px] py-[12px] bg-paper-bg cursor-pointer"
   >
     <div class="accordion__top flex items-center justify-between">
-      <div class="accordion__title text-15-500">{{ title }}</div>
+      <div class="accordion__title text-15-500">{{ props.title }}</div>
       <CheckAccordionIcon 
         class="duration-200" 
-        :class="{ '-rotate-180': status }" 
+        :class="{ '-rotate-180': props.status }" 
       />
     </div>
     <p 
-      v-show="status" 
+      v-show="props.status" 
       class="accordion__text mt-[12px] text-text-secondary"
     >
-      {{ text }}
+      {{ props.text }}
     </p>
   </div>
 </template>

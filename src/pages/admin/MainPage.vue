@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 // Компоненты
 import AdminLayout from '@/layouts/AdminLayout.vue';
 </script>

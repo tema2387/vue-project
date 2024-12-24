@@ -1,7 +1,7 @@
-<script setup>
+<script lang="ts" setup>
 import VueSlider from 'vue-3-slider-component';
 
-const model = defineModel();
+const model = defineModel<number>();
 </script>
 <template>
   <div class="input-range">

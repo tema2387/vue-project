@@ -1,26 +1,26 @@
-<script setup>
+<script lang="ts" setup>
 // Компоненты
-import ProductCard from '@/components/blocks/ProductCard.vue';
+import BlockProductCard from '@/components/blocks/BlockProductCard.vue';
 // Иконки
 import TimeClockIcon from '@/components/UI/svg/TimeClockIcon.vue';
 import MapPinIcon from '@/components/UI/svg/MapPinIcon.vue';
 import BankCardIcon from '@/components/UI/svg/BankCardIcon.vue';
 import Ship2Icon from '@/components/UI/svg/Ship2Icon.vue';
 // Хранилище
-import { address } from '@/store/addressStore.js';
-import { products } from '@/store/productsStore.js';
+import { selectedAddress } from '@/store/addressStore';
+import { products } from '@/store/productsStore';
 
 // border для product-card
-const borderAloneElement = 'border rounded-md';
-const borderTwoElements = ['border rounded-t-md', 'border-x border-b rounded-b-md']
-const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'border rounded-b-md']
+const borderAloneElement: string = 'border rounded-md';
+const borderTwoElements: string[] = ['border rounded-t-md', 'border-x border-b rounded-b-md']
+const borderMoreTwo: string[] = ['border-x border-t rounded-t-md', 'border-x border-t', 'border rounded-b-md']
 </script>
 <template>
   <div class="checkout-confirmation">
     <div class="checkout-confirmation__thanks flex flex-col items-center gap-[16px]">
       <h4>Thank You! 😇</h4>
       <div class="text-text-secondary">Your order <span class="text-text-primary">#1536548131</span> has been placed!</div>
-      <div class="text-text-secondary">We sent an email to <span class="text-text-primary">{{ address.email }}</span> with your order confirmation and receipt.</div>
+      <div class="text-text-secondary">We sent an email to <span class="text-text-primary">{{ selectedAddress?.email }}</span> with your order confirmation and receipt.</div>
       <div class="text-text-secondary">If the email hasn't arrived within two minutes, please check your spam folder to see if the email was routed there.</div>
       <div class="flex gap-[8px]">
         <TimeClockIcon />
@@ -33,24 +33,24 @@ const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'b
           <MapPinIcon />
           <div>Shipping</div>
         </div>
-        <div>{{ address.address }}</div>
-        <div>{{ address.mobile }}</div>
+        <div>{{ selectedAddress?.address }}</div>
+        <div>{{ selectedAddress?.mobile }}</div>
       </div>
       <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] border border-devider">
         <div class="flex gap-[8px] items-center">
           <BankCardIcon />
           <div>Billing Address</div>
         </div>
-        <div>{{ address.address }}</div>
-        <div>{{ address.mobile }}</div>
+        <div>{{ selectedAddress?.address }}</div>
+        <div>{{ selectedAddress?.mobile }}</div>
       </div>
       <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] max-md:rounded-b-md md:rounded-r-md max-md:border-l border-r md:border-t border-b border-devider">
         <div class="flex gap-[8px] items-center">
           <Ship2Icon />
           <div>Shipping Method</div>
         </div>
-        <div>{{ address.address }}</div>
-        <div>{{ address.mobile }}</div>
+        <div>{{ selectedAddress?.address }}</div>
+        <div>{{ selectedAddress?.mobile }}</div>
       </div>
     </div>
     <div class="checkout-confirmation__sum flex flex-col lg:flex-row gap-[24px] mt-[20px]">
@@ -58,11 +58,11 @@ const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'b
         v-if="products.length" 
         class="checkout-confirmation__products flex-1"
       >
-        <ProductCard 
+        <BlockProductCard 
           v-for="product in products" 
           :key="product.id"
           :type="'confirm'"
-          :id="product.id"
+          :id="product.id.toString()"
           :img="product.img"
           :name="product.name"
           :rating="product.rating"

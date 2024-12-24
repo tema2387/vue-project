@@ -1,48 +1,22 @@
-<script setup>
+<script lang="ts" setup>
 import { computed, ref } from 'vue';
+
+type TypeProps = {
+  active: boolean,
+  src: string,
+  desc: string,
+  authorName: string,
+  authorJob: string,
+  stars?: number,
+}
  
-const props = defineProps({
-  active: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  },
-  src: {
-    type: String,
-    default() {
-      return '/img/logos/levis-logo.png'
-    }
-  },
-  desc: {
-    type: String,
-    default() {
-      return 'desc';
-    }
-  },
-  stars: {
-    type: Number,
-    default() {
-      return 5;
-    }
-  },
-  authorName: {
-    type: String,
-    default() {
-      return 'name';
-    }
-  },
-  authorJob: {
-    type: String,
-    default() {
-      return 'job';
-    }
-  },
-})
+const props = withDefaults(defineProps<TypeProps>(), {
+  stars: 5,
+});
 
-const integerStars = ref(Number.isInteger(props.stars));
+const integerStars = ref<boolean>(Number.isInteger(props.stars));
 
-const amountStars = computed(() => {
+const amountStars = computed<number>(() => {
   return integerStars.value ? props.stars : props.stars - (props.stars % 1);
 })
 </script>

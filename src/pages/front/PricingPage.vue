@@ -1,18 +1,18 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from "vue";
 // Компоненты
 import FrontLayout from "@/layouts/FrontLayout.vue";
+import BlockPricingPlan from "@/components/blocks/BlockPricingPlan.vue";
 import UiToggle from "@/components/UI/UiToggle.vue";
-import PricingPlan from "@/components/blocks/PricingPlan.vue";
 import UiAccordion from "@/components/UI/UiAccordion.vue";
 // Иконки
 import ArrowDownSaveIcon from "@/components/UI/svg/ArrowDownSaveIcon.vue";
 import ApproveTableIcon from "@/components/UI/svg/ApproveTableIcon.vue";
 import CancelTableIcon from "@/components/UI/svg/CancelTableIcon.vue";
 
-const activeAccordion = ref(2);
+const activeAccordion = ref<number>(2);
 
-function changeAccordion(id) {
+function changeAccordion(id: number): void {
   activeAccordion.value = id;
 }
 </script>
@@ -38,17 +38,17 @@ function changeAccordion(id) {
             />
           </div>
           <div class="main__bottom mt-[32px] flex flex-wrap gap-[24px]">
-            <PricingPlan
+            <BlockPricingPlan
               :alreadyActivePlan="true"
-              :plan="'Basic'"
+              :title="'Basic'"
               :subtitle="'A simple start for everyone'"
               :wallet="'$'"
               :price="'0'"
               :possibilities="['100 responses a month', 'Unlimited forms and surveys', 'Unlimited fields', 'Basic form creation tools', 'Up to 2 subdomains']"
               :img="'/img/tree-1-image.png'"
             />
-            <PricingPlan
-              :plan="'Standard'"
+            <BlockPricingPlan
+              :title="'Standard'"
               :subtitle="'For small to medium businesses'"
               :wallet="'$'"
               :price="'49'"
@@ -58,8 +58,8 @@ function changeAccordion(id) {
               :possibilities="['Unlimited responses', 'Unlimited forms and surveys', 'Instagram profile page', 'Google Docs integration', 'Custom “Thank you” page']"
               :img="'/img/tree-2-image.png'"
             />
-            <PricingPlan
-              :plan="'Enterprise'"
+            <BlockPricingPlan
+              :title="'Enterprise'"
               :subtitle="'Solution for big organizations'"
               :wallet="'$'"
               :price="'99'"

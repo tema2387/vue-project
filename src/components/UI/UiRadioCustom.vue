@@ -1,23 +1,13 @@
-<script setup>
+<script lang="ts" setup>
 // Пропс может быть 'basic', 'icon', 'custom-icon', 'image'
-const props = defineProps({
-  id: {
-    type: [String, Number],
-    required: true,
-  },
-  type: {
-    type: String,
-    default() {
-      return 'basic';
-    }
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-});
+type TypeProps = {
+  id: string,
+  name: string,
+  type?: string,
+}
 
-const model = defineModel();
+const props = defineProps<TypeProps>();
+const model = defineModel<string>();
 </script>
 <template>
   <label 

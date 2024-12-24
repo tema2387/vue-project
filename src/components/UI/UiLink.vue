@@ -1,19 +1,12 @@
-<script setup>
-const props = defineProps({
-  type: {
-    type: String,
-    default() {
-      return 'inside';
-    }
-  },
-  link: {
-    type: String,
-    default() {
-      return '/';
-    }
-  },
-})
+<script lang="ts" setup>
+type TypeProps = {
+  link?: string,
+  type?: string,
+}
 
+const props = withDefaults(defineProps<TypeProps>(), {
+  link: '/',
+});
 </script>
 <template>
   <a
@@ -24,7 +17,7 @@ const props = defineProps({
     <slot></slot>
   </a>
   <RouterLink
-    v-else 
+    v-else
     :to="props.link"
     class="link"
   >

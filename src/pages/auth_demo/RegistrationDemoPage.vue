@@ -1,11 +1,11 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 // Компоненты
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiCheckbox from '@/components/UI/UiCheckbox.vue';
-// Импортирование функций для валидации регистрационных данных
-const passwordHidden = ref(false);
+
+const passwordHidden = ref<boolean>(true);
 </script>
 <template>
   <AuthLayout>

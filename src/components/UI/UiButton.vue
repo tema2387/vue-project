@@ -1,6 +1,6 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue';
-
+// Иконки
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 import ArrowLeftIcon from '@/components/UI/svg/ArrowLeftIcon.vue';
 
@@ -8,91 +8,67 @@ import ArrowLeftIcon from '@/components/UI/svg/ArrowLeftIcon.vue';
 // Пропс size может быть 'lg', 'md', 'sm'
 // Пропс text может быть 'lg', 'md', 'sm'
 // Пропс color может быть  'primary', 'secondary', 'error', 'warning', 'info', 'success'
-const props = defineProps({
-  type: {
-    type: String,
-    default() {
-      return 'default';
-    }
-  },
-  color: {
-    type: String,
-    default() {
-      return 'primary';
-    }
-  },
-  size: {
-    type: String,
-    default() {
-      return 'lg';
-    }
-  },
-  text: {
-    type: String,
-    default() {
-      return 'lg';
-    },
-  },
-  leftIcon: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  },
-  rightIcon: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  },
-})
+type TypeProps = {
+  type?: string,
+  color?: string,
+  size?: string,
+  text?: string,
+  leftIcon?: boolean,
+  rightIcon?: boolean,
+}
 
-const btnLg = 'py-[8px] px-[22px]';
-const btnMd = 'py-[8px] px-[18px]';
-const btnSm = 'py-[8px] px-[14px]';
+const props = withDefaults(defineProps<TypeProps>(), {
+  type: 'default',
+  size: 'md',
+  text: 'md',
+});
 
-const textLg = 'text-button-lg';
-const textMd = 'text-button-md';
-const textSm = 'text-button-sm';
+const btnLg: string = 'py-[8px] px-[22px]';
+const btnMd: string = 'py-[8px] px-[18px]';
+const btnSm: string = 'py-[8px] px-[14px]';
 
-const colorPrimaryDefault = 'bg-primary-500 hover:bg-primary-600 active:bg-primary-600 focus:bg-primary-600';
-const colorSecondaryDefault = 'bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-600 focus:bg-secondary-600';
-const colorErrorDefault = 'bg-error-500 hover:bg-error-600 active:bg-error-600 focus:bg-error-600';
-const colorWarningDefault = 'bg-warning-500 hover:bg-warning-600 active:bg-warning-600 focus:bg-warning-600';
-const colorInfoDefault = 'bg-info-500 hover:bg-info-600 active:bg-info-600 focus:bg-info-600';
-const colorSuccessDefault = 'bg-success-500 hover:bg-success-600 active:bg-success-600 focus:bg-success-600';
+const textLg: string = 'text-button-lg';
+const textMd: string = 'text-button-md';
+const textSm: string = 'text-button-sm';
 
-const colorPrimaryLabel = 'text-primary-500 bg-primary-opacity/[16%] hover:bg-primary-opacity/[24%] active:bg-primary-opacity/[24%] focus:bg-primary-opacity/[24%]';
-const colorSecondaryLabel = 'text-secondary-500 bg-secondary-opacity/[16%] hover:bg-secondary-opacity/[24%] active:bg-secondary-opacity/[24%] focus:bg-secondary-opacity/[24%]';
-const colorErrorLabel = 'text-error-500 bg-error-opacity/[16%] hover:bg-error-opacity/[24%] active:bg-error-opacity/[24%] focus:bg-error-opacity/[24%]';
-const colorWarningLabel = 'text-warning-500 bg-warning-opacity/[16%] hover:bg-warning-opacity/[24%] active:bg-warning-opacity/[24%] focus:bg-warning-opacity/[24%]';
-const colorInfoLabel = 'text-info-500 bg-info-opacity/[16%] hover:bg-info-opacity/[24%] active:bg-info-opacity/[24%] focus:bg-info-opacity/[24%]';
-const colorSuccessLabel = 'text-success-500 bg-success-opacity/[16%] hover:bg-success-opacity/[24%] active:bg-success-opacity/[24%] focus:bg-success-opacity/[24%]';
+const colorPrimaryDefault: string = 'bg-primary-500 hover:bg-primary-600 active:bg-primary-600 focus:bg-primary-600';
+const colorSecondaryDefault: string = 'bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-600 focus:bg-secondary-600';
+const colorErrorDefault: string = 'bg-error-500 hover:bg-error-600 active:bg-error-600 focus:bg-error-600';
+const colorWarningDefault: string = 'bg-warning-500 hover:bg-warning-600 active:bg-warning-600 focus:bg-warning-600';
+const colorInfoDefault: string = 'bg-info-500 hover:bg-info-600 active:bg-info-600 focus:bg-info-600';
+const colorSuccessDefault: string = 'bg-success-500 hover:bg-success-600 active:bg-success-600 focus:bg-success-600';
 
-const colorPrimaryOutline = 'text-primary-500 hover:bg-primary-opacity/[8%] active:bg-primary-opacity/[8%] focus:bg-primary-opacity/[8%] border-primary-500';
-const colorSecondaryOutline = 'text-secondary-500 hover:bg-secondary-opacity/[8%] active:bg-secondary-opacity/[8%] focus:bg-secondary-opacity/[8%] border-secondary-500';
-const colorErrorOutline = 'text-error-500 hover:bg-error-opacity/[8%] active:bg-error-opacity/[8%] focus:bg-error-opacity/[8%] border-error-500';
-const colorWarningOutline = 'text-warning-500 hover:bg-warning-opacity/[8%] active:bg-warning-opacity/[8%] focus:bg-warning-opacity/[8%] border-warning-500';
-const colorInfoOutline = 'text-info-500 hover:bg-info-opacity/[8%] active:bg-info-opacity/[8%] focus:bg-info-opacity/[8%] border-info-500';
-const colorSuccessOutline = 'text-success-500 hover:bg-success-opacity/[8%] active:bg-success-opacity/[8%] focus:bg-success-opacity/[8%] border-success-500';
+const colorPrimaryLabel: string = 'text-primary-500 bg-primary-opacity/[16%] hover:bg-primary-opacity/[24%] active:bg-primary-opacity/[24%] focus:bg-primary-opacity/[24%]';
+const colorSecondaryLabel: string = 'text-secondary-500 bg-secondary-opacity/[16%] hover:bg-secondary-opacity/[24%] active:bg-secondary-opacity/[24%] focus:bg-secondary-opacity/[24%]';
+const colorErrorLabel: string = 'text-error-500 bg-error-opacity/[16%] hover:bg-error-opacity/[24%] active:bg-error-opacity/[24%] focus:bg-error-opacity/[24%]';
+const colorWarningLabel: string = 'text-warning-500 bg-warning-opacity/[16%] hover:bg-warning-opacity/[24%] active:bg-warning-opacity/[24%] focus:bg-warning-opacity/[24%]';
+const colorInfoLabel: string = 'text-info-500 bg-info-opacity/[16%] hover:bg-info-opacity/[24%] active:bg-info-opacity/[24%] focus:bg-info-opacity/[24%]';
+const colorSuccessLabel: string = 'text-success-500 bg-success-opacity/[16%] hover:bg-success-opacity/[24%] active:bg-success-opacity/[24%] focus:bg-success-opacity/[24%]';
 
-const colorPrimaryText = 'text-primary-500 hover:bg-primary-opacity/[8%] active:bg-primary-opacity/[8%] focus:bg-primary-opacity/[8%]';
-const colorSecondaryText = 'text-secondary-500 hover:bg-secondary-opacity/[8%] active:bg-secondary-opacity/[8%] focus:bg-secondary-opacity/[8%]';
-const colorErrorText = 'text-error-500 hover:bg-error-opacity/[8%] active:bg-error-opacity/[8%] focus:bg-error-opacity/[8%]';
-const colorWarningText = 'text-warning-500 hover:bg-warning-opacity/[8%] active:bg-warning-opacity/[8%] focus:bg-warning-opacity/[8%]';
-const colorInfoText = 'text-info-500 hover:bg-info-opacity/[8%] active:bg-info-opacity/[8%] focus:bg-info-opacity/[8%]';
-const colorSuccessText = 'text-success-500 hover:bg-success-opacity/[8%] active:bg-success-opacity/[8%] focus:bg-success-opacity/[8%]';
+const colorPrimaryOutline: string = 'text-primary-500 hover:bg-primary-opacity/[8%] active:bg-primary-opacity/[8%] focus:bg-primary-opacity/[8%] border-primary-500';
+const colorSecondaryOutline: string = 'text-secondary-500 hover:bg-secondary-opacity/[8%] active:bg-secondary-opacity/[8%] focus:bg-secondary-opacity/[8%] border-secondary-500';
+const colorErrorOutline: string = 'text-error-500 hover:bg-error-opacity/[8%] active:bg-error-opacity/[8%] focus:bg-error-opacity/[8%] border-error-500';
+const colorWarningOutline: string = 'text-warning-500 hover:bg-warning-opacity/[8%] active:bg-warning-opacity/[8%] focus:bg-warning-opacity/[8%] border-warning-500';
+const colorInfoOutline: string = 'text-info-500 hover:bg-info-opacity/[8%] active:bg-info-opacity/[8%] focus:bg-info-opacity/[8%] border-info-500';
+const colorSuccessOutline: string = 'text-success-500 hover:bg-success-opacity/[8%] active:bg-success-opacity/[8%] focus:bg-success-opacity/[8%] border-success-500';
+
+const colorPrimaryText: string = 'text-primary-500 hover:bg-primary-opacity/[8%] active:bg-primary-opacity/[8%] focus:bg-primary-opacity/[8%]';
+const colorSecondaryText: string = 'text-secondary-500 hover:bg-secondary-opacity/[8%] active:bg-secondary-opacity/[8%] focus:bg-secondary-opacity/[8%]';
+const colorErrorText: string = 'text-error-500 hover:bg-error-opacity/[8%] active:bg-error-opacity/[8%] focus:bg-error-opacity/[8%]';
+const colorWarningText: string = 'text-warning-500 hover:bg-warning-opacity/[8%] active:bg-warning-opacity/[8%] focus:bg-warning-opacity/[8%]';
+const colorInfoText: string = 'text-info-500 hover:bg-info-opacity/[8%] active:bg-info-opacity/[8%] focus:bg-info-opacity/[8%]';
+const colorSuccessText: string = 'text-success-500 hover:bg-success-opacity/[8%] active:bg-success-opacity/[8%] focus:bg-success-opacity/[8%]';
 
 
-const sizeBtn = computed(() => {
+const sizeBtn = computed<string>(() => {
   return props.size === 'md' ? btnMd : props.size === 'sm' ? btnSm : btnLg;
 })
 
-const sizeText = computed(() => {
+const sizeText = computed<string>(() => {
   return props.text === 'md' ? textMd : props.text === 'sm' ? textSm : textLg;
 })
 
-const colorBtn = computed(() => {
+const colorBtn = computed<string>(() => {
   if(props.type === 'default') {
     return props.color === 'secondary' ? colorSecondaryDefault 
       : props.color === 'error' ? colorErrorDefault 
@@ -128,9 +104,9 @@ const colorBtn = computed(() => {
             : props.color === 'success' ? colorSuccessText
               : colorPrimaryText;
   }
+
+  return colorPrimaryDefault;
 });
-
-
 </script>
 <template>
 <div class="button">

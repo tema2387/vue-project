@@ -1,16 +1,11 @@
-<script setup>
-const props = defineProps({
-  id: {
-    type: [String, Number],
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-});
+<script lang="ts" setup>
+type TypeProps = {
+  id: string,
+  name: string,
+}
 
-const model = defineModel();
+const props = defineProps<TypeProps>();
+const model = defineModel<boolean>();
 </script>
 <template>
   <label 
@@ -29,7 +24,7 @@ const model = defineModel();
       :class="{ '!bg-primary-500': model, '!border-primary-500': model }"
     >
       <img 
-        src="/public/icon/check-mark-checkbox.svg" 
+        src="/icon/check-mark-checkbox.svg" 
         alt="check-icon" 
         class="absolute hidden left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]" 
         :class="{ '!block': model }"

@@ -1,14 +1,19 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, reactive } from 'vue';
 // Компоненты
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiCheckbox from '@/components/UI/UiCheckbox.vue';
 
-const passwordHidden = ref(true);
+const passwordHidden = ref<boolean>(true);
 
-const registrationFields = reactive({ username: null, email: null, password: null });
+type TypeRegistrationFields = {
+  username: string | null,
+  email: string | null,
+  password: string | null,
+}
 
+const registrationFields = reactive<TypeRegistrationFields>({ username: null, email: null, password: null });
 </script>
 <template>
   <AuthLayout>
@@ -26,16 +31,12 @@ const registrationFields = reactive({ username: null, email: null, password: nul
           :id="'username'" 
           :size="'md'"
           :label="'Username'"
-          :status="errorUsername ? 'error' : 'default'"
-          :helpText="errorUsername ? errorUsername : ''"
           v-model="registrationFields.username"
         />
         <UiInputText 
           :id="'email'" 
           :size="'md'" 
           :label="'Email'"
-          :status="errorEmail ? 'error' : 'default'"
-          :helpText="errorEmail ? errorEmail : ''"
           v-model="registrationFields.email"
         />
         <UiInputText 
@@ -44,8 +45,6 @@ const registrationFields = reactive({ username: null, email: null, password: nul
           :label="'Password'"
           :eyeIcon="true"
           :passwordInput="passwordHidden"
-          :status="errorPassword ? 'error' : 'default'"
-          :helpText="errorPassword ? errorPassword : ''"
           @toggleInput="passwordHidden = !passwordHidden"
           v-model="registrationFields.password"
         />
@@ -53,7 +52,7 @@ const registrationFields = reactive({ username: null, email: null, password: nul
           <UiCheckbox :id="'agree'" :name="'agree'">I agree to</UiCheckbox>
           <UiLink :link="'#'" class="text-primary-500">privacy policy & terms</UiLink>
         </div>
-        <UiButton :size="'md'" @click="signUp">Sign Up</UiButton>
+        <UiButton :size="'md'">Sign Up</UiButton>
       </div>
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>Already have an account?</span>

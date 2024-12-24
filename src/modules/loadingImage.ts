@@ -1,9 +1,9 @@
 import { ref } from "vue";
 
 export default function loadingImage() {
-  const loaded = ref(undefined);
+  const loaded = ref<string | null>(null);
 
-  function loading(url) {
+  function loading(url:string):void {
     const img = new Image();
     img.src = url;
   

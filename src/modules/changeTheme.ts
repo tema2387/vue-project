@@ -1,23 +1,23 @@
 import { ref, watch } from 'vue';
 
-export const activeDarkTheme = ref(false);
+export const activeDarkTheme = ref<boolean>(false);
 const html = document.querySelector('html');
 
-export function changeTheme() {
+export function changeTheme():void {
   activeDarkTheme.value = !activeDarkTheme.value;
 }
 
 if (document.cookie.includes('theme=dark')) {
-  html.classList.add('dark');
+  (html as HTMLHtmlElement).classList.add('dark');
   activeDarkTheme.value = true;
 }
 
-watch(activeDarkTheme, (value) => {
-  if (value === true) {
-    html.classList.add('dark');
+watch(activeDarkTheme, (newValue:boolean):void => {
+  if (newValue) {
+    (html as HTMLHtmlElement).classList.add('dark');
     document.cookie = 'theme=dark; max-age=3600';
   } else {
-    html.classList.remove('dark');
+    (html as HTMLHtmlElement).classList.remove('dark');
     document.cookie = 'theme=dark; max-age=-1';
   }
 });

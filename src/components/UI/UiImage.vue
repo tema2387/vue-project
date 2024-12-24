@@ -1,25 +1,22 @@
-<script setup>
+<script lang="ts" setup>
 import { onMounted, watch } from 'vue';
-import loadingImage from '@/modules/loadingImage.js';
+// Модули
+import loadingImage from '@/modules/loadingImage';
 
-const props = defineProps({
-  src: {
-    type: String,
-    required: true,
-  },
-  alt: {
-    type: String,
-    required: true
-  }
-})
+type TypeProps = {
+  src: string,
+  alt: string,
+}
+
+const props = defineProps<TypeProps>();
 
 const { loaded, loading } = loadingImage();
 
-onMounted(() => {
+onMounted((): void => {
   loading(props.src);
 })
 
-watch(() => props.src, (newValue) => {
+watch(() => props.src, (newValue: string) => {
   loading(newValue);
 })
 </script>
@@ -30,5 +27,5 @@ watch(() => props.src, (newValue) => {
     :alt="alt"
     class="image"
   />
-  <img v-else src="/public/img/opacity-loader-bg.png" class="preloader-image bg-gray-linear bg-[length:50%_100%] bg-no-repeat animate-line rounded-md">
+  <img v-else src="/img/opacity-loader-bg.png" class="preloader-image bg-gray-linear bg-[length:50%_100%] bg-no-repeat animate-line rounded-md">
 </template>

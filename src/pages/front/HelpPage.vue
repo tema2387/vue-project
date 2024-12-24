@@ -1,9 +1,9 @@
-<script setup>
+<script lang="ts" setup>
 import FrontLayout from "@/layouts/FrontLayout.vue";
 // Компоненты
 import UiInputText from "@/components/UI/UiInputText.vue";
-import CardRead from "@/components/blocks/CardRead.vue";
-import CardKnowledge from "@/components/blocks/CardKnowledge.vue";
+import BlockCardRead from "@/components/blocks/BlockCardRead.vue";
+import BlockCardKnowledge from "@/components/blocks/BlockCardKnowledge.vue";
 // Иконки
 import RocketIcon from "@/components/UI/svg/RocketIcon.vue";
 import GiftIcon from "@/components/UI/svg/GiftIcon.vue";
@@ -12,7 +12,7 @@ import LaptopIcon from "@/components/UI/svg/LaptopIcon.vue";
 import LightBulbIcon from "@/components/UI/svg/LightBulbIcon.vue";
 import DiscordIcon from "@/components/UI/svg/DiscordIcon.vue";
 // Хранилище
-import { buying, itemSupport, licenses, templateKits, accountAndPassword, accountSettings } from "@/store/knowledgeBaseStore.js";
+import { buying, itemSupport, licenses, templateKits, accountAndPassword, accountSettings } from "@/store/knowledgeBaseStore";
 </script>
 <template>
 <FrontLayout>
@@ -35,24 +35,33 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
       <div class="articles__content container">
         <h4 class="text-center">Popular Articles</h4>
         <div class="articles__list flex flex-wrap gap-[24px] mt-[24px]">
-          <CardRead 
-            :img="RocketIcon"
+          <BlockCardRead 
             :title="'Getting Started'"
             :subtitle1="'Whether youre new or youre'"
             :subtitle2="'a power user, this article will…'"
-          />
-          <CardRead 
-            :img="GiftIcon"
+          >
+            <template v-slot:icon>
+              <RocketIcon />
+            </template>
+          </BlockCardRead>
+          <BlockCardRead 
             :title="'First Steps'"
             :subtitle1="'Are you a new customer wondering'"
             :subtitle2="'how to get started?'"
-          />
-          <CardRead 
-            :img="KeyboardIcon"
+          >
+            <template v-slot:icon>
+              <GiftIcon />
+            </template>
+          </BlockCardRead>
+          <BlockCardRead 
             :title="'Add External Content'"
             :subtitle1="'This article will show you how to expand the'"
             :subtitle2="'functionality of the App.'"
-          />
+          >
+            <template v-slot:icon>
+              <KeyboardIcon />
+            </template>
+          </BlockCardRead>
         </div>
       </div>
     </section>
@@ -60,34 +69,34 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
       <div class="knowledge-base__content container">
         <h4 class="text-center">Knowledge Base</h4>
         <div class="flex flex-wrap gap-[24px] mt-[24px]">
-          <CardKnowledge 
+          <BlockCardKnowledge 
             :title="'Buying'"
             :titleIcon="'/icon/cart-icon.svg'"
             :items="buying"
           />
-          <CardKnowledge 
+          <BlockCardKnowledge 
             :title="'Item Support'"
             :titleIcon="'/icon/question-icon.svg'"
             :items="itemSupport"
           />
-          <CardKnowledge 
+          <BlockCardKnowledge 
             :title="'Licenses'"
             :titleIcon="'/icon/licenses-icon.svg'"
             :items="licenses"
           />
         </div>
         <div class="flex flex-wrap justify-between gap-[24px] mt-[24px]">
-          <CardKnowledge 
+          <BlockCardKnowledge 
             :title="'Template Kits'"
             :titleIcon="'/icon/kits-icon.svg'"
             :items="templateKits"
           />
-          <CardKnowledge 
+          <BlockCardKnowledge 
             :title="'Account & Password'"
             :titleIcon="'/icon/lock-icon.svg'"
             :items="accountAndPassword"
           />
-          <CardKnowledge 
+          <BlockCardKnowledge 
             :title="'Account Settings'"
             :titleIcon="'/icon/account-icon.svg'"
             :items="accountSettings"
@@ -99,24 +108,33 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
       <div class="learning__content container">
         <h4 class="text-center">Keep Learning</h4>
         <div class="learning__list flex flex-wrap gap-[24px] mt-[24px]">
-          <CardRead 
-            :img="LaptopIcon"
+          <BlockCardRead 
             :title="'Blogging'"
             :subtitle1="'Expert tips & tools to improve your website'"
             :subtitle2="'or online store using blog.'"
-          />
-          <CardRead 
-            :img="LightBulbIcon"
+          >
+            <template v-slot:icon>
+              <LaptopIcon />
+            </template>
+          </BlockCardRead>
+          <BlockCardRead 
             :title="'Inspiration Center'"
             :subtitle1="'inspiration from experts to help you start and '"
             :subtitle2="'grow your big ideas.'"
-          />
-          <CardRead 
-            :img="DiscordIcon"
+          >
+            <template v-slot:icon>
+              <LightBulbIcon />
+            </template>
+          </BlockCardRead>
+          <BlockCardRead 
             :title="'Community'"
             :subtitle1="'A group of people living in the same place or'"
             :subtitle2="'having a particular.'"
-          />
+          >
+            <template v-slot:icon>
+              <DiscordIcon />
+            </template>
+          </BlockCardRead>
         </div>
       </div>
     </section>

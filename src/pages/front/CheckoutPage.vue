@@ -1,11 +1,11 @@
-<script setup>
+<script lang="ts" setup>
 import { computed, ref } from 'vue';
 // Компоненты
 import FrontLayout from '@/layouts/FrontLayout.vue';
-import CheckoutCart from '@/components/blocks/CheckoutCart.vue';
-import CheckoutAddress from '@/components/blocks/CheckoutAddress.vue';
-import CheckoutPayment from '@/components/blocks/CheckoutPayment.vue';
-import CheckoutConfirmation from '@/components/blocks/CheckoutConfirmation.vue';
+import CheckoutCart from '@/components/checkout/CheckoutCart.vue';
+import CheckoutAddress from '@/components/checkout/CheckoutAddress.vue';
+import CheckoutPayment from '@/components/checkout/CheckoutPayment.vue';
+import CheckoutConfirmation from '@/components/checkout/CheckoutConfirmation.vue';
 // Иконки
 import CheckoutCartIcon from '@/components/UI/svg/CheckoutCartIcon.vue';
 import CheckoutAddressIcon from '@/components/UI/svg/CheckoutAddressIcon.vue';
@@ -13,45 +13,45 @@ import CheckoutPaymentIcon from '@/components/UI/svg/CheckoutPaymentIcon.vue';
 import CheckoutConfirmationIcon from '@/components/UI/svg/CheckoutConfirmationIcon.vue';
 import ArrowRightSIcon from '@/components/UI/svg/ArrowRightSIcon.vue';
 
-// Пременная component может быть 'cart', 'address', 'payment', 'confirmation'
-const component = ref('cart');
+// Пременная componentName может быть 'cart', 'address', 'payment', 'confirmation'
+const componentName = ref<string>('cart');
 
 const currentComponent = computed(() => {
-  return component.value === 'cart' ? CheckoutCart 
-    : component.value === 'address' ? CheckoutAddress 
-      : component.value === 'payment' ? CheckoutPayment 
-        : component.value === 'confirmation' ? CheckoutConfirmation 
+  return componentName.value === 'cart' ? CheckoutCart 
+    : componentName.value === 'address' ? CheckoutAddress 
+      : componentName.value === 'payment' ? CheckoutPayment 
+        : componentName.value === 'confirmation' ? CheckoutConfirmation 
           : {};
 })
 
-function changeComponent(newComponent) {
-  component.value = newComponent;
+function changeComponentName(newComponent: string): void {
+  componentName.value = newComponent;
 }
 
-const changeComponentsOnAddress = () => {
-  component.value = 'address';
+const changeComponentsOnAddress = (): void => {
+  componentName.value = 'address';
 }
 
-const step1 = computed(() => {
-  return component.value === 'cart' 
-    || component.value === 'address' 
-      || component.value === 'payment' 
-        || component.value === 'confirmation';
+const step1 = computed<boolean>(() => {
+  return componentName.value === 'cart' 
+    || componentName.value === 'address' 
+      || componentName.value === 'payment' 
+        || componentName.value === 'confirmation';
 })
 
-const step2 = computed(() => {
-  return component.value === 'address' 
-    || component.value === 'payment' 
-      || component.value === 'confirmation';
+const step2 = computed<boolean>(() => {
+  return componentName.value === 'address' 
+    || componentName.value === 'payment' 
+      || componentName.value === 'confirmation';
 })
 
-const step3 = computed(() => {
-  return component.value === 'payment' 
-    || component.value === 'confirmation';
+const step3 = computed<boolean>(() => {
+  return componentName.value === 'payment' 
+    || componentName.value === 'confirmation';
 })
 
-const step4 = computed(() => {
-  return component.value === 'confirmation';
+const step4 = computed<boolean>(() => {
+  return componentName.value === 'confirmation';
 })
 </script>
 <template>
@@ -60,7 +60,7 @@ const step4 = computed(() => {
     <div class="checkout-page__content bg-paper-bg shadow-md rounded-md container">
       <div class="checkout-page__top hidden md:flex py-[20px] justify-center border-b border-devider gap-[16px] items-center text-center">
         <div 
-          @click="changeComponent('cart')" 
+          @click="changeComponentName('cart')" 
           class="cart py-[20px] px-[45px] cursor-pointer"
         >
           <CheckoutCartIcon 
@@ -79,7 +79,7 @@ const step4 = computed(() => {
           :class="{ 'text-primary-500': step2, '!opacity-100': step2 }" 
         />
         <div 
-          @click="changeComponent('address')" 
+          @click="changeComponentName('address')" 
           class="address py-[20px] px-[45px] cursor-pointer"
         >
           <CheckoutAddressIcon 
@@ -98,7 +98,7 @@ const step4 = computed(() => {
           :class="{ 'text-primary-500': step3, '!opacity-100': step3 }" 
         />
         <div 
-          @click="changeComponent('payment')" 
+          @click="changeComponentName('payment')" 
           class="payment py-[20px] px-[45px] cursor-pointer"
         >
           <CheckoutPaymentIcon 
@@ -117,7 +117,7 @@ const step4 = computed(() => {
           :class="{ 'text-primary-500': step4, '!opacity-100': step4 }" 
         />
         <div 
-          @click="changeComponent('confirmation')" 
+          @click="changeComponentName('confirmation')" 
           class="confirmation py-[20px] px-[45px] cursor-pointer"
         >
           <CheckoutConfirmationIcon 

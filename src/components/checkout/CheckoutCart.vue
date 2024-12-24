@@ -1,30 +1,30 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 // Компоненты
 import UiInputText from '@/components/UI/UiInputText.vue';
-import ProductCard from '@/components/blocks/ProductCard.vue';
+import BlockProductCard from '@/components/blocks/BlockProductCard.vue';
 import UiPopup from '@/components/UI/UiPopup.vue';
 // Иконки
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 // Хранилище
-import { products } from '@/store/productsStore.js';
+import { products, removeProduct } from '@/store/productsStore';
 // Модули
-import { activatePopup } from '@/modules/togglePopup.js';
+import { activatePopup } from '@/modules/togglePopup';
 
 // border для product-cart
-const borderAloneElement = 'border rounded-md';
-const borderTwoElements = ['border rounded-t-md', 'border-x border-b rounded-b-md']
-const borderMoreTwo = ['border-x border-t rounded-t-md', 'border-x border-t', 'border rounded-b-md']
+const borderAloneElement: string = 'border rounded-md';
+const borderTwoElements: string[] = ['border rounded-t-md', 'border-x border-b rounded-b-md']
+const borderMoreTwo: string[] = ['border-x border-t rounded-t-md', 'border-x border-t', 'border rounded-b-md']
 
-const popupOfferStatus = ref(true);
-const promo = ref('test');
+const popupOfferStatus = ref<boolean>(true);
+const promo = ref<string>('test');
 
-function activatePromo() {
+function activatePromo(): void {
   const statusPromo = checkValidPromo(promo.value);
   statusPromo ? activatePopup('Promocode activated', 'success') : activatePopup('Promocode not found', 'error');
 }
 
-function checkValidPromo(promo) {
+function checkValidPromo(promo: string): boolean {
   if(promo === 'test') {
     return true;
   }
@@ -44,10 +44,10 @@ function checkValidPromo(promo) {
         v-if="products.length" 
         class="checkout-cart__products"
       >
-        <ProductCard 
+        <BlockProductCard 
           v-for="product in products" 
           :key="product.id" 
-          :id="product.id"
+          :id="product.id.toString()"
           :img="product.img"
           :name="product.name"
           :rating="product.rating"
@@ -55,6 +55,7 @@ function checkValidPromo(promo) {
           :price="product.price"
           :oldPrice="product.oldPrice"
           :count="product.count"
+          @remove="removeProduct(product.id)"
           :class="products.length < 2 ? borderAloneElement 
             : products.length === 2 ? borderTwoElements[products.indexOf(product)] 
               : products.length > 2 ? borderMoreTwo[products.indexOf(product) === 0 ? 0 

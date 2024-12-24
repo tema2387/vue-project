@@ -1,58 +1,47 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, computed } from 'vue';
+// Иконки
 import CheckAccordionIcon from '@/components/UI/svg/CheckAccordionIcon.vue';
 
 // Пропс size может быть 'lg', 'md', 'sm' 
 // Пропс labelBgColor может быть 'footer', 'main'
-const props = defineProps({
-  id: {
-    type: [String, Number],
-    required: true,
-  },
-  size: {
-    type: String,
-    default() {
-      return 'lg';
-    }
-  },
-  labelBgColor:{
-    type: String,
-    default() {
-      return 'main'
-    }
-  },
-  label: String,
-  selects: {
-    type: Array,
-    default() {
-      return [];
-    }
-  }
+type TypeProps = {
+  id: string,
+  label: string,
+  selects: string[],
+  labelBgColor?: string,
+  size?: string,
+}
+
+const props = withDefaults(defineProps<TypeProps>(), {
+  size: 'md',
 });
+const model = defineModel<string>();
+
+const openSelect = ref<boolean>(false);
 
 // Размеры select
-const sizeLg = 'py-[16px] px-[16px]';
-const sizeMd = 'py-[12px] px-[16px]';
-const sizeSm = 'py-[8px] px-[16px]';
+const sizeLg: string = 'py-[16px] px-[16px]';
+const sizeMd: string = 'py-[12px] px-[16px]';
+const sizeSm: string = 'py-[8px] px-[16px]';
 
 // Цвет бэкграунда label
-const footerLabelBgColor = 'bg-footer-bg-color';
-const mainLabelBgColor = 'bg-paper-bg';
+const footerLabelBgColor: string = 'bg-footer-bg-color';
+const mainLabelBgColor: string = 'bg-paper-bg';
 
-const model = defineModel();
-const openSelect = ref(false);
-
-const sizeSelectField = computed(() => {
+const sizeSelectField = computed<string>(() => {
   return props.size === 'md' ? sizeMd : props.size === 'sm' ? sizeSm : sizeLg;
 })
 
-const labelBgColor = computed(() => {
+const labelBgColor = computed<string>(() => {
   return props.labelBgColor === 'footer' ? footerLabelBgColor : mainLabelBgColor;
 })
 
-// Удаление сосотянияния фокус с селекта
-function handlerSelect(event) {
-  event.target.blur();
+// Удаление сосотяния фокус с селекта
+function handlerSelect(event: Event):void {
+  const target = (event.target as HTMLElement);
+  target.blur();
+
   openSelect.value = false;
 }
 </script>

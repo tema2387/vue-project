@@ -1,14 +1,9 @@
-<script setup>
-const props = defineProps({
-  img: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-})
+<script lang="ts" setup>
+type TypeProps = {
+  img: string,
+  name: string,
+}
+const props = defineProps<TypeProps>();
 </script>
 <template>
   <div class="product-card-delivery flex items-center gap-[16px]">
