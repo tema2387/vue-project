@@ -34,6 +34,13 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
+    // Если в пути указана секция
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth', // для плавной прокрутки
+      };
+    }
     // Всегда прокручивать к верху страницы
     return { top: 0 };
   },

@@ -2,9 +2,9 @@
 // import { computed } from 'vue';
 // import { useRoute } from 'vue-router';
 // Компоненты
-import UiPopup from '@/components/UI/UIPopup.vue';
+import UiPopup from '@/components/UI/UiPopup.vue';
 // Модули
-import { popupText, popupStatus, popupColor, closePopup } from '@/modules/togglePopup.js';
+import { popupText, popupStatus, popupColor, closePopup } from '@/modules/togglePopup';
 
 // const route = useRoute();
 

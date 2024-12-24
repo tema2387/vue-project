@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 // Иконки
@@ -10,22 +10,24 @@ import CloseLineIcon from '@/components/UI/svg/CloseLineIcon.vue';
 import CircleIcon from '@/components/UI/svg/CircleIcon.vue';
 import PagesTitleIcon from '@/components/UI/svg/PagesTitleIcon.vue';
 // Модули
-import { activeDarkTheme, changeTheme } from '@/modules/changeTheme.js';
-import { home, features, team, faq, contact, visibleSection } from '@/modules/observeSections.js';
+import { activeDarkTheme, changeTheme } from '@/modules/changeTheme';
+import { home, features, team, faq, contact, visibleSection } from '@/modules/observeSections';
 
 const route = useRoute();
 const router = useRouter();
 
-const pagesMenuDesktop = ref(false);
-const pagesMenu = ref(false);
-const burgerMenuOpened = ref(false);
+const pagesMenuDesktop = ref<boolean>(false);
+const pagesMenu = ref<boolean>(false);
+const burgerMenuOpened = ref<boolean>(false);
 
-const itemActive = ref(false);
-const menuActive = ref(false);
+const itemActive = ref<boolean>(false);
+const menuActive = ref<boolean>(false);
 
-let timeout;
+type TypeTimeout = ReturnType<typeof setTimeout>;
 
-function scrollToSection(section) {
+let timeout: TypeTimeout;
+
+function scrollToSection(section: HTMLElement | null): void {
   if(route.path !== '/landing') {
     router.push('/landing');
   }
@@ -34,29 +36,29 @@ function scrollToSection(section) {
   section?.scrollIntoView({ behavior: 'smooth' });
 }
 
-function openBurgerMenu() {
+function openBurgerMenu(): void {
   burgerMenuOpened.value = true;
 }
 
-function closeBurgerMenu() {
+function closeBurgerMenu(): void {
   burgerMenuOpened.value = false;
 }
 
-function mouseItemEnter() {
+function mouseItemEnter(): void {
   clearTimeout(timeout);
 
   pagesMenuDesktop.value = true;
   itemActive.value = true;
 }
 
-function mouseMenuEnter() {
+function mouseMenuEnter(): void {
   clearTimeout(timeout);
 
   pagesMenuDesktop.value = true;
   menuActive.value = true;
 }
 
-function mouseItemLeave() {
+function mouseItemLeave(): void {
   itemActive.value = false;
 
   timeout = setTimeout(() => {
@@ -66,7 +68,7 @@ function mouseItemLeave() {
   }, 1000)
 }
 
-function mouseMenuLeave() {
+function mouseMenuLeave(): void {
   menuActive.value = false;
 
   timeout = setTimeout(() => {
@@ -251,23 +253,38 @@ function mouseMenuLeave() {
   <Transition name="burger-menu">
     <div v-if="burgerMenuOpened" class="burger-menu overflow-y-auto fixed flex justify-between gap-[20px] p-[20px] left-0 top-0 h-[100vh] max-w-[100%] sm:max-w-[300px] w-full bg-paper-bg z-[100]">
       <ul class="menu__list flex flex-col top-[200px] gap-[20px]">
-        <li @click="scrollToSection(home)" class="menu__item flex items-center cursor-pointer">
+        <li 
+          @click="scrollToSection(home)" 
+          class="menu__item flex items-center cursor-pointer"
+        >
           <CircleIcon></CircleIcon>
           <div :class="{ 'text-primary-500': visibleSection?.target === home }">Home</div>
         </li>
-        <li @click="scrollToSection(features)" class="menu__item flex items-center cursor-pointer">
+        <li 
+          @click="scrollToSection(features)" 
+          class="menu__item flex items-center cursor-pointer"
+        >
           <CircleIcon></CircleIcon>
           <div :class="{ 'text-primary-500': visibleSection?.target === features }">Features</div>
         </li>
-        <li @click="scrollToSection(team)" class="menu__item flex items-center cursor-pointer">
+        <li 
+          @click="scrollToSection(team)" 
+          class="menu__item flex items-center cursor-pointer"
+        >
           <CircleIcon></CircleIcon>
           <div :class="{ 'text-primary-500': visibleSection?.target === team }">Team</div>
         </li>
-        <li @click="scrollToSection(faq)" class="menu__item flex items-center cursor-pointer">
+        <li 
+          @click="scrollToSection(faq)" 
+          class="menu__item flex items-center cursor-pointer"
+        >
           <CircleIcon></CircleIcon>
           <div :class="{ 'text-primary-500': visibleSection?.target === faq }">FAQ</div>
         </li>
-        <li @click="scrollToSection(contact)" class="menu__item flex items-center cursor-pointer">
+        <li 
+          @click="scrollToSection(contact)" 
+          class="menu__item flex items-center cursor-pointer"
+        >
           <CircleIcon></CircleIcon>
           <div :class="{ 'text-primary-500': visibleSection?.target === contact }">Contact us</div>
         </li>

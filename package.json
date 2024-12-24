@@ -16,12 +16,20 @@
     "vue-toggles": "^2.1.0"
   },
   "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/cli-plugin-typescript": "~4.5.15",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "sass": "^1.74.1",
     "sass-loader": "^14.1.1",
     "tailwindcss": "^3.4.3",
+    "typescript": "^5.7.2",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
+  "main": "postcss.config.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 // Компоненты
 import FrontHeader from '@/components/FrontHeader.vue';
 import FrontFooter from '@/components/FrontFooter.vue';

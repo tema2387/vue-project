@@ -1,4 +1,10 @@
-export const mainNav = [
+type TypeNavItem = {
+  title: string,
+  link?: string,
+  list?: TypeNavItem[];
+}
+
+export const mainNav:TypeNavItem[] = [
   {
     title: 'Dashboards',
     list: [
@@ -21,7 +27,7 @@ export const mainNav = [
   }
 ]
 
-export const appsAndPages = [
+export const appsAndPages:TypeNavItem[]  = [
   {
     title: 'Ecommerce',
     list: [

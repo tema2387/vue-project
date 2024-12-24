@@ -1,7 +1,8 @@
+// Импорт стилей
+@use './modules/fonts.scss';
+@use './modules/variables.scss';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// Импорт стилей
-@import url(./modules/fonts.scss);
-@import url(./modules/variables.scss);

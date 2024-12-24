@@ -1,44 +1,35 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue';
 // Иконки
 import CloseLineIcon from '@/components/UI/svg/CloseLineIcon.vue';
 
-const props = defineProps({
-  type: {
-    type: String,
-    default() {
-      return '';
-    },
-  },
-  title: {
-    type: [Number, String],
-    default() {
-      return 'Popup!';
-    }
-  },
-  color: {
-    type: String,
-    default() {
-      return 'success';
-    }
-  },
+type TypeProps = {
+  type?: string,
+  title?: string,
+  color?: string,
+}
+
+const props = withDefaults(defineProps<TypeProps>(), {
+  title: 'title',
 });
 
-const successColor = 'text-success-500';
-const successBg = 'bg-success-opacity/[16%]';
+const emit = defineEmits<{
+  (e: 'close'): void,
+}>();
 
-const errorColor = 'text-error-500';
-const errorBg = 'bg-error-opacity/[16%]';
+const successColor: string = 'text-success-500';
+const successBg: string = 'bg-success-opacity/[16%]';
 
-const setColor = computed(() => {
+const errorColor: string = 'text-error-500';
+const errorBg: string = 'bg-error-opacity/[16%]';
+
+const setColor = computed<string>(() => {
   return props.color === 'error' ? errorColor : successColor;
 })
 
-const setBg = computed(() => {
+const setBg = computed<string>(() => {
   return props.color === 'error' ? errorBg : successBg;
 })
-
-const emit = defineEmits(['close']);
 </script>
 <template>
   <div 

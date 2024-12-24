@@ -1,18 +1,18 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 // Компоненты
-import ProductCardDelivery from '@/components/blocks/ProductCardDelivery.vue';
+import BlockProductCardDelivery from '@/components/blocks/BlockProductCardDelivery.vue';
 import UiRadioCustom from '@/components/UI/UiRadioCustom.vue';
 // Иконки
 import UserStandardIcon from '@/components/UI/svg/UserStandardIcon.vue';
 import StarSmileIcon from '@/components/UI/svg/StarSmileIcon.vue';
 import VipCrownIcon from '@/components/UI/svg/VipCrownIcon.vue';
 // Хранилище
-import { products } from '@/store/productsStore.js';
-import { addresses, removeAddress, selectedAddress } from '@/store/addressStore.js';
-import { deliveries } from '@/store/deliverySpeedStore.js';
+import { products } from '@/store/productsStore';
+import { addresses, removeAddress, selectedAddressId} from '@/store/addressStore';
+import { deliveries } from '@/store/deliverySpeedStore';
 
-const modelDelivery = ref('Standard');
+const modelDelivery = ref<string>('Standard');
 </script>
 <template>
   <div class="checkout-address flex flex-col gap-[24px] lg:flex-row">
@@ -25,7 +25,7 @@ const modelDelivery = ref('Standard');
             :key="address.id"
             :name="'radio-addresses'"
             :id="address.id"
-            v-model="selectedAddress"
+            v-model="selectedAddressId"
             class="max-w-[361px]"
           >
             <template v-slot:title>
@@ -111,7 +111,7 @@ const modelDelivery = ref('Standard');
         <div class="delivery p-[20px]">
           <div class="text-15-500">Estimated Delivery Date</div>
           <div class="delivery-list flex flex-col gap-[16px] mt-[16px]">
-            <ProductCardDelivery
+            <BlockProductCardDelivery
               v-for="product in products"
               :key="product.id"
               :img="product.img"

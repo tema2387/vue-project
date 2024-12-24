@@ -1,59 +1,43 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, computed, onMounted, inject} from 'vue';
 // Иконки
 import ArrowRightSIcon from '@/components/UI/svg/ArrowRightSIcon.vue';
 import CircleIcon from '@/components/UI/svg/CircleIcon.vue';
 // Компоненты
-import AdminNav from '@/components/blocks/AdminNav.vue';
+import BlockAdminNav from '@/components/blocks/BlockAdminNav.vue';
 
-const props = defineProps({
-  title: {
-    type: String,
-    default() {
-      return 'Title';
-    }
-  },
-  list: {
-    type: Array,
-    default() {
-      return [];
-    }
-  },
-  link: {
-    type: String,
-    default() {
-      return '';
-    }
-  },
-  level: {
-    type: Number,
-    default() {
-      return 1;
-    }
-  }
+type TypeProps = {
+  title: string,
+  link?: string, 
+  list?: TypeProps[],
+  level?: number,
+}
+
+const props = withDefaults(defineProps<TypeProps>(), {
+  level: 1,
 })
 
 const menuHidden = inject('menuHidden');
 
-const menuOpened = ref(true);
-const menuList = ref(null);
-const paddingLevel = ref(22);
+const menuOpened = ref<boolean>(true);
+const menuList = ref<HTMLElement | null>(null);
+const paddingLevel = ref<number>(22);
 
-onMounted(() => {
+onMounted((): void => {
   menuOpened.value = false;
 })
 
 const menuListHeight = computed(() => {
   if(menuList.value) {
     return menuList.value.scrollHeight;
-  } 
+  }
 })
 
 for(let i = 3; i <= props.level; i++) {
   paddingLevel.value += 10;
 }
 
-function toggleMenu() {
+function toggleMenu(): void {
   menuOpened.value = !menuOpened.value;
 }
 </script>
@@ -62,7 +46,7 @@ function toggleMenu() {
     v-if="link"
     :link="link"
     class="admin-nav-link flex min-h-[38px] max-w-[264px] pr-[14px] mr-[16px] py-[8px] items-center hover:bg-action-selected gap-[8px] rounded-br-full rounded-tr-full"
-    :class="{ 'mr-[0px]': menuHidden }"
+    :class="{ '!mr-[0px]': menuHidden }"
     :style="{ 'padding-left': `${paddingLevel + 'px'}` }"
   >
     <div class="admin-nav-link__icon">
@@ -74,7 +58,7 @@ function toggleMenu() {
     <div
       @click="toggleMenu" 
       class="admin-nav-menu__open flex pr-[14px] mr-[16px] max-w-[264px] min-h-[38px] py-[8px] hover:bg-action-selected items-center gap-[8px] cursor-pointer rounded-br-full rounded-tr-full"
-      :class="{ 'bg-action-selected': menuOpened, 'mr-[0px]': menuHidden }"
+      :class="{ 'bg-action-selected': menuOpened, '!mr-[0px]': menuHidden }"
       :style="{ 'padding-left': `${paddingLevel + 'px'}` }"
     >
       <div class="admin-nav-menu__icon">
@@ -100,7 +84,7 @@ function toggleMenu() {
           class="admin-nav-menu__item"
           :class="{ 'mt-[8px]': index === 0 }"
         >
-          <AdminNav
+          <BlockAdminNav
             :title="item.title"
             :list="item.list"
             :link="item.link" 
@@ -109,7 +93,7 @@ function toggleMenu() {
             <template v-slot:icon>
               <CircleIcon />
             </template>
-          </AdminNav>
+          </BlockAdminNav>
         </li>
       </ul>
     </Transition>

@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 // Компоненты
 import UiInputText from '@/components/UI/UiInputText.vue';
 // Иконки

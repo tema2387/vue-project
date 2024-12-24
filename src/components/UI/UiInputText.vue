@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue';
 // Иконки
 import SearchIcon from '@/components/UI/svg/SearchIcon.vue'
@@ -8,106 +8,65 @@ import EyePasswordIcon from '@/components/UI/svg/EyePasswordIcon.vue';
 // Пропс size может быть 'lg', 'md', 'sm' 
 // Пропс labelBgColor может быть 'footer', 'main'
 // Пропс status может быть 'default' (default), success, error
-const props = defineProps({
-  id: {
-    type: [String, Number],
-    required: true,
-  },
-  type: {
-    type: String,
-    default() {
-      return 'outlined';
-    }
-  },
-  size: {
-    type: String,
-    default() {
-      return 'lg';
-    }
-  },
-  labelBgColor:{
-    type: String,
-    default() {
-      return 'main'
-    }
-  },
-  label: [Number, String],
-  placeholder: [Number, String],
-  searchIcon: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  },
-  readonly: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  },
-  helpText: {
-    type: String,
-    default() {
-      return '';
-    }
-  },
-  status: {
-    type: String,
-    default() {
-      return 'default';
-    }
-  },
-  eyeIcon: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  },
-  passwordInput: {
-    type: Boolean,
-    default() {
-      return false;
-    }
-  }
+type TypeProps = {
+  id: string,
+  label?: string,
+  type?: string,
+  size?: string,
+  labelBgColor?: string,
+  placeholder?: string,
+  searchIcon?: boolean
+  readonly?: boolean,
+  helpText?: string | null,
+  status?: string,
+  eyeIcon?: boolean,
+  passwordInput?: boolean,
+}
+
+const props = withDefaults(defineProps<TypeProps>(), {
+  type: 'outlined',
+  size: 'md',
 });
 
 // Размеры input
-const sizeLg = 'px-[16px] py-[16px]';
-const sizeMd = 'px-[16px] py-[12px]';
-const sizeSm = 'px-[16px] py-[8px]';
+const sizeLg: string = 'px-[16px] py-[16px]';
+const sizeMd: string = 'px-[16px] py-[12px]';
+const sizeSm: string = 'px-[16px] py-[8px]';
 
 // Цвет border
-const borderError = '!border-error-500 !outline-error-500 focus:border-error-500 focus:outline-error-500';
-const borderSuccess = '!border-success-500 !outline-success-500 focus:border-success-500 focus:outline-success-500';
+const borderError: string = '!border-error-500 !outline-error-500 focus:border-error-500 focus:outline-error-500';
+const borderSuccess: string = '!border-success-500 !outline-success-500 focus:border-success-500 focus:outline-success-500';
 
 // Цвет бэкграунда label
-const footerLabelBgColor = 'bg-footer-bg-color';
-const mainLabelBgColor = 'bg-paper-bg';
+const footerLabelBgColor: string = 'bg-footer-bg-color';
+const mainLabelBgColor: string = 'bg-paper-bg';
 
-const model = defineModel();
-const emits = defineEmits(['toggleInput']);
+const model = defineModel<string | null>();
+const emit = defineEmits<{
+  (e: 'toggleInput'): void,
+}>();
 
-const sizeInput = computed(() => {
+const sizeInput = computed<string>(() => {
   return props.size === 'md' ? sizeMd : props.size === 'sm' ? sizeSm : sizeLg;
 })
 
-const posLeftIcon = computed(() => {
+const posLeftIcon = computed<string>(() => {
   return props.size === 'md' 
     ? 'left-[16px] top-[12px]' : props.size === 'sm' 
       ? 'left-[16px] top-[8px]' : 'left-[16px] top-[16px]';
 })
 
-const posRightIcon = computed(() => {
+const posRightIcon = computed<string>(() => {
   return props.size === 'md' 
     ? 'right-[16px] top-[12px]' : props.size === 'sm' 
       ? 'right-[16px] top-[8px]' : 'right-[16px] top-[16px]';
 })
 
-const setBorderColor = computed(() => {
-  return props.status === 'error' ? borderError : props.status === 'success' ? borderSuccess : '';
+const setBorderColor = computed<string | null>(() => {
+  return props.status === 'error' ? borderError : props.status === 'success' ? borderSuccess : null;
 })
 
-const labelBgColor = computed(() => {
+const labelBgColor = computed<string>(() => {
   return props.labelBgColor === 'footer' ? footerLabelBgColor : mainLabelBgColor;
 })
 </script>
@@ -127,7 +86,7 @@ const labelBgColor = computed(() => {
     <input 
       :id="id" 
       :placeholder="placeholder"
-      :readonly="props.readonly"
+      :readonly="readonly"
       :type="passwordInput ? 'password' : 'text'" 
       class="peer w-full text-input-text duration-200 bg-transparent outline outline-transparent outline-offset-[-2px] border border-input-border rounded-lg text-text-disabled focus:placeholder-text-disabled focus:border-primary-500 focus:outline-primary-500 focus:text-text-primary hover:border-action-active hover:text-text-primary"
       :class="[sizeInput, setBorderColor, { 'pl-[46px]': searchIcon, 'placeholder-transparent': label}]"
@@ -153,7 +112,7 @@ const labelBgColor = computed(() => {
       v-if="eyeIcon"
       class="absolute translate-y-[15%] cursor-pointer" 
       :class="posRightIcon" 
-      @click="$emit('toggleInput')"
+      @click="emit('toggleInput')"
     />
     <span 
       v-if="helpText" 

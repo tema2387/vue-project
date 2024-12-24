@@ -1,12 +1,18 @@
-<script setup>
-import { reactive } from 'vue';
+<script lang="ts" setup>
+import { ref, reactive } from 'vue';
 // Компоненты
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiCheckbox from '@/components/UI/UiCheckbox.vue';
 
+type TypeAuthFields = {
+  email: string,
+  password: string,
+}
 
-const authFields = reactive({ email: 'test@test', password: 'test' });
+const passwordHidden = ref<boolean>(true);
+
+const authFields = reactive<TypeAuthFields>({ email: 'test@test', password: 'test' });
 </script>
 <template>
   <AuthLayout>
@@ -24,22 +30,22 @@ const authFields = reactive({ email: 'test@test', password: 'test' });
           :id="'email'" 
           :size="'md'" 
           :label="'Email'"
-          :status="authError ? 'error' : 'default'"
           v-model="authFields.email"
         />
         <UiInputText 
           :id="'password'" 
           :size="'md'" 
           :label="'Password'"
-          :status="authError ? 'error' : 'default'"
+          :eyeIcon="true"
+          :passwordInput="passwordHidden"
+          @toggleInput="passwordHidden = !passwordHidden"
           v-model="authFields.password"
         />
-        <div v-if="authError" class="error-auth text-error-500">Incorrect login or password</div>
         <div class="flex justify-between">
           <UiCheckbox :id="'remember-account'" :name="'remember-account'">Remember Me</UiCheckbox>
           <UiLink :link="'#'" class="text-primary-500">Forgot Password?</UiLink>
         </div>
-        <UiButton :size="'md'" @click="auth">Login</UiButton>
+        <UiButton :size="'md'">Login</UiButton>
       </div>
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>New on our platform?</span>

@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 // Swiper Slider
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -7,14 +7,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 // Компоненты
 import FrontLayout from '@/layouts/FrontLayout.vue';
-import SectionWrapper from '@/components/blocks/SectionWrapper.vue';
-import SlideReview from '@/components/blocks/SlideReview.vue';
-import CardTeam from '@/components/blocks/CardTeam.vue';
+import SectionWrapper from '@/components/wrappers/SectionWrapper.vue';
+import BlockSlideReview from '@/components/blocks/BlockSlideReview.vue';
+import BlockCardTeam from '@/components/blocks/BlockCardTeam.vue';
+import BlockPlan from '@/components/blocks/BlockPlan.vue';
 import UiInputRange from '@/components/UI/UiInputRange.vue';
-import Plan from '@/components/blocks/Plan.vue';
 import UiAccordion from '@/components/UI/UiAccordion.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
-import UiButton from '@/components/UI/UiButton.vue';
 import UiTextarea from '@/components/UI/UiTextarea.vue';
 // Иконки
 import LaptopChargingIcon from '@/components/UI/svg/LaptopChargingIcon.vue';
@@ -31,19 +30,20 @@ import ContinentalsIcon from '@/components/UI/svg/ContinentalsIcon.vue';
 import SectionStarIcon from '@/components/UI/svg/SectionStarIcon.vue';
 import SectionCheckIcon from '@/components/UI/svg/SectionCheckIcon.vue';
 // Модули
-import { activeDarkTheme } from '@/modules/changeTheme.js';
-import loadingImage from '@/modules/loadingImage.js';
-import { home, features, team, faq, contact, setObserver } from '@/modules/observeSections.js';
+import { activeDarkTheme } from '@/modules/changeTheme';
+import loadingImage from '@/modules/loadingImage';
+import { home, features, team, faq, contact, setObserver } from '@/modules/observeSections';
+import { setPlanPrice } from '@/store/plansStore';
 
-const activeAccordion = ref(2);
+const activeAccordion = ref<number>(2);
 
-function changeAccordion(activeIndex) {
+function changeAccordion(activeIndex: number): void {
   activeAccordion.value = activeIndex;
 }
 
 const { loaded, loading }  = loadingImage();
 
-onMounted(() => {
+onMounted((): void => {
   setObserver(home, features, team, faq, contact);
   // Асинхронная загрузка бэкграунда
   loading('/img/front-bg-image.png');
@@ -168,54 +168,54 @@ onMounted(() => {
                 :modules="[Pagination]"
                 >
                 <SwiperSlide v-slot="{ isActive }">
-                  <SlideReview
+                  <BlockSlideReview
                       :src="'/img/logos/eckerd-logo.png'"
                       :desc="'“Ive never used a theme as versatile and flexible as Vuexy. Its my go to for building dashboard sites on almost any project.”'"
                       :authorName="'Eugenia Moore'"
                       :authorJob="'Founder of HubSpot'"
                       :active="isActive"
                     >
-                  </SlideReview>
+                  </BlockSlideReview>
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
-                  <SlideReview
+                  <BlockSlideReview
                       :src="'/img/logos/levis-logo.png'"
                       :desc="'Materio is awesome, and I particularly enjoy knowing that if I get stuck on something.'"
                       :authorName="'Tommy Hoffman'"
                       :authorJob="'Founder of Levis'"
                       :active="isActive"
                     >
-                  </SlideReview>
+                  </BlockSlideReview>
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
-                  <SlideReview
+                  <BlockSlideReview
                       :src="'/img/logos/airbnb-logo.png'"
                       :desc="'This template is superior in so many ways. The code, the design, the regular updates, the support.. It’s the whole package. Excellent Work.'"
                       :authorName="'Eugenia Moore'"
                       :authorJob="'CTO of Airbnb'"
                       :active="isActive"
                     >
-                  </SlideReview>
+                  </BlockSlideReview>
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
-                  <SlideReview
+                  <BlockSlideReview
                       :src="'/img/logos/continentals-logo.png'"
                       :desc="'All the requirements for developers have been taken into consideration, so I’m able to build any interface I want.'"
                       :authorName="'Sara Smith'"
                       :authorJob="'Founder of Continental'"
                       :active="isActive"
                     >
-                  </SlideReview>
+                  </BlockSlideReview>
                 </SwiperSlide>
                 <SwiperSlide v-slot="{ isActive }">
-                  <SlideReview
+                  <BlockSlideReview
                       :src="'/img/logos/dribbble-logo.png'"
                       :desc="'“Ive never used a theme as versatile and flexible as Vuexy. Its my go to for building dashboard sites on almost any project.”'"
                       :authorName="'Eugenia Moore'"
                       :authorJob="'Founder of HubSpot'"
                       :active="isActive"
                     >
-                  </SlideReview>
+                  </BlockSlideReview>
                 </SwiperSlide>
               </Swiper>
             </div>
@@ -239,25 +239,25 @@ onMounted(() => {
             :desc="'Who is behind these great-looking interfaces?'"
           >
             <div class="team__list flex flex-wrap lg:justify-between justify-center gap-[24px] mt-[100px]">
-              <CardTeam 
+              <BlockCardTeam 
                 :img="'/img/woman-1.png'" 
                 :color="'primary'" 
                 :name="'Sophie Gilbert'" 
                 :job="'Project Manager'"
               />
-              <CardTeam 
+              <BlockCardTeam 
                 :img="'/img/man-1.png'" 
                 :color="'error'" 
                 :name="'Nannie Ford'" 
                 :job="'Development Lead'"
               />
-              <CardTeam 
+              <BlockCardTeam 
                 :img="'/img/woman-2.png'" 
                 :color="'success'" 
                 :name="'Chris Watkins'" 
                 :job="'Marketing Manager'"
               />
-              <CardTeam 
+              <BlockCardTeam 
                 :img="'/img/man-2.png'"
                 :color="'info'" 
                 :name="'Paul Miles'" 
@@ -280,36 +280,39 @@ onMounted(() => {
             <div class="plans__range-slider mt-[64px]">
               <UiInputRange />
             </div>
-            <div id="section-plans-list" class="plans__list flex flex-wrap justify-center gap-[24px] mt-[64px]">
-              <Plan
+            <div id="plans-list" class="plans__list flex flex-wrap justify-center gap-[24px] mt-[64px]">
+              <BlockPlan
                 :id="1"
-                :plan="'Basic Plan'"
+                :title="'Basic Plan'"
                 :wallet="'$'"
                 :price="'20'"
                 :possibilities="['Timeline', 'Basic search', 'Live chat widget', 'Email marketing', 'Custom Forms', 'Traffic analytics']"
                 :supportPlan="'Basic Support'"
                 :supportHow="'Only Email'"
                 :supportTime="'AVG. Time: 24h'"
+                @set="setPlanPrice('1')"
               />
-              <Plan
+              <BlockPlan
                 :id="2"
-                :plan="'Favorit Plan'"
+                :title="'Favorit Plan'"
                 :wallet="'$'"
                 :price="'51'"
                 :possibilities="['Everything in basic', 'Timeline with database', 'Advanced search', 'Marketing automation', 'Advanced chatbot', 'Campaign management']"
                 :supportPlan="'Standard Support'"
                 :supportHow="'Email & Chat'"
                 :supportTime="'AVG. Time: 6h'"
+                @set="setPlanPrice('2')"
               />
-              <Plan
+              <BlockPlan
                 :id="3"
-                :plan="'Standard Plan'"
+                :title="'Standard Plan'"
                 :wallet="'$'"
                 :price="'99'"
                 :possibilities="['Everything in premium', 'Timeline with database', 'Fuzzy search', 'A/B testing sandbox', 'Custom permissions', 'Social media automation']"
                 :supportPlan="'Exclusive Support'"
                 :supportHow="'Email, Chat & Google Meet'"
                 :supportTime="'Live Support'"
+                @set="setPlanPrice('3')"
               />
             </div>
           </SectionWrapper>

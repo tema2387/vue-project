@@ -1,58 +1,23 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
-// Хранилище
-import { setPlanPrice } from '@/store/plansStore.js';
 
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  plan: {
-    type: String,
-    default() {
-      return 'plan';
-    }
-  },
-  wallet: {
-    type: String,
-    default() {
-      return '$';
-    }
-  },
-  price: {
-    type: String,
-    default() {
-      return '00';
-    }
-  },
-  possibilities: {
-    type: Array,
-    default() {
-      return [];
-    }
-  },
-  supportPlan: {
-    type: String,
-    default() {
-      return 'supportPlan';
-    }
-  },
-  supportHow: {
-    type: String,
-    default() {
-      return 'supportHow';
-    }
-  },
-  supportTime: {
-    type: String,
-    default() {
-      return 'supportTime';
-    }
-  },
-})
+type TypeProps = {
+  title: string,
+  wallet: string,
+  price: string,
+  possibilities: string[],
+  supportPlan: string,
+  supportHow: string,
+  supportTime: string,
+}
 
-const isHovered = ref(false);
+const props = defineProps<TypeProps>();
+
+const emit = defineEmits<{
+  (e: 'set'):void,
+}>();
+
+const isHovered = ref<boolean>(false);
 </script>
 <template>
   <div 
@@ -60,7 +25,7 @@ const isHovered = ref(false);
     @mouseleave="isHovered = false" 
     class="plan bg-paper-bg p-[32px] duration-200 outline outline-1 outline-transparent border border-devider rounded-md w-[364px] hover:border-primary-500 hover:outline-primary-500"
   >
-    <h4 class="plan__title text-center">{{ plan }}</h4>
+    <h4 class="plan__title text-center">{{ title }}</h4>
     <div class="plan__price relative flex items-center mt-[12px] gap-[12px]">
       <div class="plan__price-title flex">
         <h5 class="mt-[7px]">{{ wallet }}</h5>
@@ -89,10 +54,10 @@ const isHovered = ref(false);
       </div>
       <div class="plan__support-time text-13 text-primary-500 bg-primary-opacity/[16%] px-[12px] py-[2px] rounded-full">{{ supportTime }}</div>
     </div>
-    <UiLink :link="'/order'">
+    <UiLink :link="'/payment'">
       <UiButton 
         :type="isHovered ? 'default': 'outline'" 
-        @click="setPlanPrice(id)"
+        @click="emit('set')"
       >
         Get Started
       </UiButton>

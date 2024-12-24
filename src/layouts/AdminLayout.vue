@@ -1,15 +1,15 @@
-<script setup>
-import { ref, onMounted, watch, provide } from 'vue';
+<script lang="ts" setup>
+import { ref, onMounted, watch, provide, onUnmounted } from 'vue';
 // Компоненты
-import AdminNav from '@/components/blocks/AdminNav.vue';
+import BlockAdminNav from '@/components/blocks/BlockAdminNav.vue';
 import AdminHeader from '@/components/AdminHeader.vue';
 import AdminFooter from '@/components/AdminFooter.vue';
 // Иконки
 import CloseLineIcon from '@/components/UI/svg/CloseLineIcon.vue';
-// Основной верхний раздел навигации
+// Иконки: Основной верхний раздел навигации
 import HomeSmileIcon from '@/components/UI/svg/HomeSmileIcon.vue';
 import PagesTitleIcon from '@/components/UI/svg/PagesTitleIcon.vue';
-// Раздел Apps & Pages
+// Иконки: Раздел Apps & Pages
 import ShoppingBagIcon from '@/components/UI/svg/ShoppingBagIcon.vue';
 import GraduationCapIcon from '@/components/UI/svg/GraduationCapIcon.vue';
 import CarIcon from '@/components/UI/svg/CarIcon.vue';
@@ -21,20 +21,24 @@ import BillIcon from '@/components/UI/svg/BillIcon.vue';
 import UserLineIcon from '@/components/UI/svg/UserLineIcon.vue';
 import LockLine from '@/components/UI/svg/LockLine.vue';
 // Хранилище
-import { mainNav, appsAndPages } from '@/store/adminNavStore.js';
+import { mainNav, appsAndPages } from '@/store/adminNavStore';
 
 const mainNavIcons = [HomeSmileIcon, PagesTitleIcon];
 const appsAndPagesIcons = [ShoppingBagIcon, GraduationCapIcon, CarIcon, MailOpenIcon, WechatIcon, CalendarIcon, DragDropIcon, BillIcon, UserLineIcon, LockLine];
 
-const layoutChanged = ref(false);
-const adminMenuHidden = ref(false);
-const burgerMenuOpened = ref(false);
-const adminMenu = ref(null);
+const layoutChanged = ref<boolean>(false);
+const adminMenuHidden = ref<boolean>(false);
+const burgerMenuOpened = ref<boolean>(false);
+const adminMenu = ref<HTMLElement | null>(null);
 
 provide('menuHidden', adminMenuHidden);
 
-onMounted(() => {
+onMounted((): void => {
   adminMenuHidden.value = true;
+})
+
+onUnmounted((): void => {
+  window.removeEventListener('click', clickOutsideBurgerMenu);
 })
 
 window.addEventListener('resize', () => {
@@ -46,48 +50,45 @@ window.addEventListener('resize', () => {
   }
 })
 
-function toggleLayout() {
+function toggleLayout(): void {
   layoutChanged.value ? layoutChanged.value = false : layoutChanged.value = true;
 }
 
-function closeBurgerMenu() {
+function closeBurgerMenu(): void {
   adminMenuHidden.value = true;
   layoutChanged.value = false;
   burgerMenuOpened.value = false;
 }
 
-const clickOutsideBurgerMenu = (el) => {
-  const target = el.target;
-  console.log(target);
+const clickOutsideBurgerMenu = (event: Event): void => {
+  const target = (event.target as Node);
 
   if(adminMenu.value && !adminMenu.value.contains(target)) {
     closeBurgerMenu();
   }
 }
 
-watch(burgerMenuOpened, (newValue) => {
+watch(burgerMenuOpened, (newValue: boolean): void => {
   if(newValue) {
-    console.log('Событие добавлено');
     window.addEventListener('click', clickOutsideBurgerMenu);
   } else {
-    console.log('Событие удалено');
     window.removeEventListener('click', clickOutsideBurgerMenu);
   }
 })
 
-function showAdminMenuDesktop() {
+function showAdminMenuDesktop(): void {
   if(!layoutChanged.value) {
     adminMenuHidden.value = false;
   }
 }
 
-function hideAdminMenuDesktop() {
+function hideAdminMenuDesktop(): void {
   if(!layoutChanged.value) {
     adminMenuHidden.value = true;
   }
 }
 
-function openBurgerMenu() {
+function openBurgerMenu(): void {
   adminMenuHidden.value = false;
   layoutChanged.value = true;
   burgerMenuOpened.value = true;
@@ -127,7 +128,7 @@ function openBurgerMenu() {
       </div>
       <ul class="admin-layout-menu__list overflow-y-auto transition-all flex flex-col gap-[20px]">
         <li class="admin-layout-menu__item flex flex-col gap-[8px]">
-          <AdminNav
+          <BlockAdminNav
             v-for="(el, index) in mainNav"
             :key="index"
             :title="el.title"
@@ -138,7 +139,7 @@ function openBurgerMenu() {
             <template v-slot:icon>
               <component :is="mainNavIcons[index]"></component>
             </template>
-          </AdminNav>
+          </BlockAdminNav>
         </li>
         <li class="admin-layout-menu__item flex flex-col gap-[8px]">
           <div class="admin-layout-menu__item-section flex items-center justify-center text-text-disabled h-[34px]">
@@ -149,7 +150,7 @@ function openBurgerMenu() {
             </div>
             <span v-else class="h-[1px] bg-text-disabled w-[22px]"></span>
           </div>
-          <AdminNav
+          <BlockAdminNav
             v-for="(el, index) in appsAndPages"
             :key="index"
             :title="el.title"
@@ -160,7 +161,7 @@ function openBurgerMenu() {
             <template v-slot:icon>
               <component :is="appsAndPagesIcons[index]"></component>
             </template>
-          </AdminNav>
+          </BlockAdminNav>
         </li>
       </ul>
     </div>

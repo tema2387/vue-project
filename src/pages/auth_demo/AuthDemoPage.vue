@@ -1,8 +1,11 @@
-<script setup>
+<script lang="ts" setup>
+import { ref } from 'vue';
 // Компоненты
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiCheckbox from '@/components/UI/UiCheckbox.vue';
+
+const passwordHidden = ref<boolean>(true);
 </script>
 <template>
   <AuthLayout>
@@ -23,8 +26,11 @@ import UiCheckbox from '@/components/UI/UiCheckbox.vue';
         />
         <UiInputText 
           :id="'password'" 
-          :size="'md'" 
+          :size="'md'"
+          :eyeIcon="true" 
           :label="'Password'"
+          :passwordInput="passwordHidden"
+          @toggleInput="passwordHidden = !passwordHidden"
         />
         <div class="flex justify-between">
           <UiCheckbox :id="'remember-account'" :name="'remember-account'">Remember Me</UiCheckbox>

@@ -1,54 +1,29 @@
-<script setup>
+<script lang="ts" setup>
 // Компоненты
 import UiInputText from '@/components/UI/UiInputText.vue';
 // Иконки
 import CloseLineIcon from '@/components/UI/svg/CloseLineIcon.vue';
-// Хранилище
-import { removeProduct } from '@/store/productsStore.js';
 
 // Пропс type может быть default или confirm
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  type: {
-    type: String,
-    default() {
-      return 'default';
-    }
-  },
-  img: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  rating: {
-    type: Number,
-    default() {
-      return 5;
-    }
-  },
-  brand: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: [String, Number],
-    required: true, 
-  },
-  oldPrice: {
-    type: [String, Number],
-    required: true, 
-  },
-  count: {
-    type: Number,
-    required: true,
-  }
+type TypeProps = {
+  id: string,
+  img: string,
+  name: string,
+  brand: string,
+  price: string,
+  oldPrice: string,
+  count: number,
+  rating?: number,
+  type?: string,
+}
+
+const props = withDefaults(defineProps<TypeProps>(), {
+  rating: 5,
 })
+
+const emit = defineEmits<{
+  (e: 'remove'):void,
+}>();
 </script>
 <template>
   <div 
@@ -77,7 +52,7 @@ const props = defineProps({
   </div>
   <div v-else class="product-card flex relative flex-col sm:flex-row items-center gap-[10px] sm:gap-[0px] border-devider p-[20px]">
     <CloseLineIcon 
-        @click="removeProduct(props.id)" 
+        @click="emit('remove')" 
         class="cursor-pointer absolute sm:hidden right-[20px] opacity-[0.4]" 
     />
     <UiImage 
@@ -112,13 +87,13 @@ const props = defineProps({
         :id="id"
         :size="'sm'"
         :readonly="true"
-        :placeholder="count"
+        :placeholder="count.toString()"
         class="max-w-[150px]"
       />
     </div>
     <div class="product-card__left flex flex-col items-center sm:items-end gap-[16px]">
       <CloseLineIcon 
-        @click="removeProduct(props.id)" 
+        @click="emit('remove')" 
         class="cursor-pointer hidden sm:block opacity-[0.4]" 
       />
       <div>

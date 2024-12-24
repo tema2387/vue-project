@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue';
 // Иконки
 import FacebookCircleIcon from '@/components/UI/svg/FacebookCircleIcon.vue';
@@ -6,32 +6,14 @@ import TwitterLineIcon from '@/components/UI/svg/TwitterLineIcon.vue';
 import LinkedInBoxIcon from '@/components/UI/svg/LinkedInBoxIcon.vue';
 
 // Пропс color может быть 'primary', 'error', 'success', 'info'
-const props = defineProps({
-  img: {
-    type: String,
-    default() {
-      return '';
-    }
-  },
-  name: {
-    type: String,
-    default() {
-      return 'name';
-    }
-  },
-  job: {
-    type: String,
-    default() {
-      return 'job';
-    },
-  },
-  color: {
-    type: String,
-    default() {
-      return 'primary';
-    }
-  },
-})
+type TypeProps = {
+  img: string,
+  name: string,
+  job: string,
+  color: string,
+}
+
+const props = defineProps<TypeProps>();
 
 const colorBg = computed(() => {
   return props.color === 'error' ? 'bg-error-opacity/[16%]' 

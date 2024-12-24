@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 // Компоненты
 import FrontLayout from "@/layouts/FrontLayout.vue";
@@ -6,9 +6,9 @@ import UiInputText from "@/components/UI/UiInputText.vue";
 import UiRadioCustom from "@/components/UI/UiRadioCustom.vue";
 import UiSelect from "@/components/UI/UiSelect.vue";
 // Хранилище
-import { planPrice } from '@/store/plansStore.js';
+import { planPrice } from '@/store/plansStore';
 
-const modelRadio = ref('radio-pay-visa');
+const modelRadio = ref<string>('radio-pay-visa');
 </script>
 <template>
   <FrontLayout>
@@ -76,12 +76,14 @@ const modelRadio = ref('radio-pay-visa');
                 <UiSelect 
                   :id="'select-1'" 
                   :label="'Billing Country'"
+                  :size="'md'" 
                   :selects="['aboba1', 'aboba2', 'aboba3', 'aboba4']"
                   class="flex-1"
                 />
                 <UiSelect 
                   :id="'select-2'" 
-                  :label="'Billing Zip / Postal Code'" 
+                  :label="'Billing Zip / Postal Code'"
+                  :size="'md'" 
                   :selects="['aboba1', 'aboba2', 'aboba3', 'aboba4']"
                   class="flex-1"
                 />
@@ -128,7 +130,7 @@ const modelRadio = ref('radio-pay-visa');
             </h1>
             <UiLink 
               class="mt-[16px]" 
-              :link="'/#section-plans-list'"
+              :link="'/landing/#plans-list'"
             >
               <UiButton 
                 :type="'outline'"

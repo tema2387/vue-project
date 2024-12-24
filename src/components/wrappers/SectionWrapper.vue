@@ -1,42 +1,16 @@
-<script setup>
-const props = defineProps({
-  title: {
-    type: String,
-    default() {
-      return 'title';
-    }
-  },
-  subtitleSmall: {
-    type: String,
-    default() {
-      return 'subtitle';
-    }
-  },
-  subtitleBold: {
-    type: String,
-    default() {
-      return 'SUBTITLE BOLD'
-    }
-  },
-  desc: {
-    type: String,
-    default() {
-      return 'description';
-    }
-  },
-  descTwo: {
-    type: String,
-    default() {
-      return null;
-    }
-  },
-  subtitleBoldOnRight:{
-    type: Boolean,
-    default() {
-      return false;
-    },
-  }
-})
+<script lang="ts" setup>
+type TypeProps = {
+  title: string,
+  subtitleSmall: string,
+  subtitleBold: string,
+  desc: string,
+  descTwo?: string,
+  subtitleBoldOnRight?: boolean
+}
+
+const props = withDefaults(defineProps<TypeProps>(), {
+  subtitleBoldOnRight: false,
+});
 </script>
 <template>
   <div class="section text-15-50">

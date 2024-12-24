@@ -1,15 +1,17 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 // Компоненты
 import UiPopup from '@/components/UI/UiPopup.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiToggle from '@/components/UI/UiToggle.vue';
 // Хранилище
-import { address } from '@/store/addressStore.js';
+import { selectedAddress } from '@/store/addressStore';
 // Модули
-import { cardNumber, cardName, cardDate, cardCvv, clearCardFields, saveCard } from '@/modules/checkCardFields.js';
+import { cardNumber, cardName, cardDate, cardCvv, clearCardFields, saveCard } from '@/modules/checkCardFields';
 
-const emit = defineEmits('changeAddress');
+const emit = defineEmits<{
+  (e: 'changeAddress'): void
+}>();
 
 const popupOfferStatus = ref(true);
 </script>
@@ -129,28 +131,28 @@ const popupOfferStatus = ref(true);
             <div class="flex text-15-500 justify-between items-center">
               <div>Deliver to</div>
               <div 
-                v-if="address.location === 'Home'" 
+                v-if="selectedAddress?.location === 'Home'" 
                 class="px-[12px] py-[2px] bg-primary-opacity/[16%] text-primary-500 rounded-full max-w-max"
               >
-                {{ address.location }}
+                {{ selectedAddress.location }}
               </div>
               <div 
-                v-else-if="address.location === 'Office'"
+                v-else-if="selectedAddress?.location === 'Office'"
                 class="px-[12px] py-[2px] bg-success-opacity/[16%] text-success-500 rounded-full max-w-max"
               >
-                {{ address.location }}
+                {{ selectedAddress.location }}
               </div>
             </div>
           </div>
           <div class="delivery-address mt-[16px]">
-            <div>{{ address.name }},</div>
-            <div class="text-text-secondary">{{ address.address }}</div>
-            <div class="text-text-secondary">{{ address.mobile }}</div>
+            <div>{{ selectedAddress?.name }},</div>
+            <div class="text-text-secondary">{{ selectedAddress?.address }}</div>
+            <div class="text-text-secondary">{{ selectedAddress?.mobile }}</div>
           </div>
           <UiButton 
             :type="'inline-text'"
             class="mt-[16px] text-primary-500"
-            @click="$emit('changeAddress')"
+            @click="emit('changeAddress')"
           >
             Change address
           </UiButton>
