@@ -7,8 +7,11 @@ import MapPinIcon from '@/components/UI/svg/MapPinIcon.vue';
 import BankCardIcon from '@/components/UI/svg/BankCardIcon.vue';
 import Ship2Icon from '@/components/UI/svg/Ship2Icon.vue';
 // Хранилище
-import { selectedAddress } from '@/store/addressStore';
-import { products } from '@/store/productsStore';
+import { useAddressStore } from '@/store/addressStore';
+import { useProductsStore } from '@/store/productsStore';
+
+const addressStore = useAddressStore();
+const productsStore = useProductsStore();
 
 // border для product-card
 const borderAloneElement: string = 'border rounded-md';
@@ -20,7 +23,7 @@ const borderMoreTwo: string[] = ['border-x border-t rounded-t-md', 'border-x bor
     <div class="checkout-confirmation__thanks flex flex-col items-center gap-[16px]">
       <h4>Thank You! 😇</h4>
       <div class="text-text-secondary">Your order <span class="text-text-primary">#1536548131</span> has been placed!</div>
-      <div class="text-text-secondary">We sent an email to <span class="text-text-primary">{{ selectedAddress?.email }}</span> with your order confirmation and receipt.</div>
+      <div class="text-text-secondary">We sent an email to <span class="text-text-primary">{{ addressStore.selectedAddress?.email }}</span> with your order confirmation and receipt.</div>
       <div class="text-text-secondary">If the email hasn't arrived within two minutes, please check your spam folder to see if the email was routed there.</div>
       <div class="flex gap-[8px]">
         <TimeClockIcon />
@@ -31,35 +34,35 @@ const borderMoreTwo: string[] = ['border-x border-t rounded-t-md', 'border-x bor
       <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] max-md:rounded-t-md md:rounded-l-md border-l border-t max-md:border-r md:border-b border-devider">
         <div class="flex gap-[8px] items-center">
           <MapPinIcon />
-          <div>Shipping</div>
+          <span>Shipping</span>
         </div>
-        <div>{{ selectedAddress?.address }}</div>
-        <div>{{ selectedAddress?.mobile }}</div>
+        <span>{{ addressStore.selectedAddress?.address }}</span>
+        <span>{{ addressStore.selectedAddress?.mobile }}</span>
       </div>
       <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] border border-devider">
         <div class="flex gap-[8px] items-center">
           <BankCardIcon />
-          <div>Billing Address</div>
+          <span>Billing Address</span>
         </div>
-        <div>{{ selectedAddress?.address }}</div>
-        <div>{{ selectedAddress?.mobile }}</div>
+        <span>{{ addressStore.selectedAddress?.address }}</span>
+        <span>{{ addressStore.selectedAddress?.mobile }}</span>
       </div>
       <div class="checkout-confirmation__item p-[20px] flex flex-col gap-[16px] max-md:rounded-b-md md:rounded-r-md max-md:border-l border-r md:border-t border-b border-devider">
         <div class="flex gap-[8px] items-center">
           <Ship2Icon />
-          <div>Shipping Method</div>
+          <span>Shipping Method</span>
         </div>
-        <div>{{ selectedAddress?.address }}</div>
-        <div>{{ selectedAddress?.mobile }}</div>
+        <span>{{ addressStore.selectedAddress?.address }}</span>
+        <span>{{ addressStore.selectedAddress?.mobile }}</span>
       </div>
     </div>
     <div class="checkout-confirmation__sum flex flex-col lg:flex-row gap-[24px] mt-[20px]">
       <div 
-        v-if="products.length" 
+        v-if="productsStore.products.length" 
         class="checkout-confirmation__products flex-1"
       >
         <BlockProductCard 
-          v-for="product in products" 
+          v-for="product in productsStore.products" 
           :key="product.id"
           :type="'confirm'"
           :id="product.id.toString()"
@@ -70,10 +73,10 @@ const borderMoreTwo: string[] = ['border-x border-t rounded-t-md', 'border-x bor
           :price="product.price"
           :oldPrice="product.oldPrice"
           :count="product.count"
-          :class="products.length < 2 ? borderAloneElement 
-            : products.length === 2 ? borderTwoElements[products.indexOf(product)] 
-              : products.length > 2 ? borderMoreTwo[products.indexOf(product) === 0 ? 0 
-                                        : products.indexOf(product) === products.indexOf(products[products.length - 1]) ? 2 
+          :class="productsStore.products.length < 2 ? borderAloneElement 
+            : productsStore.products.length === 2 ? borderTwoElements[productsStore.products.indexOf(product)] 
+              : productsStore.products.length > 2 ? borderMoreTwo[productsStore.products.indexOf(product) === 0 ? 0 
+                                        : productsStore.products.indexOf(product) === productsStore.products.indexOf(productsStore.products[productsStore.products.length - 1]) ? 2 
                                           : 1] 
                 : ''"
         />
