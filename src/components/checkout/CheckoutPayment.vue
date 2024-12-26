@@ -4,10 +4,12 @@ import { ref } from 'vue';
 import UiPopup from '@/components/UI/UiPopup.vue';
 import UiInputText from '@/components/UI/UiInputText.vue';
 import UiToggle from '@/components/UI/UiToggle.vue';
-// Хранилище
-import { selectedAddress } from '@/store/addressStore';
 // Модули
 import { cardNumber, cardName, cardDate, cardCvv, clearCardFields, saveCard } from '@/modules/checkCardFields';
+// Хранилище
+import { useAddressStore } from '@/store/addressStore';
+
+const addressStore = useAddressStore()
 
 const emit = defineEmits<{
   (e: 'changeAddress'): void
@@ -131,23 +133,23 @@ const popupOfferStatus = ref(true);
             <div class="flex text-15-500 justify-between items-center">
               <div>Deliver to</div>
               <div 
-                v-if="selectedAddress?.location === 'Home'" 
+                v-if="addressStore.selectedAddress?.location === 'Home'" 
                 class="px-[12px] py-[2px] bg-primary-opacity/[16%] text-primary-500 rounded-full max-w-max"
               >
-                {{ selectedAddress.location }}
+                {{ addressStore.selectedAddress.location }}
               </div>
               <div 
-                v-else-if="selectedAddress?.location === 'Office'"
+                v-else-if="addressStore.selectedAddress?.location === 'Office'"
                 class="px-[12px] py-[2px] bg-success-opacity/[16%] text-success-500 rounded-full max-w-max"
               >
-                {{ selectedAddress.location }}
+                {{ addressStore.selectedAddress.location }}
               </div>
             </div>
           </div>
           <div class="delivery-address mt-[16px]">
-            <div>{{ selectedAddress?.name }},</div>
-            <div class="text-text-secondary">{{ selectedAddress?.address }}</div>
-            <div class="text-text-secondary">{{ selectedAddress?.mobile }}</div>
+            <div>{{ addressStore.selectedAddress?.name }},</div>
+            <div class="text-text-secondary">{{ addressStore.selectedAddress?.address }}</div>
+            <div class="text-text-secondary">{{ addressStore.selectedAddress?.mobile }}</div>
           </div>
           <UiButton 
             :type="'inline-text'"
