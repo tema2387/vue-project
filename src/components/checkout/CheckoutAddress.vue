@@ -8,9 +8,12 @@ import UserStandardIcon from '@/components/UI/svg/UserStandardIcon.vue';
 import StarSmileIcon from '@/components/UI/svg/StarSmileIcon.vue';
 import VipCrownIcon from '@/components/UI/svg/VipCrownIcon.vue';
 // Хранилище
-import { products } from '@/store/productsStore';
-import { addresses, removeAddress, selectedAddressId} from '@/store/addressStore';
 import { deliveries } from '@/store/deliverySpeedStore';
+import { useAddressStore } from '@/store/addressStore';
+import { useProductsStore } from '@/store/productsStore';
+
+const addressStore = useAddressStore();
+const productsStore = useProductsStore();
 
 const modelDelivery = ref<string>('Standard');
 </script>
@@ -21,11 +24,11 @@ const modelDelivery = ref<string>('Standard');
         <div class="text-15-500">Select your preferable address</div>
         <div class="radio-addresses flex flex-wrap gap-[20px] mt-[16px]">
           <UiRadioCustom 
-            v-for="address in addresses"
+            v-for="address in addressStore.addresses"
             :key="address.id"
             :name="'radio-addresses'"
             :id="address.id"
-            v-model="selectedAddressId"
+            v-model="addressStore.selectedAddressId"
             class="max-w-[361px]"
           >
             <template v-slot:title>
@@ -61,7 +64,7 @@ const modelDelivery = ref<string>('Standard');
                   <UiButton 
                     :type="'inline-text'" 
                     class="text-primary-500"
-                    @click.native="removeAddress(address.id)"
+                    @click.native="addressStore.removeAddress(address.id)"
                   >
                     Remove
                   </UiButton>
@@ -112,7 +115,7 @@ const modelDelivery = ref<string>('Standard');
           <div class="text-15-500">Estimated Delivery Date</div>
           <div class="delivery-list flex flex-col gap-[16px] mt-[16px]">
             <BlockProductCardDelivery
-              v-for="product in products"
+              v-for="product in productsStore.products"
               :key="product.id"
               :img="product.img"
               :name="product.name"

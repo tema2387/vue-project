@@ -7,9 +7,11 @@ import UiPopup from '@/components/UI/UiPopup.vue';
 // Иконки
 import ArrowRightIcon from '@/components/UI/svg/ArrowRightIcon.vue';
 // Хранилище
-import { products, removeProduct } from '@/store/productsStore';
+import { useProductsStore } from '@/store/productsStore';
 // Модули
 import { activatePopup } from '@/modules/togglePopup';
+
+const productsStore = useProductsStore();
 
 // border для product-cart
 const borderAloneElement: string = 'border rounded-md';
@@ -39,13 +41,13 @@ function checkValidPromo(promo: string): boolean {
         :type="'offer'"
         @close="popupOfferStatus = false"
       />
-      <h5>My Shopping Bag {{ products.length ? `(${products.length} items)` : '' }}</h5>
+      <h5>My Shopping Bag {{ productsStore.products.length ? `(${productsStore.products.length} items)` : '' }}</h5>
       <div 
-        v-if="products.length" 
+        v-if="productsStore.products.length" 
         class="checkout-cart__products"
       >
         <BlockProductCard 
-          v-for="product in products" 
+          v-for="product in productsStore.products" 
           :key="product.id" 
           :id="product.id.toString()"
           :img="product.img"
@@ -55,11 +57,11 @@ function checkValidPromo(promo: string): boolean {
           :price="product.price"
           :oldPrice="product.oldPrice"
           :count="product.count"
-          @remove="removeProduct(product.id)"
-          :class="products.length < 2 ? borderAloneElement 
-            : products.length === 2 ? borderTwoElements[products.indexOf(product)] 
-              : products.length > 2 ? borderMoreTwo[products.indexOf(product) === 0 ? 0 
-                                        : products.indexOf(product) === products.indexOf(products[products.length - 1]) ? 2 
+          @remove="productsStore.removeProduct(product.id)"
+          :class="productsStore.products.length < 2 ? borderAloneElement 
+            : productsStore.products.length === 2 ? borderTwoElements[productsStore.products.indexOf(product)] 
+              : productsStore.products.length > 2 ? borderMoreTwo[productsStore.products.indexOf(product) === 0 ? 0 
+                                        : productsStore.products.indexOf(product) === productsStore.products.indexOf(productsStore.products[productsStore.products.length - 1]) ? 2 
                                           : 1] 
                 : ''"
         />
