@@ -9,7 +9,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
 </script>
 <template>
   <div class="footer m-0 dark">
-    <div class="footer__top px-[20px] bg-footer-bg-color">
+    <div class="footer__top px-[20px] bg-footer-bg bg-no-repeat bg-center-top bg-cover">
       <div class="footer__top-content container flex flex-wrap justify-start lg:justify-between py-[48px] gap-[64px]">
         <div class="footer__left flex flex-col gap-[24px]">
           <UiLink 
@@ -33,8 +33,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
               :label="'Subscribe to newsletter'" 
               :placeholder="'test@mail'"
               :size="'sm'"
-              :label-bg-color="'footer'"
-              class="max-w-[230px]"
+              class="flex-1"
             />
             <UiButton>Subscribe</UiButton>
           </div>
@@ -45,23 +44,23 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
           </div>
           <ul class="footer__pages-list mt-[24px] flex flex-col gap-[16px] text-white/[78%]">
             <li class="footer__pages-item">
-              <UiLink :link="'#'">
+              <UiLink :link="'/front/pricing'">
                 Pricing
               </UiLink>
             </li>
             <li class="footer__pages-item">
-              <UiLink :link="'#'">
+              <UiLink :link="'/front/payment'">
                 Payment
               </UiLink>
             </li>
             <li class="footer__pages-item">
-              <UiLink :link="'#'">
-                Maintenance
+              <UiLink :link="'/front/help-center'">
+                Help Center
               </UiLink>
             </li>
             <li class="footer__pages-item">
-              <UiLink :link="'#'">
-                Coming Soon
+              <UiLink :link="'/front/checkout'">
+                Checkout
               </UiLink>
             </li>
           </ul>
@@ -72,16 +71,16 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
           </div>
           <ul class="footer__products-list mt-[24px] flex flex-col gap-[16px] text-white/[78%]">
             <li class="footer__products-item">
-              <UiLink :link="'#'">Page Builder</UiLink>
+              <UiLink :link="'#'">Test</UiLink>
             </li>
             <li class="footer__products-item">
-              <UiLink :link="'#'">Admin Dashboards</UiLink>
+              <UiLink :link="'#'">Test</UiLink>
             </li>
             <li class="footer__products-item">
-              <UiLink :link="'#'">UI Kits</UiLink>
+              <UiLink :link="'#'">Test</UiLink>
             </li>
             <li class="footer__products-item">
-              <UiLink :link="'#'">Illustrations</UiLink>
+              <UiLink :link="'#'">Test</UiLink>
             </li>
           </ul>
         </div>
@@ -119,10 +118,7 @@ import TwitterIcon from '@/components/UI/svg/TwitterIcon.vue';
       </div>
     </div>
     <div class="footer__bottom px-[20px] bg-footer-bg-color py-[19px]">
-      <div class="footer__bottom-content container flex justify-between text-white/[82%]">
-        <div class="footer__disign text-13">
-          © 2024, Made with <span class="text-error-main">❤️</span> by <span class="text-white/[92%] text-15">ThemeSelection</span> 
-        </div>
+      <div class="footer__bottom-content container flex justify-end text-white/[82%]">
         <div class="footer__socials text-white/[78%] flex items-center gap-[24px]">
           <UiLink 
             :type="'outside'" 

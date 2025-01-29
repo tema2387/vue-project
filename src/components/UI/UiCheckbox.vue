@@ -20,14 +20,14 @@ const model = defineModel<boolean>();
       class="hidden"
     >
     <div 
-      class="square relative w-[16px] h-[16px] rounded-md bg-transparent border-[2px] border-text-secondary"
-      :class="{ '!bg-primary-500': model, '!border-primary-500': model }"
+      class="square relative w-[16px] h-[16px] rounded-md border-[2px]"
+      :class="[model ? 'bg-primary-500 border-primary-500' : 'bg-transparent border-text-secondary' ]"
     >
       <img 
         src="/icon/check-mark-checkbox.svg" 
         alt="check-icon" 
-        class="absolute hidden left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]" 
-        :class="{ '!block': model }"
+        class="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]" 
+        :class="[model ? 'block' : 'hidden ']"
       />
     </div>
     <slot></slot>

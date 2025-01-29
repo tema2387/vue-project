@@ -17,10 +17,11 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
 <template>
 <FrontLayout>
   <div class="help-page">
-    <section class="help-search px-[20px] py-[100px]">
+    <section class="help-search bg-search-bg bg-no-repeat bg-[left] bg-cover px-[20px] py-[100px]">
       <div class="help-search__content max-w-[476px] m-auto text-center">
         <h4 class="text-primary-500">Hello, how can we help?</h4>
-        <UiInputText 
+        <UiInputText
+          :type="'outlined'" 
           :id="'help-search'" 
           :searchIcon="true"
           :label="'Ask a question....'"

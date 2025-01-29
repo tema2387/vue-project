@@ -37,7 +37,7 @@ const labelBgColor = computed<string>(() => {
   return props.labelBgColor === 'footer' ? footerLabelBgColor : mainLabelBgColor;
 })
 
-// Удаление сосотяния фокус с селекта
+// Удаление состояния фокус с селекта
 function handlerSelect(event: Event):void {
   const target = (event.target as HTMLElement);
   target.blur();
@@ -78,8 +78,8 @@ function handlerSelect(event: Event):void {
       {{ label }}
     </label>
     <div 
-      class="select-label-background text-13 duration-200 absolute h-[4px] top-[-1px] left-[14px] px-[2px] opacity-0 peer-focus:opacity-100"
-      :class="[{'opacity-100': model}, labelBgColor]"
+      class="select-label-background text-13 duration-200 absolute h-[4px] top-[-1px] left-[14px] px-[2px] peer-focus:opacity-100"
+      :class="[model ? 'opacity-100' : 'opacity-0', labelBgColor]"
     >
       <span class="invisible">
         {{ label }}

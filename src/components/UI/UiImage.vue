@@ -27,5 +27,9 @@ watch(() => props.src, (newValue: string) => {
     :alt="alt"
     class="image"
   />
-  <img v-else src="/img/opacity-loader-bg.png" class="preloader-image bg-gray-linear bg-[length:50%_100%] bg-no-repeat animate-line rounded-md">
+  <img 
+    v-else 
+    src="/img/opacity-loader-bg.png" 
+    class="preloader-image bg-gray-linear bg-[length:50%_100%] bg-no-repeat animate-line rounded-md"
+  >
 </template>

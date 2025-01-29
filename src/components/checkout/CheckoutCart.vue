@@ -79,12 +79,13 @@ function checkValidPromo(promo: string): boolean {
         <div class="offer p-[20px]">
           <div class="text-15-500">Offer</div>
           <div class="checkout-cart__promo mt-[16px] flex gap-[16px]">
-            <UiInputText 
+            <UiInputText
+              :type="'outlined'" 
               :id="'promo'"
               :size="'sm'" 
               :label="'Enter Promo Code'"
               class="flex-1 max-w-[200px]"
-              v-model="promo" 
+              v-model="promo"
             />
             <UiButton 
               :type="'outline'" 

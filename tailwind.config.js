@@ -145,6 +145,8 @@ export default {
       },
       backgroundImage: {
         'gray-linear': 'linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--secondary-100) 100%, rgba(0,0,0,0) 100%)',
+        'footer-bg': 'url(/img/footer-bg.png)',
+        'search-bg': 'url(/img/search-bg.png)',
       },
       keyframes: {
         line: {

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "pinia": "^2.3.0",
-    "swiper": "^11.1.11",
+    "swiper": "^11.2.0",
     "vue": "^3.4.21",
     "vue-3-slider-component": "^1.0.1",
     "vue-router": "^4.3.0",

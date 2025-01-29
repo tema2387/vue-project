@@ -68,15 +68,15 @@ const step4 = computed<boolean>(() => {
             :class="{ 'text-primary-500': step1 }"
           />
           <div 
-            class="mt-[8px] text-text-secondary"
-            :class="{ '!text-primary-500': step1 }"
+            class="mt-[8px]"
+            :class="[step1 ? 'text-primary-500' : 'text-text-secondary']"
           >
             Cart
           </div>
         </div>
         <ArrowRightSIcon 
-          class="opacity-[0.4] flex-shrink-0" 
-          :class="{ 'text-primary-500': step2, '!opacity-100': step2 }" 
+          class="flex-shrink-0" 
+          :class="[step2 ? 'text-primary-500 opacity-100' : 'opacity-[0.4]']" 
         />
         <div 
           @click="changeComponentName('address')" 
@@ -87,15 +87,15 @@ const step4 = computed<boolean>(() => {
             :class="{ 'text-primary-500': step2 }"
           />
           <div 
-            class="mt-[8px] text-text-secondary"
-            :class="{ '!text-primary-500': step2 }"
+            class="mt-[8px]"
+            :class="[step2 ? 'text-primary-500' : 'text-text-secondary']"
           >
             Address
           </div>
         </div>
         <ArrowRightSIcon 
-          class="opacity-[0.4] flex-shrink-0" 
-          :class="{ 'text-primary-500': step3, '!opacity-100': step3 }" 
+          class="flex-shrink-0" 
+          :class="[step3 ? 'text-primary-500 opacity-100' : 'opacity-[0.4]']" 
         />
         <div 
           @click="changeComponentName('payment')" 
@@ -106,15 +106,15 @@ const step4 = computed<boolean>(() => {
             :class="{ 'text-primary-500': step3 }"
           />
           <div 
-            class="mt-[8px] text-text-secondary"
-            :class="{ '!text-primary-500': step3 }"
+            class="mt-[8px]"
+            :class="[step3 ? 'text-primary-500' : 'text-text-secondary']"
           >
             Payment
           </div>
         </div>
         <ArrowRightSIcon 
-          class="opacity-[0.4] flex-shrink-0" 
-          :class="{ 'text-primary-500': step4, '!opacity-100': step4 }" 
+          class="flex-shrink-0" 
+          :class="[step4 ? 'text-primary-500 opacity-100' : 'opacity-[0.4]']" 
         />
         <div 
           @click="changeComponentName('confirmation')" 
@@ -125,8 +125,8 @@ const step4 = computed<boolean>(() => {
             :class="{ 'text-primary-500': step4 }"
           />
           <div 
-            class="mt-[8px] text-text-secondary"
-            :class="{ '!text-primary-500': step4 }"
+            class="mt-[8px]"
+            :class="[step4 ? 'text-primary-500' : 'text-text-secondary']"
           >
             Confirmation
           </div>
@@ -134,7 +134,11 @@ const step4 = computed<boolean>(() => {
       </div>
       <div class="checkout-page__bottom p-[20px]">
         <KeepAlive>
-          <component @changeAddress="changeComponentsOnAddress" :is="currentComponent"></component>
+          <component 
+            @changeAddress="changeComponentsOnAddress" 
+            :is="currentComponent"
+          >
+          </component>
         </KeepAlive>
       </div>
     </div>

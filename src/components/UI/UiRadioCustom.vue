@@ -12,8 +12,8 @@ const model = defineModel<string>();
 <template>
   <label 
     v-if="type === 'icon'"
-    class="radio-custom px-[16px] pt-[28px] pb-[16px] w-full border border-devider cursor-pointer rounded-md flex flex-col items-center"
-    :class="{ 'border-primary-500': model === id }"
+    class="radio-custom px-[16px] pt-[28px] pb-[16px] w-full border cursor-pointer rounded-md flex flex-col items-center"
+    :class="[model === id ? 'border-primary-500' : 'border-devider']"
   >
     <input 
       :id="id" 
@@ -26,14 +26,14 @@ const model = defineModel<string>();
     <slot></slot>
     <div
       class="circle-inside w-[16px] m-[9px] h-[16px] bg-transparent border-[2px] border-action-active rounded-full relative after:opacity-0 after:content-[''] after:w-[8px] after:h-[8px] after:absolute after:bg-primary-500 after:rounded-full after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%]"
-      :class="{ 'after:opacity-100': model === id, '!border-primary-500': model === id }"
+      :class="[model === id ? 'border-primary-500 after:opacity-100' : 'border-action-active  after:opacity-0 ']"
     >
     </div>
   </label>
   <label 
     v-else
-    class="radio-custom p-[16px] w-full border border-devider cursor-pointer rounded-md"
-    :class="{ 'border-primary-500': model === id }"
+    class="radio-custom p-[16px] w-full border cursor-pointer rounded-md"
+    :class="[model === id ? 'border-primary-500' : 'border-devider']"
   >
     <input 
       :id="id" 
@@ -45,8 +45,8 @@ const model = defineModel<string>();
     >
     <div class="radio-custom__top flex items-center">
       <div 
-        class="circle-inside w-[16px] m-[9px] h-[16px] bg-transparent border-[2px] border-action-active rounded-full relative after:opacity-0 after:content-[''] after:w-[8px] after:h-[8px] after:absolute after:bg-primary-500 after:rounded-full after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%]"
-        :class="{ 'after:opacity-100': model === id, '!border-primary-500': model === id }"
+        class="circle-inside w-[16px] m-[9px] h-[16px] bg-transparent border-[2px] rounded-full relative after:content-[''] after:w-[8px] after:h-[8px] after:absolute after:bg-primary-500 after:rounded-full after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%]"
+        :class="[model === id ? 'border-primary-500 after:opacity-100' : 'border-action-active after:opacity-0']"
       >
       </div>
       <slot name="title"></slot>

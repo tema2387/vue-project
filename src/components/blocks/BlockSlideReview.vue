@@ -22,8 +22,8 @@ const amountStars = computed<number>(() => {
 </script>
 <template>
   <div 
-    class="slide duration-200 flex flex-col gap-[16px] items-center text-center w-[360px] bg-paper-bg p-[32px] rounded-md shadow-md opacity-[50%]" 
-    :class="{ '!opacity-100': active}"
+    class="slide duration-200 flex flex-col gap-[16px] items-center text-center w-full bg-paper-bg p-[32px] rounded-md shadow-md" 
+    :class="[ active ? 'opacity-100' : 'opacity-[50%]']"
   >
     <img 
       :src="src" 

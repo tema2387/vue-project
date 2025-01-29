@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 // Иконки
 import SearchIcon from '@/components/UI/svg/SearchIcon.vue'
 import EyePasswordIcon from '@/components/UI/svg/EyePasswordIcon.vue';
+import { before } from 'node:test';
 
 // Пропс type может быть 'outlined', 'filled' or 'custom'
 // Пропс size может быть 'lg', 'md', 'sm' 
@@ -13,33 +14,24 @@ type TypeProps = {
   label?: string,
   type?: string,
   size?: string,
-  labelBgColor?: string,
   placeholder?: string,
   searchIcon?: boolean
   readonly?: boolean,
   helpText?: string | null,
-  status?: string,
   eyeIcon?: boolean,
   passwordInput?: boolean,
 }
 
 const props = withDefaults(defineProps<TypeProps>(), {
-  type: 'outlined',
   size: 'md',
 });
+
+const focusOnInput = ref<boolean>(false);
 
 // Размеры input
 const sizeLg: string = 'px-[16px] py-[16px]';
 const sizeMd: string = 'px-[16px] py-[12px]';
 const sizeSm: string = 'px-[16px] py-[8px]';
-
-// Цвет border
-const borderError: string = '!border-error-500 !outline-error-500 focus:border-error-500 focus:outline-error-500';
-const borderSuccess: string = '!border-success-500 !outline-success-500 focus:border-success-500 focus:outline-success-500';
-
-// Цвет бэкграунда label
-const footerLabelBgColor: string = 'bg-footer-bg-color';
-const mainLabelBgColor: string = 'bg-paper-bg';
 
 const model = defineModel<string | null>();
 const emit = defineEmits<{
@@ -62,18 +54,11 @@ const posRightIcon = computed<string>(() => {
       ? 'right-[16px] top-[8px]' : 'right-[16px] top-[16px]';
 })
 
-const setBorderColor = computed<string | null>(() => {
-  return props.status === 'error' ? borderError : props.status === 'success' ? borderSuccess : null;
-})
-
-const labelBgColor = computed<string>(() => {
-  return props.labelBgColor === 'footer' ? footerLabelBgColor : mainLabelBgColor;
-})
 </script>
 <template>
   <div 
     v-if="type === 'outlined'" 
-    class="input relative text-input-text"
+    class="input group relative text-input-text"
   > 
     <label
       v-if="searchIcon" 
@@ -87,26 +72,37 @@ const labelBgColor = computed<string>(() => {
       :id="id" 
       :placeholder="placeholder"
       :readonly="readonly"
+      @focus="focusOnInput = true"
+      @blur="focusOnInput = false"
       :type="passwordInput ? 'password' : 'text'" 
-      class="peer w-full text-input-text duration-200 bg-transparent outline outline-transparent outline-offset-[-2px] border border-input-border rounded-lg text-text-disabled focus:placeholder-text-disabled focus:border-primary-500 focus:outline-primary-500 focus:text-text-primary hover:border-action-active hover:text-text-primary"
-      :class="[sizeInput, setBorderColor, { 'pl-[46px]': searchIcon, 'placeholder-transparent': label}]"
+      class="peer w-full text-text-primary duration-200 placeholder-transparent bg-transparent focus:placeholder-text-disabled outline-none"
+      :class="[sizeInput, { 'pl-[46px]': searchIcon }]"
       v-model="model"
     />
     <label 
       :for="id"
-      class="absolute flex h-full pointer-events-none z-[1] text-text-disabled items-center duration-200 left-[16px] top-0 peer-hover:text-text-primary peer-focus:text-primary-500 peer-focus:translate-y-[-50%] peer-focus:text-13"
-      :class="{'translate-y-[-50%]': model, 'text-13': model, '!left-[46px]': searchIcon, '!text-error-500': status === 'error', '!text-success-500': status === 'success' }"
+      class="absolute flex pointer-events-none text-text-primary items-center duration-200 translate-y-[-50%] peer-focus:text-primary-500 peer-focus:top-0 peer-focus:text-13"
+      :class="[searchIcon ? 'left-[46px]' : 'left-[16px]', model ? 'top-0' : 'top-[50%]', { 'text-13': model }]"
     >
       {{ label }} 
     </label>
-    <div 
-      v-if="label"
-      class="input-label-background text-13 duration-200 absolute h-[4px] left-[14px] top-[-1px] px-[2px] opacity-0 peer-focus:opacity-100"
-      :class="[{'opacity-100': model, '!left-[44px]': searchIcon }, labelBgColor]"
-    >
-      <span class="invisible">
-        {{ label }}
-      </span>
+    <div class="absolute duration-200 flex pointer-events-none top-0 left-0 w-full h-full">
+      <div 
+        class="input__part-1 w-[11px] relative border-input-border border-l border-t border-b rounded-l-md before:content-[''] before:w-[calc(100%_+_1px)] before:h-[calc(100%_+_2px)] before:absolute before:border-l-[2px] before:border-t-[2px] before:border-b-[2px] before:rounded-l-md before:top-[-1px] before:left-[-1px]"
+        :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent', { 'w-[41px]': searchIcon }]"
+      >
+      </div>
+      <div 
+        class="input__part-2 relative text-transparent border-b text-13 h-full w-max before:content-[''] before:w-full before:h-[calc(100%_+_2px)] before:absolute before:border-b-[2px] before:top-[-1px]"
+        :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent', focusOnInput || model ? 'border-t-0 before:border-t-0' : 'border-t before:border-t-[2px]']"
+      >
+        <span class="mx-[5px]">{{ label }}</span>
+      </div>
+      <div 
+        class="input__part-3 relative flex-1 border-r border-t border-b rounded-r-md before:content-[''] before:w-[calc(100%_+_1px)] before:h-[calc(100%_+_2px)] before:flex before:absolute before:border-r-[2px] before:border-t-[2px] before:border-b-[2px] before:rounded-r-md before:top-[-1px]"
+        :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent']"
+      >
+      </div>
     </div>
     <EyePasswordIcon
       v-if="eyeIcon"
@@ -117,9 +113,56 @@ const labelBgColor = computed<string>(() => {
     <span 
       v-if="helpText" 
       class="help-text absolute left-[16px] bottom-[-2px] translate-y-[100%] text-helper-text"
-      :class="{ 'text-error-500': status === 'error', 'text-success-500': status === 'success' }"
     >
       {{ helpText }}
     </span>
+  </div>
+  <div 
+    v-else 
+    class="input group relative text-input-text"
+  > 
+    <label
+      v-if="searchIcon" 
+      :for="id"
+      class="absolute translate-y-[15%]"
+      :class="posLeftIcon"
+    >
+      <SearchIcon />
+    </label>
+    <input 
+      :id="id" 
+      :placeholder="placeholder"
+      :readonly="readonly"
+      @focus="focusOnInput = true"
+      @blur="focusOnInput = false"
+      :type="passwordInput ? 'password' : 'text'" 
+      class="peer w-full text-text-primary duration-200 bg-transparent placeholder-text-disabled outline-none"
+      :class="[sizeInput, { 'pl-[46px]': searchIcon }]"
+      v-model="model"
+    />
+    <div class="absolute duration-200 flex pointer-events-none top-0 left-0 w-full h-full">
+      <div 
+        class="input__part-1 w-[11px] relative border-input-border border-l border-t border-b rounded-l-md before:content-[''] before:w-[calc(100%_+_1px)] before:h-[calc(100%_+_2px)] before:absolute before:border-l-[2px] before:border-t-[2px] before:border-b-[2px] before:rounded-l-md before:top-[-1px] before:left-[-1px]"
+        :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent', { 'w-[41px]': searchIcon }]"
+      >
+      </div>
+      <div 
+        class="input__part-2 relative text-transparent border-t border-b text-13 h-full w-max before:content-[''] before:w-full before:h-[calc(100%_+_2px)] before:absolute before:border-t-[2px] before:border-b-[2px] before:top-[-1px]"
+        :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent']"
+      >
+        <span class="mx-[5px]">{{ label }}</span>
+      </div>
+      <div 
+        class="input__part-3 relative flex-1 border-r border-t border-b rounded-r-md before:content-[''] before:w-[calc(100%_+_1px)] before:h-[calc(100%_+_2px)] before:flex before:absolute before:border-r-[2px] before:border-t-[2px] before:border-b-[2px] before:rounded-r-md before:top-[-1px]"
+        :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent']"
+      >
+      </div>
+    </div>
+    <EyePasswordIcon
+      v-if="eyeIcon"
+      class="absolute translate-y-[15%] cursor-pointer" 
+      :class="posRightIcon" 
+      @click="emit('toggleInput')"
+    />
   </div>
 </template>

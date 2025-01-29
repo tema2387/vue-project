@@ -61,12 +61,14 @@ const modelRadio = ref<string>('radio-pay-visa');
             <h4 class="order-page__title">Billing Details</h4>
             <div class="order-page__inputs mt-[24px]">
               <div class="order-page__inputs-top flex flex-col md:flex-row gap-[20px]">
-                <UiInputText 
+                <UiInputText
+                  :type="'outlined'"  
                   :id="'order-email'" 
                   :label="'Email Address'"
                   class="flex-1"
                 />
-                <UiInputText 
+                <UiInputText
+                  :type="'outlined'"  
                   :id="'order-password'" 
                   :label="'Password'"
                   class="flex-1"
@@ -77,14 +79,14 @@ const modelRadio = ref<string>('radio-pay-visa');
                   :id="'select-1'" 
                   :label="'Billing Country'"
                   :size="'md'" 
-                  :selects="['aboba1', 'aboba2', 'aboba3', 'aboba4']"
+                  :selects="['test1', 'test2', 'test3', 'test4']"
                   class="flex-1"
                 />
                 <UiSelect 
                   :id="'select-2'" 
                   :label="'Billing Zip / Postal Code'"
                   :size="'md'" 
-                  :selects="['aboba1', 'aboba2', 'aboba3', 'aboba4']"
+                  :selects="['test1', 'test2', 'test3', 'test4']"
                   class="flex-1"
                 />
               </div>
@@ -94,24 +96,28 @@ const modelRadio = ref<string>('radio-pay-visa');
             <h4 class="order-page__title">Credit Card Info</h4>
             <div class="order-page__inputs mt-[24px]">
               <div class="order-page__inputs-top">
-                <UiInputText 
+                <UiInputText
+                  :type="'outlined'"  
                   :id="'card-number'" 
                   :label="'Card Number'" 
                   class="flex-1"
                 />
               </div>
               <div class="order-page__inputs-bottom mt-[20px] flex gap-[20px]">
-                <UiInputText 
+                <UiInputText
+                  :type="'outlined'"  
                   :id="'card-holder'" 
                   :label="'Card Holder'" 
                   class="flex-grow"
                 />
-                <UiInputText 
+                <UiInputText
+                  :type="'outlined'"  
                   :id="'card-date'" 
                   :label="'EXP. date'" 
                   class="max-w-[150px]" 
                 />
-                <UiInputText 
+                <UiInputText
+                  :type="'outlined'"  
                   :id="'card-cvv'" 
                   :label="'CVV'" 
                   class="max-w-[150px]" 
@@ -130,7 +136,7 @@ const modelRadio = ref<string>('radio-pay-visa');
             </h1>
             <UiLink 
               class="mt-[16px]" 
-              :link="'/landing/#plans-list'"
+              :link="'/front/landing/#plans-list'"
             >
               <UiButton 
                 :type="'outline'"
