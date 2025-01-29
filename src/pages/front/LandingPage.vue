@@ -36,6 +36,16 @@ import { home, features, team, faq, contact, setObserver } from '@/modules/obser
 import { setPlanPrice } from '@/store/plansStore';
 
 const activeAccordion = ref<number>(2);
+const quantitySlides = ref<any>(window.innerWidth < 768 ? 1 : 'auto');
+
+
+window.addEventListener('resize', () => {
+  if(window.innerWidth < 768) {
+    quantitySlides.value = 1
+  } else if (window.innerWidth > 768) {
+    quantitySlides.value = 'auto'
+  }
+})
 
 function changeAccordion(activeIndex: number): void {
   activeAccordion.value = activeIndex;
@@ -46,25 +56,32 @@ const { loaded, loading }  = loadingImage();
 onMounted((): void => {
   setObserver(home, features, team, faq, contact);
   // Асинхронная загрузка бэкграунда
-  loading('/img/front-bg-image.png');
+  loading('/img/hero-bg.png');
 })
 </script>
 <template>
   <FrontLayout>
     <div class="front-main-page">
-      <section ref="home" class="start px-[20px] relative bg-no-repeat bg-center-top bg-contain" :style="{ backgroundImage: `url(${loaded})` }">
-        <div class="start__content container pt-[126px] flex flex-col items-center text-center">
+      <section ref="home" class="start px-[20px] pt-[126px] relative bg-no-repeat bg-center-top bg-cover" :style="{ backgroundImage: `url(${loaded})` }">
+        <div class="start__content container flex flex-col items-center text-center">
           <div class="start__top">
             <h2 class="start__title text-primary-500 font-extrabold">All in one sass application<br>for your business</h2>
             <p class="start__desc mt-[16px]">No coding required to make customizations.<br>The live customizer has everything your marketing need.</p>
-            <UiButton class="mt-[32px] m-auto max-w-max">Get early access</UiButton>
+            <UiButton :size="'lg'" :text="'lg'" class="mt-[32px] m-auto max-w-max">Get early access</UiButton>
           </div>
-          <div class="start__bottom">
+          <div class="start__bottom grid grid-rows-[1fr] grid-cols-[1fr]">
             <UiImage 
-              :src="activeDarkTheme ? '/img/hero-image-dark.png' : '/img/hero-image-light.png'"
+              :src="activeDarkTheme ? '/img/hero-dashboard-dark.png' : '/img/hero-dashboard-light.png'"
               :alt="'hero-img'"
-              class="w-[1083px] aspect-video"
+              class="w-[1000px] aspect-[4/3] row-[1] col-[1] m-auto"
             />
+            <UiImage 
+              :src="activeDarkTheme ? '/img/hero-elements-dark.png' : '/img/hero-elements-light.png'"
+              :alt="'hero-img'"
+              class="w-[1100] aspect-auto row-[1] col-[1] m-auto"
+            />
+          </div>
+          <div>
           </div>
         </div>
       </section>
@@ -157,7 +174,7 @@ onMounted((): void => {
           >
             <div class="reviews__slider mt-[64px]">
               <Swiper 
-                :slidesPerView="'auto'"
+                :slidesPerView="quantitySlides"
                 :centeredSlides="true"
                 :initialSlide="2"
                 :spaceBetween="24"
@@ -364,7 +381,7 @@ onMounted((): void => {
           >
             <div class="faq__section-content flex flex-col lg:flex-row gap-[100px] mt-[64px]">
               <UiImage
-                :src="'/img/illustration-faq-section.png'" 
+                :src="'/img/Illustration-faq-section.png'" 
                 :alt="'faq-img'" 
                 class="lg:ml-[200px] w-[320px] aspect-[4/4.25] self-center" 
               />
@@ -447,13 +464,15 @@ onMounted((): void => {
                 <h5 class="contact__form-title">Share your ideas</h5>
                 <form class="mt-[20px]">
                   <div class="flex gap-[20px]">
-                    <UiInputText 
+                    <UiInputText
+                      :type="'outlined'" 
                       :id="'form-name'"
                       :size="'md'"
                       :label="'Full name'"
                       class="w-full" 
                     />
                     <UiInputText 
+                      :type="'outlined'"
                       :id="'form-address'"
                       :size="'md'"
                       :label="'Email address'"
@@ -463,7 +482,6 @@ onMounted((): void => {
                   <UiTextarea 
                     :id="'form-textarea'"
                     :label="'Full name'"
-                    :size="'md'"
                     class="h-[186px] mt-[20px]"
                   />
                   <UiButton 

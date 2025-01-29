@@ -102,8 +102,10 @@ tr, th, td {
     align-items: center;
   }
   .swiper-slide {
-    max-width: 360px;
     cursor: pointer;
+    @media (min-width: 768px) {
+      max-width: 360px;
+    }
   }
 
   .swiper-pagination {
@@ -203,13 +205,4 @@ tr, th, td {
 .opacity-enter-from, 
 .opacity-leave-to {
   opacity: 0;
-}
-
-.admin-menu-enter-active,
-.admin-menu-leave-active {
-  transition: max-height 0.5s ease;
-}
-.admin-menu-enter-from,
-.admin-menu-leave-to {
-  max-height: 0 !important;
 }

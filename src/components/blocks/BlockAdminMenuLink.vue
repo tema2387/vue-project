@@ -1,0 +1,33 @@
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { inject } from 'vue';
+
+type TypeProps = {
+  title: string,
+  link: string, 
+  level: number,
+}
+
+const props = defineProps<TypeProps>();
+
+const paddingLevel = ref<number>(22);
+
+for(let i = 3; i <= props.level; i++) {
+  paddingLevel.value += 10;
+}
+
+const menuHidden = inject('menuHidden');
+</script>
+<template>
+  <UiLink 
+    :link="link"
+    class="admin-menu-link flex min-h-[38px] max-w-[264px] pr-[14px] py-[8px] items-center hover:bg-action-selected gap-[8px] rounded-br-full rounded-tr-full"
+    :class="[menuHidden ? 'mr-[0px]' : 'mr-[16px]']"
+    :style="{ 'padding-left': `${paddingLevel + 'px'}` }"
+  >
+    <div class="admin-menu-link__icon">
+        <slot name="icon"></slot>
+    </div>
+    <div v-show="!menuHidden" class="admin-menu-link__title flex-grow truncate">{{ title }}</div>
+  </UiLink>
+</template>

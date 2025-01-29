@@ -15,7 +15,12 @@ const props = defineProps<TypeProps>();
 </script>
 <template>
   <div class="pricing-plan flex-1 flex flex-col min-w-[280px] gap-[20px] px-[24px] pt-[60px] pb-[20px] border border-devider rounded-md text-center relative">
-    <div v-if="popular" class="pricing-plan__popular absolute px-[12px] py-[2px] rounded-full text-primary-500 bg-primary-opacity/[16%] right-[20px] top-[16px]">Popular</div>
+    <div 
+      v-if="popular" 
+      class="pricing-plan__popular absolute px-[12px] py-[2px] rounded-full text-primary-500 bg-primary-opacity/[16%] right-[20px] top-[16px]"
+    >
+      Popular
+    </div>
     <UiImage :src="img" class="h-[120px] mx-auto" :alt="'pricing-plan-image'" />
     <div class="flex flex-col gap-[8px]">
       <h4 class="pricing-plan__title">{{ title }}</h4>
@@ -28,8 +33,8 @@ const props = defineProps<TypeProps>();
         <div class="text-text-secondary text-15-500 self-end">/month</div>
       </div>
       <div 
-        class="opacity-0 pricing-plan__price-year h-[18px] text-text-disabled"
-        :class="{ 'opacity-100': priceYearActive}"
+        class="pricing-plan__price-year h-[18px] text-text-disabled"
+        :class="[priceYearActive ? 'opacity-100' : 'opacity-0']"
       >
         USD {{ priceYear }}/year
       </div>

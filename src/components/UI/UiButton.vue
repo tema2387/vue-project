@@ -112,7 +112,7 @@ const colorBtn = computed<string>(() => {
 <div class="button">
   <button
     v-if="type === 'default'"
-    class="w-full duration-200 text-white rounded-md shadow-sm disabled:opacity-[45%] flex justify-center items-center gap-[8px]"
+    class="w-full duration-200 border border-transparent text-white rounded-md shadow-sm disabled:opacity-[45%] flex justify-center items-center gap-[8px]"
     :class="[sizeBtn, colorBtn, sizeText]"
   >
     <ArrowLeftIcon v-if="leftIcon" />
@@ -121,7 +121,7 @@ const colorBtn = computed<string>(() => {
   </button>
   <button 
     v-if="type === 'label'"
-    class="w-full button-label duration-200 rounded-md disabled:opacity-[45%]"
+    class="w-full button-label duration-200 border border-transparent rounded-md disabled:opacity-[45%]"
     :class="[sizeBtn, colorBtn, sizeText]"
   >
     <slot></slot>
@@ -135,14 +135,14 @@ const colorBtn = computed<string>(() => {
   </button>
   <button 
     v-if="type === 'text'" 
-    class="w-full bg-transparent duration-200 rounded-md disabled:opacity-[45%]"
+    class="w-full bg-transparent duration-200 border border-transparent rounded-md disabled:opacity-[45%]"
     :class="[sizeBtn, colorBtn, sizeText]"
   >
     <slot></slot>
   </button>
   <button 
     v-if="type === 'inline-text'" 
-    class="bg-transparent duration-200 rounded-md disabled:opacity-[45%]"
+    class="bg-transparent duration-200 border border-transparent rounded-md disabled:opacity-[45%]"
   >
     <slot></slot>
   </button>

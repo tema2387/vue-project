@@ -45,8 +45,12 @@ const colorBorder = computed(() => {
       />
     </div>
     <div class="card-team__content py-[20px] text-center">
-      <h5 class="card-team__name">{{ name }}</h5>
-      <span class="card-team__job text-text-secondary">{{ job }}</span>
+      <h5 class="card-team__name">
+        {{ name }}
+      </h5>
+      <span class="card-team__job text-text-secondary">
+        {{ job }}
+      </span>
       <div class="card-team__socials mt-[12px] text-text-primary flex gap-[12px] justify-center">
         <UiLink 
           :type="'outside'" 

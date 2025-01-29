@@ -83,7 +83,7 @@ const emit = defineEmits<{
           alt="fill-star-icon" 
         />
       </div>
-      <UiInputText 
+      <UiInputText
         :id="id"
         :size="'sm'"
         :readonly="true"

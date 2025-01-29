@@ -28,8 +28,8 @@ type TypeTimeout = ReturnType<typeof setTimeout>;
 let timeout: TypeTimeout;
 
 function scrollToSection(section: HTMLElement | null): void {
-  if(route.path !== '/landing') {
-    router.push('/landing');
+  if(route.path !== '/front/landing') {
+    router.push('/front/landing');
   }
   
   burgerMenuOpened.value = false;
@@ -149,8 +149,8 @@ function mouseMenuLeave(): void {
           class="flex items-center"
           @click="changeTheme"
         >
-          <MoonClearIcon v-if="activeDarkTheme" />
-          <SunIcon v-else />
+          <MoonClearIcon v-show="activeDarkTheme" />
+          <SunIcon v-show="!activeDarkTheme" />
         </UiButton>
         <div class="header__right-btns flex items-center gap-[20px] lg:gap-[10px]">
           <UiLink :link="'#'" class="hover:!opacity-100">
@@ -166,7 +166,7 @@ function mouseMenuLeave(): void {
       <div  
         @mouseenter="mouseMenuEnter"
         @mouseleave="mouseMenuLeave"
-        v-if="pagesMenuDesktop" 
+        v-show="pagesMenuDesktop" 
         class="pages-menu-desktop flex gap-[70px] left-[50%] top-[100%] translate-x-[-50%] absolute w-full p-[20px] rounded-md bg-paper-bg"
       >
         <div class="pages">
@@ -178,31 +178,31 @@ function mouseMenuLeave(): void {
           </div>
           <ul class="list mt-[20px] flex flex-col gap-[20px]">
             <li class="item">
-              <UiLink :link="'/landing'" class="flex items-center">
+              <UiLink :link="'/front/landing'" class="flex items-center">
                 <CircleIcon />
                 <span>Landing</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :link="'/payment'" class="flex items-center">
+              <UiLink :link="'/front/payment'" class="flex items-center">
                 <CircleIcon />
                 <span>Payment</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :link="'/pricing'" class="flex items-center">
+              <UiLink :link="'/front/pricing'" class="flex items-center">
                 <CircleIcon />
                 <span>Pricing</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :link="'/help'" class="flex items-center">
+              <UiLink :link="'/front/help-center'" class="flex items-center">
                 <CircleIcon />
                 <span>Help center</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :link="'/checkout'" class="flex items-center">
+              <UiLink :link="'/front/checkout'" class="flex items-center">
                 <CircleIcon />
                 <span>Checkout</span>
               </UiLink>
@@ -218,13 +218,13 @@ function mouseMenuLeave(): void {
           </div>
           <ul class="list mt-[20px] flex flex-col gap-[20px]">
             <li class="item">
-              <UiLink :link="'/auth-demo'" class="flex items-center">
+              <UiLink :link="'/demo/auth'" class="flex items-center">
                 <CircleIcon />
                 <span>Auth demo</span>
               </UiLink>
             </li>
             <li class="item">
-              <UiLink :link="'/registration-demo'" class="flex items-center">
+              <UiLink :link="'/demo/registration'" class="flex items-center">
                 <CircleIcon />
                 <span>Registration demo</span>
               </UiLink>
@@ -251,7 +251,7 @@ function mouseMenuLeave(): void {
     </Transition>
   </div>
   <Transition name="burger-menu">
-    <div v-if="burgerMenuOpened" class="burger-menu overflow-y-auto fixed flex justify-between gap-[20px] p-[20px] left-0 top-0 h-[100vh] max-w-[100%] sm:max-w-[300px] w-full bg-paper-bg z-[100]">
+    <div v-show="burgerMenuOpened" class="burger-menu overflow-y-auto fixed flex justify-between gap-[20px] p-[20px] left-0 top-0 h-[100vh] max-w-[100%] sm:max-w-[300px] w-full bg-paper-bg z-[100]">
       <ul class="menu__list flex flex-col top-[200px] gap-[20px]">
         <li 
           @click="scrollToSection(home)" 
@@ -294,7 +294,7 @@ function mouseMenuLeave(): void {
             <div>Pages</div>
             <ArrowDownSIcon :class="{'rotate-180': pagesMenu}" />
           </div>
-          <div v-if="pagesMenu" class="pages-menu mt-[20px] flex flex-col gap-[20px]">
+          <div v-show="pagesMenu" class="pages-menu mt-[20px] flex flex-col gap-[20px]">
             <div class="pages">
               <div class="flex items-center gap-[8px]">
                 <div class="bg-primary-500 p-[5px] rounded-md">
@@ -304,31 +304,31 @@ function mouseMenuLeave(): void {
               </div>
               <ul class="list mt-[20px] flex flex-col gap-[20px]">
                 <li class="item">
-                  <UiLink :link="'/landing'" class="flex items-center">
+                  <UiLink :link="'/front/landing'" class="flex items-center">
                     <CircleIcon />
                     <span>Landing</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :link="'/payment'" class="flex items-center">
+                  <UiLink :link="'/front/payment'" class="flex items-center">
                     <CircleIcon />
                     <span>Payment</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :link="'/pricing'" class="flex items-center">
+                  <UiLink :link="'/front/pricing'" class="flex items-center">
                     <CircleIcon />
                     <span>Pricing</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :link="'/help'" class="flex items-center">
+                  <UiLink :link="'/front/help-center'" class="flex items-center">
                     <CircleIcon />
                     <span>Help center</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :link="'/checkout'" class="flex items-center">
+                  <UiLink :link="'/front/checkout'" class="flex items-center">
                     <CircleIcon />
                     <span>Checkout</span>
                   </UiLink>
@@ -344,13 +344,13 @@ function mouseMenuLeave(): void {
               </div>
               <ul class="list mt-[20px] flex flex-col gap-[20px]">
                 <li class="item">
-                    <UiLink :link="'/auth-demo'" class="flex items-center">
+                    <UiLink :link="'/demo/auth'" class="flex items-center">
                     <CircleIcon />
                     <span>Auth demo</span>
                   </UiLink>
                 </li>
                 <li class="item">
-                  <UiLink :link="'/registration-demo'" class="flex items-center">
+                  <UiLink :link="'/demo/registration'" class="flex items-center">
                     <CircleIcon />
                     <span>Registration demo</span>
                   </UiLink>

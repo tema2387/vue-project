@@ -3,15 +3,16 @@ import { ref } from "vue";
 export default function loadingImage() {
   const loaded = ref<string | null>(null);
 
-  function loading(url:string):void {
+  function loading(url: string): void {
     const img = new Image();
     img.src = url;
   
     img.onload = () => {
       loaded.value = img.src;
     };
-    img.onerror = () => console.error("Error Img load");
+    img.onerror = () => console.error(loaded.value, "Error Img load");
   }
 
+  console.log(loaded.value);
   return { loaded, loading };
 }

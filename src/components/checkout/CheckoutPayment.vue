@@ -51,7 +51,8 @@ const popupOfferStatus = ref(true);
         <div class="checkout-payment__pay-method max-w-[450px] mt-[24px">
           <div class="checkout-payment__inputs mt-[24px]">
             <div class="checkout-payment__inputs-top">
-              <UiInputText 
+              <UiInputText
+                :type="'outlined'"  
                 :id="'card-number'" 
                 :size="'md'"
                 :label="'Card Number'"
@@ -59,20 +60,23 @@ const popupOfferStatus = ref(true);
               />
             </div>
             <div class="checkout-payment__inputs-bottom mt-[20px] flex gap-[20px]">
-              <UiInputText 
+              <UiInputText
+                :type="'outlined'"  
                 :id="'card-name'" 
                 :size="'md'"
                 :label="'Name'" 
                 class="basis-full"
                 v-model="cardName"
               />
-              <UiInputText 
+              <UiInputText
+                :type="'outlined'"  
                 :id="'card-date'" 
                 :size="'md'"
                 :label="'EXP. date'" 
                 v-model="cardDate"
               />
-              <UiInputText 
+              <UiInputText
+                :type="'outlined'"  
                 :id="'card-cvv'" 
                 :size="'md'"
                 :label="'CVV'"

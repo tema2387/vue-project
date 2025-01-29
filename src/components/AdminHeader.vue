@@ -22,11 +22,10 @@ const emit = defineEmits<{
         <span class="h-[2px] bg-text-primary rounded-md"></span>
     </div>
     <UiInputText
-      :type="'outlined'" 
       :id="'admin-search'"
       :searchIcon="true" 
       :size="'md'"
-      :label="'Search'"
+      :placeholder="'Search...'"
       class="flex-grow"
     />
     <div class="admin-header__right">
@@ -35,8 +34,8 @@ const emit = defineEmits<{
         class="flex items-center"
         @click="changeTheme"
       >
-        <MoonClearIcon v-if="activeDarkTheme" />
-        <SunIcon v-else />
+        <MoonClearIcon v-show="activeDarkTheme" />
+        <SunIcon v-show="!activeDarkTheme" />
       </UiButton>
     </div>
   </div>

@@ -19,17 +19,20 @@ const passwordHidden = ref<boolean>(true);
         <div class="text-text-secondary">Make your app management easy and fun!</div>
       </div>
       <div class="registration__form mt-[20px] flex flex-col gap-[20px]">
-        <UiInputText 
+        <UiInputText
+          :type="'outlined'" 
           :id="'username'" 
           :size="'md'"
           :label="'Username'"
         />
-        <UiInputText 
+        <UiInputText
+          :type="'outlined'" 
           :id="'email'" 
           :size="'md'" 
           :label="'Email'"
         />
         <UiInputText 
+          :type="'outlined'"
           :id="'password'" 
           :size="'md'" 
           :label="'Password'"
@@ -46,7 +49,7 @@ const passwordHidden = ref<boolean>(true);
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>Already have an account?</span>
         <UiLink 
-          :link="'/auth-demo'" 
+          :link="'/demo/auth'" 
           class="text-primary-500"
         >
           Sign in instead

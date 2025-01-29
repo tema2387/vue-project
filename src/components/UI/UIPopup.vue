@@ -40,7 +40,7 @@ const setBg = computed<string>(() => {
     <img 
       src="/img/percent-line.png" 
       class="p-[4px] rounded-md" 
-      :class="color === 'error' ? 'bg-error-500' : 'bg-success-500'"
+      :class="[color === 'error' ? 'bg-error-500' : 'bg-success-500']"
       alt="popup-icon" 
     />
     <div 

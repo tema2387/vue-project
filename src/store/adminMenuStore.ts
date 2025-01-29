@@ -8,8 +8,6 @@ export const mainNav:TypeNavItem[] = [
   {
     title: 'Dashboards',
     list: [
-      { title: 'CRM', link: '#' },
-      { title: 'Analytics', link: '#' },
       { title: 'eCommerce', link: '#' },
       { title: 'Academy', link: '#' },
       { title: 'Logistics', link: '#' },
@@ -18,11 +16,11 @@ export const mainNav:TypeNavItem[] = [
   {
     title: 'Front Pages',
     list: [
-      { title: 'Landing', link: '/landing' },
-      { title: 'Pricing', link: '/pricing' },
-      { title: 'Payment', link: '/payment' },
-      { title: 'Checkout', link: '/checkout' },
-      { title: 'Help Center', link: '/help' },
+      { title: 'Landing', link: '/front/landing' },
+      { title: 'Pricing', link: '/front/pricing' },
+      { title: 'Payment', link: '/front/payment' },
+      { title: 'Checkout', link: '/front/checkout' },
+      { title: 'Help Center', link: '/front/help' },
     ]
   }
 ]
@@ -35,11 +33,7 @@ export const appsAndPages:TypeNavItem[]  = [
       { 
         title: 'Product', 
         list: [ 
-          { title: 'List', 
-            list: [
-              { title: 'Details', link: '#' },
-            ]
-          },
+          { title: 'List', link: '#' },
           { title: 'Add', link: '#' },
           { title: 'Category', link: '#' },
         ] 

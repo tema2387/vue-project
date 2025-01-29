@@ -20,11 +20,13 @@ const passwordHidden = ref<boolean>(true);
       </div>
       <div class="auth__form mt-[20px] flex flex-col gap-[20px]">
         <UiInputText 
+          :type="'outlined'"
           :id="'email'" 
           :size="'md'" 
           :label="'Email'"
         />
         <UiInputText 
+          :type="'outlined'"
           :id="'password'" 
           :size="'md'"
           :eyeIcon="true" 
@@ -41,7 +43,7 @@ const passwordHidden = ref<boolean>(true);
       <div class="flex justify-center gap-[5px] mt-[20px]">
         <span>New on our platform?</span>
         <UiLink 
-          :link="'/registration-demo'" 
+          :link="'/demo/registration'" 
           class="text-primary-500"
         >
           Create an account
