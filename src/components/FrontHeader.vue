@@ -141,6 +141,11 @@ function mouseMenuLeave(): void {
             <div>Pages</div>
             <ArrowDownSIcon :class="{'rotate-180': pagesMenuDesktop}" />
           </li>
+          <li 
+            class="menu__item" 
+          >
+            <UiLink :link="'/'">Admin</UiLink>
+          </li>
         </ul>
       </nav>
       <div class="header__right flex-shrink-0 flex justify-end gap-[20px] sm:gap-[24px] items-center">
@@ -270,6 +275,10 @@ function mouseMenuLeave(): void {
               </UiLink>
             </li>
           </ul>
+        </div>
+        <div class="pages-menu-desktop__img p-[10px] rounded-md bg-body-bg">
+          <UiImage v-show="!activeDarkTheme" :src="'/img/nav-img-light.png'" :alt="'pages-menu-desktop-img'"></UiImage>
+          <UiImage v-show="activeDarkTheme" :src="'/img/nav-img-dark.png'" :alt="'pages-menu-desktop-img'"></UiImage>
         </div>
       </div>
     </Transition>
@@ -422,6 +431,12 @@ function mouseMenuLeave(): void {
               </ul>
             </div>
           </div>
+        </li>
+        <li 
+            class="menu__item flex items-center" 
+          >
+            <CircleIcon></CircleIcon>
+            <UiLink :link="'/'">Admin</UiLink>
         </li>
       </ul>
       <CloseLineIcon @click="closeBurgerMenu" class="cursor-pointer"></CloseLineIcon>
