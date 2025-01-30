@@ -27,9 +27,10 @@ function changeAccordion(id: number): void {
               <p class="text-text-secondary">All plans include 40+ advanced tools and features to boost your product.</p>
               <p class="text-text-secondary">Choose the best plan to fit your needs.</p>
             </div>
-            <div class="main__save mt-[15px] translate-x-[80%] flex">
-              <ArrowDownSaveIcon class="text-text-disabled mt-[11px] mr-[9px]" />
-              <span class="text-primary-500 rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%]">Save up to 10%</span>
+            <div class="main__save mt-[15px] translate-x-[-10%] sm:translate-x-[80%] flex items-center">
+              <span class="text-primary-500 rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%] block sm:hidden">Save up to 10%</span>
+              <ArrowDownSaveIcon class="text-text-disabled mt-[11px] max-sm:ml-[9px] sm:mr-[9px] -scale-x-100 sm:scale-x-100 " />
+              <span class="text-primary-500 rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%] hidden sm:block">Save up to 10%</span>
             </div>
             <UiToggle 
               :leftTextFalse="'Monthly'"
@@ -73,7 +74,7 @@ function changeAccordion(id: number): void {
       </section>
       <section class="free-trials px-[20px] pt-[50px] pb-[38px] bg-primary-opacity/[16%]">
         <div class="free-trials__content relative container">
-          <div class="free-trials__left">
+          <div class="free-trials__left flex text-center flex-col items-center lg:items-start">
             <h4 class="free-trials__title text-primary-500">Still not convinced? Start with a 14-day FREE trial!</h4>
             <p class="free-trials__desc mt-[8px] text-text-secondary">You will get full access to with all the features for 14 days.</p>
             <UiButton class="mt-[44px] max-w-max">Start 14-day free trial</UiButton>

@@ -20,7 +20,7 @@ const model = defineModel<boolean>();
       class="hidden"
     >
     <div 
-      class="square relative w-[16px] h-[16px] rounded-md border-[2px]"
+      class="square flex flex-shrink-0 relative w-[16px] h-[16px] rounded-md border-[2px]"
       :class="[model ? 'bg-primary-500 border-primary-500' : 'bg-transparent border-text-secondary' ]"
     >
       <img 

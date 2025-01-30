@@ -14,7 +14,7 @@ type TypeProps = {
 const props = defineProps<TypeProps>();
 </script>
 <template>
-  <div class="pricing-plan flex-1 flex flex-col min-w-[280px] gap-[20px] px-[24px] pt-[60px] pb-[20px] border border-devider rounded-md text-center relative">
+  <div class="pricing-plan flex-1 flex flex-col min-w-full sm:min-w-[280px] gap-[20px] px-[24px] pt-[60px] pb-[20px] border border-devider rounded-md text-center relative">
     <div 
       v-if="popular" 
       class="pricing-plan__popular absolute px-[12px] py-[2px] rounded-full text-primary-500 bg-primary-opacity/[16%] right-[20px] top-[16px]"
@@ -45,7 +45,7 @@ const props = defineProps<TypeProps>();
         :key="index" 
         class="pricing-plan__possibility flex items-center"
       >
-        <span class="w-[14px] h-[14px] border-[2px] border-text-secondary bg-transparent rounded-full mr-[21px]" />
+        <span class="w-[14px] flex flex-shrink-0 h-[14px] border-[2px] border-text-secondary bg-transparent rounded-full mr-[21px]" />
         <div>{{ poss }}</div>
       </li>
     </ul>

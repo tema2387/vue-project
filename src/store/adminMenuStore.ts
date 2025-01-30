@@ -20,7 +20,7 @@ export const mainNav:TypeNavItem[] = [
       { title: 'Pricing', link: '/front/pricing' },
       { title: 'Payment', link: '/front/payment' },
       { title: 'Checkout', link: '/front/checkout' },
-      { title: 'Help Center', link: '/front/help' },
+      { title: 'Help Center', link: '/front/help-center' },
     ]
   }
 ]

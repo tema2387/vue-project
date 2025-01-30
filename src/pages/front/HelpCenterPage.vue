@@ -21,10 +21,9 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
       <div class="help-search__content max-w-[476px] m-auto text-center">
         <h4 class="text-primary-500">Hello, how can we help?</h4>
         <UiInputText
-          :type="'outlined'" 
           :id="'help-search'" 
           :searchIcon="true"
-          :label="'Ask a question....'"
+          :placeholder="'Ask a question...'"
           :size="'md'"
           class="mt-[30px] w-full"
         >
@@ -146,7 +145,7 @@ import { buying, itemSupport, licenses, templateKits, accountAndPassword, accoun
           <div>Our specialists are always happy to help.</div>
           <div>Contact us during standard business hours or email us 24/7, and we'll get back to you.</div>
         </div>
-        <div class="flex gap-[16px]">
+        <div class="flex flex-col sm:flex-row gap-[16px]">
           <UiButton 
             :size="'md'" 
             :text="'md'"

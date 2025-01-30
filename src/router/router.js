@@ -15,6 +15,10 @@ import DemoAuthPage from '@/pages/demo/DemoAuthPage.vue';
 import DemoRegistrationPage from '@/pages/demo/DemoRegistrationPage.vue';
 // Остальные
 import NotFoundPage from '@/pages/others/NotFoundPage.vue';
+import UnderMaintenancePage from '@/pages/others/UnderMaintenancePage.vue';
+import LaunchSoonPage from '@/pages/others/LaunchSoonPage.vue';
+import NotAuthorizedPage from '@/pages/others/NotAuthorizedPage.vue';
+import InternalServerErrorPage from '@/pages/others/InternalServerErrorPage.vue';
 
 const routes = [
   { path: '/', component: MainPage },
@@ -24,10 +28,15 @@ const routes = [
   { path: '/front/payment', component: PaymentPage },
   { path: '/front/pricing', component: PricingPage },
   { path: '/front/help-center', component: HelpCenterPage },
-  { path: '/front/checkout', component: CheckoutPage  },
+  { path: '/front/checkout', component: CheckoutPage },
   { path: '/demo/registration', component: DemoRegistrationPage },
   { path: '/demo/auth', component: DemoAuthPage },
-  { path: '/:pathMath(.*)*', component: NotFoundPage  },
+  { path: '/:pathMath(.*)*', component: NotFoundPage },
+  { path: '/others/not-found', component: NotFoundPage },
+  { path: '/others/under-maintenance', component: UnderMaintenancePage },
+  { path: '/others/launch-soon', component: LaunchSoonPage },
+  { path: '/others/not-authorized', component: NotAuthorizedPage },
+  { path: '/others/internal-server-error', component: InternalServerErrorPage },
 ]
 
 const router = createRouter({

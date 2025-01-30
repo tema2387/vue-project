@@ -255,30 +255,34 @@ onMounted((): void => {
             :subtitleBold="'Supported'"
             :desc="'Who is behind these great-looking interfaces?'"
           >
-            <div class="team__list flex flex-wrap lg:justify-between justify-center gap-[24px] mt-[100px]">
+            <div class="team__list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[24px] gap-y-[48px]  mt-[100px]">
               <BlockCardTeam 
                 :img="'/img/woman-1.png'" 
                 :color="'primary'" 
                 :name="'Sophie Gilbert'" 
                 :job="'Project Manager'"
+                class="m-auto"
               />
               <BlockCardTeam 
                 :img="'/img/man-1.png'" 
                 :color="'error'" 
                 :name="'Nannie Ford'" 
                 :job="'Development Lead'"
+                class="m-auto"
               />
               <BlockCardTeam 
                 :img="'/img/woman-2.png'" 
                 :color="'success'" 
                 :name="'Chris Watkins'" 
                 :job="'Marketing Manager'"
+                class="m-auto"
               />
               <BlockCardTeam 
                 :img="'/img/man-2.png'"
                 :color="'info'" 
                 :name="'Paul Miles'" 
                 :job="'UI Designer'"
+                class="m-auto"
               />
             </div>
           </SectionWrapper>
@@ -422,7 +426,7 @@ onMounted((): void => {
             :alt="'ready-img'" 
             class="absolute right-0 hidden lg:block bottom-[-115px] w-[594px] aspect-video" 
           />
-          <div class="ready__left">
+          <div class="ready__left flex text-center flex-col items-center lg:items-start">
             <div class="ready__title text-primary-500 text-title-ready-bold">Ready to Get Started?</div>
             <p class="ready__subtitle text-text-secondary mt-[4px] text-15-500">Start your project with a 14-day free trial</p>
             <UiButton 
