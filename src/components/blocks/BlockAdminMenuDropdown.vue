@@ -35,7 +35,7 @@ function toggleMenu(): void {
   <div class="admin-menu-dropdown">
     <div
       @click="toggleMenu" 
-      class="admin-menu-dropdown flex pr-[14px] max-w-[264px] min-h-[38px] hover:bg-action-selected items-center gap-[8px] cursor-pointer rounded-br-full rounded-tr-full"
+      class="admin-menu-dropdown flex duration-500 pr-[14px] max-w-[264px] max-sm:max-w-full min-h-[38px] hover:bg-action-selected items-center gap-[8px] cursor-pointer rounded-br-full rounded-tr-full"
       :class="[menuHidden ? 'mr-[0px]' : 'mr-[16px]', { 'bg-action-selected': menuOpened }]"
       :style="{ 'padding-left': `${paddingLevel + 'px'}` }"
     >
