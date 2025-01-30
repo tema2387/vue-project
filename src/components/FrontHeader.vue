@@ -240,9 +240,33 @@ function mouseMenuLeave(): void {
           </div>
           <ul class="list mt-[20px] flex flex-col gap-[20px]">
             <li class="item">
-              <UiLink :link="'/not-found'" class="flex items-center">
+              <UiLink :link="'/others/not-found'" class="flex items-center">
                 <CircleIcon />
-                <span>Not found page</span>
+                <span>Not found</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :link="'/others/under-maintenance'" class="flex items-center">
+                <CircleIcon />
+                <span>Under maintenance</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :link="'/others/launch-soon'" class="flex items-center">
+                <CircleIcon />
+                <span>Launch soon</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :link="'/others/not-authorized'" class="flex items-center">
+                <CircleIcon />
+                <span>Not authorized</span>
+              </UiLink>
+            </li>
+            <li class="item">
+              <UiLink :link="'/others/internal-server-error'" class="flex items-center">
+                <CircleIcon />
+                <span>Internal server error</span>
               </UiLink>
             </li>
           </ul>
@@ -366,9 +390,33 @@ function mouseMenuLeave(): void {
               </div>
               <ul class="list mt-[20px] flex flex-col gap-[20px]">
                 <li class="item">
-                  <UiLink :link="'/not-found'" class="flex items-center">
+                  <UiLink :link="'/others/not-found'" class="flex items-center">
                     <CircleIcon />
-                    <span>Not found page</span>
+                    <span>Not found</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :link="'/others/under-maintenance'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Under maintenance</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :link="'/others/launch-soon'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Launch soon</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :link="'/others/not-authorized'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Not authorized</span>
+                  </UiLink>
+                </li>
+                <li class="item">
+                  <UiLink :link="'/others/internal-server-error'" class="flex items-center">
+                    <CircleIcon />
+                    <span>Internal server error</span>
                   </UiLink>
                 </li>
               </ul>

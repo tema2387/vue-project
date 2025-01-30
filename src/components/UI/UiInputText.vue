@@ -75,7 +75,7 @@ const posRightIcon = computed<string>(() => {
       @focus="focusOnInput = true"
       @blur="focusOnInput = false"
       :type="passwordInput ? 'password' : 'text'" 
-      class="peer w-full text-text-primary duration-200 placeholder-transparent bg-transparent focus:placeholder-text-disabled outline-none"
+      class="peer w-full text-text-primary duration-200 placeholder-transparent rounded-md  bg-transparent focus:placeholder-text-disabled outline-none"
       :class="[sizeInput, { 'pl-[46px]': searchIcon }]"
       v-model="model"
     />
@@ -93,13 +93,13 @@ const posRightIcon = computed<string>(() => {
       >
       </div>
       <div 
-        class="input__part-2 relative text-transparent border-b text-13 h-full w-max before:content-[''] before:w-full before:h-[calc(100%_+_2px)] before:absolute before:border-b-[2px] before:top-[-1px]"
+        class="input__part-2 relative text-transparent border-b text-13 h-full max-w-max w-full before:content-[''] before:w-full before:h-full before:absolute before:border-b-[1px]"
         :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent', focusOnInput || model ? 'border-t-0 before:border-t-0' : 'border-t before:border-t-[2px]']"
       >
         <span class="mx-[5px]">{{ label }}</span>
       </div>
       <div 
-        class="input__part-3 relative flex-1 border-r border-t border-b rounded-r-md before:content-[''] before:w-[calc(100%_+_1px)] before:h-[calc(100%_+_2px)] before:flex before:absolute before:border-r-[2px] before:border-t-[2px] before:border-b-[2px] before:rounded-r-md before:top-[-1px]"
+        class="input__part-3 min-w-[11px] relative flex-1 border-r border-t border-b rounded-r-md before:content-[''] before:w-[calc(100%_+_1px)] before:h-[calc(100%_+_2px)] before:flex before:absolute before:border-r-[2px] before:border-t-[2px] before:border-b-[2px] before:rounded-r-md before:top-[-1px]"
         :class="[focusOnInput ? 'border-primary-500 group-hover:border-primary-500 before:border-primary-500' : 'border-input-border group-hover:border-action-active before:border-transparent']"
       >
       </div>
@@ -136,7 +136,7 @@ const posRightIcon = computed<string>(() => {
       @focus="focusOnInput = true"
       @blur="focusOnInput = false"
       :type="passwordInput ? 'password' : 'text'" 
-      class="peer w-full text-text-primary duration-200 bg-transparent placeholder-text-disabled outline-none"
+      class="peer w-full text-text-primary duration-200 bg-paper-bg rounded-md placeholder-text-disabled outline-none"
       :class="[sizeInput, { 'pl-[46px]': searchIcon }]"
       v-model="model"
     />

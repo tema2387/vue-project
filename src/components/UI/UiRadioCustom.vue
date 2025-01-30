@@ -45,7 +45,7 @@ const model = defineModel<string>();
     >
     <div class="radio-custom__top flex items-center">
       <div 
-        class="circle-inside w-[16px] m-[9px] h-[16px] bg-transparent border-[2px] rounded-full relative after:content-[''] after:w-[8px] after:h-[8px] after:absolute after:bg-primary-500 after:rounded-full after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%]"
+        class="circle-inside flex flex-shrink-0 w-[16px] m-[9px] h-[16px] bg-transparent border-[2px] rounded-full relative after:content-[''] after:w-[8px] after:h-[8px] after:absolute after:bg-primary-500 after:rounded-full after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%]"
         :class="[model === id ? 'border-primary-500 after:opacity-100' : 'border-action-active after:opacity-0']"
       >
       </div>

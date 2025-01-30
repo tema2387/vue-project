@@ -26,7 +26,7 @@ const popupOfferStatus = ref(true);
         @close="popupOfferStatus = false"
       />
       <div class="checkout-payment__pay mt-[24px]">
-        <div class="checkout-payment__pay-choose flex gap-[4px]">
+        <div class="checkout-payment__pay-choose flex flex-col sm:flex-row gap-y-[10px] gap-[4px]">
           <UiButton
             :size="'md'" 
             :text="'md'" 
@@ -48,7 +48,7 @@ const popupOfferStatus = ref(true);
             Gift Card
           </UiButton>
         </div>
-        <div class="checkout-payment__pay-method max-w-[450px] mt-[24px">
+        <div class="checkout-payment__pay-method sm:max-w-[450px] mt-[24px">
           <div class="checkout-payment__inputs mt-[24px]">
             <div class="checkout-payment__inputs-top">
               <UiInputText
@@ -59,7 +59,7 @@ const popupOfferStatus = ref(true);
                 v-model="cardNumber" 
               />
             </div>
-            <div class="checkout-payment__inputs-bottom mt-[20px] flex gap-[20px]">
+            <div class="checkout-payment__inputs-bottom  mt-[20px] flex flex-col sm:flex-row gap-[20px]">
               <UiInputText
                 :type="'outlined'"  
                 :id="'card-name'" 
@@ -90,7 +90,7 @@ const popupOfferStatus = ref(true);
             v-model="saveCard"
           >
           </UiToggle>
-          <div class="flex gap-[16px] mt-[25px]">
+          <div class="flex flex-col sm:flex-row gap-[16px] mt-[25px]">
             <UiButton 
               :size="'md'" 
               :text="'md'" 

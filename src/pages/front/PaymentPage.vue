@@ -19,20 +19,20 @@ const modelRadio = ref<string>('radio-pay-visa');
             <h4 class="order-page__title">Checkout</h4>
             <p class="order-page__subtitle text-text-secondary mt-[8px]">All plans include 40+ advanced tools and features to boost your product.</p>
             <p class="order-page__subtitle text-text-secondary">Choose the best plan to fit your needs.</p>
-            <div class="order-page__inputs flex flex-wrap gap-[20px] mt-[32px]">
+            <div class="order-page__inputs grid grid-cols-1 lg:grid-cols-2 gap-[20px] mt-[32px]">
               <UiRadioCustom 
                 :name="'pay-checkout-plan'" 
                 :id="'radio-pay-visa'" 
                 v-model="modelRadio"
-                class="flex-1 min-w-max"
+                class="flex-1"
               >
                 <template v-slot:title>
-                  <div class="ml-[16px] flex items-center gap-[16px]">
-                    <UiImage 
+                  <div class="ml-[16px] flex flex-wrap items-center gap-[16px]">
+                    <img
                       :src="'/icon/visa-icon.svg'" 
                       :alt="'visa-icon'" 
                       :loaderSize="20"
-                      class="p-[11px] bg-action-hover w-[58px] h-[34px] rounded-md" 
+                      class="p-[11px] bg-action-hover max-w-[58px] rounded-md" 
                     />
                     <div>Credit card</div>
                   </div>
@@ -42,14 +42,14 @@ const modelRadio = ref<string>('radio-pay-visa');
                 :name="'pay-checkout-plan'" 
                 :id="'radio-pay-paypal'" 
                 v-model="modelRadio"
-                class="flex-1 min-w-max"
+                class="flex-1"
               >
                 <template v-slot:title>
-                  <div class="ml-[16px] flex items-center gap-[16px]">
+                  <div class="ml-[16px] flex flex-wrap items-center gap-[16px]">
                     <img 
                       src="/icon/paypal-icon.svg" 
                       alt="paypal-icon" 
-                      class="py-[7px] px-[21px] w-[58px] h-[34px] bg-action-hover rounded-md" 
+                      class="py-[7px] px-[21px] max-w-[58px] bg-action-hover rounded-md" 
                     />
                     <div>Paypal</div>
                   </div>
@@ -103,7 +103,7 @@ const modelRadio = ref<string>('radio-pay-visa');
                   class="flex-1"
                 />
               </div>
-              <div class="order-page__inputs-bottom mt-[20px] flex gap-[20px]">
+              <div class="order-page__inputs-bottom mt-[20px] flex flex-col md:flex-row gap-[20px]">
                 <UiInputText
                   :type="'outlined'"  
                   :id="'card-holder'" 
@@ -114,13 +114,13 @@ const modelRadio = ref<string>('radio-pay-visa');
                   :type="'outlined'"  
                   :id="'card-date'" 
                   :label="'EXP. date'" 
-                  class="max-w-[150px]" 
+                  class="max-w-full md:max-w-[150px]" 
                 />
                 <UiInputText
                   :type="'outlined'"  
                   :id="'card-cvv'" 
                   :label="'CVV'" 
-                  class="max-w-[150px]" 
+                  class="max-w-full md:max-w-[150px]" 
                 />
               </div>
             </div>
