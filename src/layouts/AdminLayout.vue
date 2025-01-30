@@ -96,7 +96,7 @@ function openMobileMenu(): void {
       ref="adminMenu" 
       @mouseenter="showAdminMenuDesktop" 
       @mouseleave="hideAdminMenuDesktop"
-      class="admin-layout-menu lg:translate-x-0 transition-all duration-500 overflow-hidden bg-body-bg fixed z-[100] h-full flex flex-col w-full"
+      class="admin-layout-menu lg:translate-x-0 transition-all duration-500 overflow-hidden bg-body-bg fixed z-[100] h-full flex flex-col w-full max-sm:max-w-full"
       :class="[ !adminMenuHidden ? 'max-w-[260px] shadow-sm' : 'max-w-[68px]', mobileMenuOpened  ? 'translate-x-0' : 'translate-x-[-100%]']"
     >
       <div
