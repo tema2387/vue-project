@@ -75,7 +75,7 @@ onMounted((): void => {
               :alt="'hero-img'"
               class="w-[1000px] aspect-[4/3] row-[1] col-[1] m-auto"
             />
-            <UiImage 
+            <UiImage
               :src="activeDarkTheme ? '/img/hero-elements-dark.png' : '/img/hero-elements-light.png'"
               :alt="'hero-img'"
               class="w-[1100] aspect-auto row-[1] col-[1] m-auto"
