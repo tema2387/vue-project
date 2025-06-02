@@ -46,7 +46,7 @@ export const appsAndPages:TypeNavItem[]  = [
         ] 
       },
       { 
-        title: 'Customer', link: '#',
+        title: 'Customer',
         list: [ 
           { title: 'List', link: '#' },
           { title: 'Details', link: '#' },
@@ -88,7 +88,7 @@ export const appsAndPages:TypeNavItem[]  = [
   {
     title: 'User',
     list: [
-      { title: 'List', link: '#' },
+      { title: 'List', link: '/users' },
       { title: 'View', link: '#' },
     ]
   },

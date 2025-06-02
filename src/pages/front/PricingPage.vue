@@ -5,13 +5,21 @@ import FrontLayout from "@/layouts/FrontLayout.vue";
 import BlockPricingPlan from "@/components/blocks/BlockPricingPlan.vue";
 import UiToggle from "@/components/UI/UiToggle.vue";
 import UiAccordion from "@/components/UI/UiAccordion.vue";
+import BlockBestPlan from "@/components/blocks/BlockBestPlan.vue";
 // Иконки
 import ArrowDownSaveIcon from "@/components/UI/svg/ArrowDownSaveIcon.vue";
 import ApproveTableIcon from "@/components/UI/svg/ApproveTableIcon.vue";
 import CancelTableIcon from "@/components/UI/svg/CancelTableIcon.vue";
+// Хранилище
+import { bestPlans } from "@/store/bestPlansStore";
 
 const activeAccordion = ref<number>(2);
+const annuallyPayCheckbox = ref<boolean>(false);
 
+function setAnnuallyPayValue(value: boolean): void {
+  annuallyPayCheckbox.value = value;
+}
+ 
 function changeAccordion(id: number): void {
   activeAccordion.value = id;
 }
@@ -35,6 +43,7 @@ function changeAccordion(id: number): void {
             <UiToggle 
               :leftTextFalse="'Monthly'"
               :rightTextTrue="'Annually'"
+              @valueToggle="setAnnuallyPayValue"
               class="mt-[20px]"
             />
           </div>
@@ -53,7 +62,7 @@ function changeAccordion(id: number): void {
               :subtitle="'For small to medium businesses'"
               :wallet="'$'"
               :price="'49'"
-              :priceYearActive="true"
+              :priceYearActive="annuallyPayCheckbox"
               :priceYear="'480'"
               :popular="true"
               :possibilities="['Unlimited responses', 'Unlimited forms and surveys', 'Instagram profile page', 'Google Docs integration', 'Custom “Thank you” page']"
@@ -64,7 +73,7 @@ function changeAccordion(id: number): void {
               :subtitle="'Solution for big organizations'"
               :wallet="'$'"
               :price="'99'"
-              :priceYearActive="true"
+              :priceYearActive="annuallyPayCheckbox"
               :priceYear="'960'"
               :possibilities="['PayPal payments', 'Logic Jumps', 'File upload with 5GB storage', 'Custom domain support', 'Stripe integration']"
               :img="'/img/tree-3-image.png'"
@@ -82,118 +91,127 @@ function changeAccordion(id: number): void {
           <UiImage :src="'/img/image-for-section-free-trials.png'" :alt="'free-trials-image'" class="hidden lg:block absolute right-0 w-[248px] aspect-[1] bottom-[-38px]"></UiImage>
         </div>
       </section>
-      <section class="best-plan py-[100px]">
+      <section class="best-plan py-[100px] px-[20px]">
         <div class="best-plan__container container">
-        <h4 class="best-plan__title text-center">Pick a plan that works best for you</h4>
-        <p class="best-plan__subtitle text-center mt-[8px]">Stay cool, we have a 48-hour money back guarantee!</p>
-        <div class="flex justify-center">
-          <table class="best-plan__table mt-[24px] w-full outline rounded-md outline-devider">
-            <thead>
-              <tr class="text-table-header">
-                <th class="px-[20px] text-table-header w-1/4 py-[16px] text-start">TIME</th>
-                <th class="px-[20px] text-table-header w-1/4 py-[16px]">
-                  <div>STARTER</div>
-                  <div class="text-13 text-text-secondary">Free</div>
-                </th>
-                <th class="px-[20px] text-table-header w-1/4 py-[16px]">
-                  <div class="flex justify-center">
-                    <div class="self-center">PRO</div>
-                    <img src="/icon/star-table-icon.svg" alt="star-icon" class="ml-[8px] mb-[8px]" />
-                  </div>
-                  <div class="text-13 text-text-secondary">$7.5/Month</div>
-                </th>
-                <th class="px-[20px] text-table-header w-1/4 py-[16px]">
-                  <div>ENTERPRISE</div>
-                  <div class="text-13 text-text-secondary">$16/Month</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-t border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">14-days free trial</th>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-t bg-action-hover border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">No user limit</th>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-t border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">Product Support</th>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-tb bg-action-hover border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">Email Support</th>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><div class="text-primary-500 text-chip rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%] mx-auto w-max">Add-On-Available</div></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-t border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">Integrations</th>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-t bg-action-hover border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">Removal of Front branding</th>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><div class="text-primary-500 text-chip rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%] mx-auto w-max">Add-On-Available</div></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-t border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">Active maintenance & support</th>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-t bg-action-hover border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start">Data storage for 365 days</th>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
-                <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
-              </tr>
-              <tr class="border-t text-center border-b border-devider">
-                <th class="px-[20px] py-[16px] text-start"></th>
-                <td class="px-[20px] py-[16px]">
-                  <UiButton 
-                    :type="'outline'" 
-                    :text="'md'" 
-                    :size="'md'" 
-                    class="max-w-max mx-auto"
-                  >
-                    Choose Plan
-                  </UiButton>
-                </td>
-                <td class="px-[20px] py-[16px]">
-                  <UiButton 
-                    :type="'outline'" 
-                    :text="'md'" 
-                    :size="'md'" 
-                    class="max-w-max mx-auto"
-                  >
-                    Choose Plan
-                  </UiButton>
-                </td>
-                <td class="px-[20px] py-[16px]">
-                  <UiButton 
-                    :type="'outline'" 
-                    :text="'md'" 
-                    :size="'md'" 
-                    class="max-w-max mx-auto"
-                  >
-                    Choose Plan
-                  </UiButton>
-                </td>
-              </tr>
-          </tbody>
-        </table>
+          <h4 class="best-plan__title text-center">Pick a plan that works best for you</h4>
+          <p class="best-plan__subtitle text-center mt-[8px]">Stay cool, we have a 48-hour money back guarantee!</p>
+          <div class="flex justify-center max-sm:hidden">
+            <table class="best-plan__table mt-[24px] w-full outline rounded-md outline-devider">
+              <thead>
+                <tr class="text-table-header">
+                  <th class="px-[20px] text-table-header w-1/4 py-[16px] text-start">TIME</th>
+                  <th class="px-[20px] text-table-header w-1/4 py-[16px]">
+                    <div>STARTER</div>
+                    <div class="text-13 text-text-secondary">Free</div>
+                  </th>
+                  <th class="px-[20px] text-table-header w-1/4 py-[16px]">
+                    <div class="flex justify-center">
+                      <div class="self-center">PRO</div>
+                      <img src="/icon/star-table-icon.svg" alt="star-icon" class="ml-[8px] mb-[8px]" />
+                    </div>
+                    <div class="text-13 text-text-secondary">$7.5/Month</div>
+                  </th>
+                  <th class="px-[20px] text-table-header w-1/4 py-[16px]">
+                    <div>ENTERPRISE</div>
+                    <div class="text-13 text-text-secondary">$16/Month</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">14-days free trial</th>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-t bg-action-hover border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">No user limit</th>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-t border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">Product Support</th>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-tb bg-action-hover border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">Email Support</th>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><div class="text-primary-500 text-chip rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%] mx-auto w-max">Add-On-Available</div></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-t border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">Integrations</th>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-t bg-action-hover border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">Removal of Front branding</th>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><div class="text-primary-500 text-chip rounded-full self-start py-[2px] px-[12px] bg-primary-opacity/[16%] mx-auto w-max">Add-On-Available</div></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-t border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">Active maintenance & support</th>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-t bg-action-hover border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start">Data storage for 365 days</th>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><CancelTableIcon class="mx-auto text-text-secondary" /></td>
+                  <td class="px-[20px] py-[16px]"><ApproveTableIcon class="mx-auto text-primary-500" /></td>
+                </tr>
+                <tr class="border-t text-center border-b border-devider">
+                  <th class="px-[20px] py-[16px] text-start"></th>
+                  <td class="px-[20px] py-[16px]">
+                    <UiButton 
+                      :type="'outline'" 
+                      :text="'md'" 
+                      :size="'md'" 
+                      class="max-w-max mx-auto"
+                    >
+                      Choose Plan
+                    </UiButton>
+                  </td>
+                  <td class="px-[20px] py-[16px]">
+                    <UiButton 
+                      :type="'outline'" 
+                      :text="'md'" 
+                      :size="'md'" 
+                      class="max-w-max mx-auto"
+                    >
+                      Choose Plan
+                    </UiButton>
+                  </td>
+                  <td class="px-[20px] py-[16px]">
+                    <UiButton 
+                      :type="'outline'" 
+                      :text="'md'" 
+                      :size="'md'" 
+                      class="max-w-max mx-auto"
+                    >
+                      Choose Plan
+                    </UiButton>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sm:hidden mt-[32px] flex flex-col gap-[24px]">
+            <BlockBestPlan 
+              v-for="plan in bestPlans"
+              :title="plan.title"
+              :price="plan.price"
+              :possibilities="plan.poss"
+            >
+            </BlockBestPlan>
+          </div>
         </div>
-      </div>
       </section>
       <section class="faq px-[20px] bg-body-bg py-[100px]">
         <div class="faq__content container">

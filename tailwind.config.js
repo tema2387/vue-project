@@ -147,6 +147,7 @@ export default {
         'gray-linear': 'linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--secondary-100) 100%, rgba(0,0,0,0) 100%)',
         'footer-bg': 'url(/img/footer-bg.png)',
         'search-bg': 'url(/img/search-bg.png)',
+        'link-active': 'linear-gradient(-72deg, rgb(var(--theme-primary)) 22%, rgba(var(--theme-primary), .7) 76%)',
       },
       keyframes: {
         line: {

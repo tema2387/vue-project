@@ -96,11 +96,11 @@ function openMobileMenu(): void {
       ref="adminMenu" 
       @mouseenter="showAdminMenuDesktop" 
       @mouseleave="hideAdminMenuDesktop"
-      class="admin-layout-menu lg:translate-x-0 transition-all duration-500 overflow-hidden bg-body-bg fixed z-[100] h-full flex flex-col w-full max-sm:max-w-full"
+      class="admin-layout-menu lg:translate-x-0 duration-200 overflow-hidden bg-body-bg fixed z-[100] h-full flex flex-col w-full max-sm:max-w-full"
       :class="[ !adminMenuHidden ? 'max-w-[260px] shadow-sm' : 'max-w-[68px]', mobileMenuOpened  ? 'translate-x-0' : 'translate-x-[-100%]']"
     >
       <div
-        class="logo transition-all duration-500 flex items-center py-[21px]"
+        class="logo transition-all duration-200 flex items-center py-[21px]"
         :class="[ adminMenuHidden ? 'pl-[18px] mr-[0px]' : 'pl-[22px] mr-[16px]' ]"
       >
         <UiLink
@@ -160,12 +160,12 @@ function openMobileMenu(): void {
       </ul>
     </div>
     <div 
-      class="admin-layout__wrapper-content transition-all duration-500" 
+      class="admin-layout__wrapper-content duration-200" 
       :class="[ layoutChanged && !mobileMenuOpened ? 'pl-[260px]' : 'lg:pl-[68px]' ]"
     >
       <div class="admin-layout__content px-[20px] lg:px-[24px] flex flex-col bg-body-bg h-[100vh] w-full">
         <AdminHeader @clickOnBurger="openMobileMenu" />
-        <div class="admin-layout__page-content bg-paper-bg rounded-md shadow-sm my-[24px] flex-grow">
+        <div class="admin-layout__page-content my-[24px] flex-grow">
           <slot></slot>
         </div>
         <AdminFooter />
