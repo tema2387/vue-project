@@ -7,7 +7,7 @@ import PricingPage from '@/pages/front/PricingPage.vue';
 import HelpCenterPage from '@/pages/front/HelpCenterPage.vue';
 import CheckoutPage from '@/pages/front/CheckoutPage.vue';
 // Страницы админки
-import MainPage from '@/pages/admin/MainPage.vue';
+import AdminPage from '@/pages/admin/AdminPage.vue';
 import AuthPage from '@/pages/admin/AuthPage.vue';
 import RegistrationPage from '@/pages/admin/RegistrationPage.vue';
 // Демо
@@ -21,7 +21,8 @@ import NotAuthorizedPage from '@/pages/others/NotAuthorizedPage.vue';
 import InternalServerErrorPage from '@/pages/others/InternalServerErrorPage.vue';
 
 const routes = [
-  { path: '/', component: MainPage },
+  { path: '/', component: AdminPage },
+  { path: '/users', component: AdminPage },
   { path: '/auth', component: AuthPage },
   { path: '/registration', component: RegistrationPage },
   { path: '/front/landing', component: LandingPage },

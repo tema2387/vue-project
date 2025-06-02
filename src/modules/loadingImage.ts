@@ -13,6 +13,5 @@ export default function loadingImage() {
     img.onerror = () => console.error(loaded.value, "Error Img load");
   }
 
-  console.log(loaded.value);
   return { loaded, loading };
 }

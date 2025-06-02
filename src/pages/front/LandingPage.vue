@@ -36,13 +36,12 @@ import { home, features, team, faq, contact, setObserver } from '@/modules/obser
 import { setPlanPrice } from '@/store/plansStore';
 
 const activeAccordion = ref<number>(2);
-const quantitySlides = ref<any>(window.innerWidth < 768 ? 1 : 'auto');
-
+const quantitySlides = ref<number | 'auto'>(window.innerWidth < 768 ? 1 : 'auto');
 
 window.addEventListener('resize', () => {
   if(window.innerWidth < 768) {
     quantitySlides.value = 1
-  } else if (window.innerWidth > 768) {
+  } else {
     quantitySlides.value = 'auto'
   }
 })
